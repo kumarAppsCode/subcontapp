@@ -1,0 +1,531 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "contractColumnList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Contract Number",
+          "field": "contract_num",
+          "width": 182,
+          "template": "edit",
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Version",
+          "field": "object_version_num",
+          "template": "version",
+          "width": 130,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Scope of Work",
+          "field": "contract_name",
+          "template": "scopeofWork",
+          "width": 161,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Contract Date",
+          "field": "contract_date",
+          "template": "contractDate",
+          "width": 154,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Approval Status",
+          "field": "approval_status",
+          "template": "",
+          "width": 194,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Contract Status",
+          "field": "contract_status",
+          "template": "activeFlagTemplate",
+          "width": 166,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Supplier Name",
+          "field": "vendor_name",
+          "template": "",
+          "width": 175,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Supplier Site",
+          "field": "vendor_site_code",
+          "template": "",
+          "width": 146,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Currency",
+          "field": "currency_code",
+          "template": "",
+          "width": 110,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Contract Amount",
+          "field": "contract_amount",
+          "template": "ContractAmount",
+          "width": 180,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Tax Amount",
+          "field": "tax_amount",
+          "template": "TaxAmount",
+          "width": 148,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Total Contract Amount",
+          "field": "net_contract_amount",
+          "template": "NetContractAmount",
+          "width": 223,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Business Unit",
+          "field": "bu_name",
+          "template": "",
+          "width": 175,
+          "resizable": "enabled"
+        }
+      ]
+    },
+    "drawerPopup": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "getBusinessUnitListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "responseType": "getBusinessunit",
+        "itemsPath": "items",
+        "keyAttributes": "bu_id",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "bu_name"
+          ]
+        },
+        "fetchChain": "getBusinessunitFetch"
+      }
+    },
+    "getContractNumberSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getContractHeaderLov",
+        "responseType": "getContractHeaderLov",
+        "itemsPath": "items",
+        "uriParameters": {
+          "p_searchval": "{{ $variables.SearchContractNum }}",
+          "p_bu_id": "{{ $variables.searchObj.buId }}"
+        },
+        "filterCriterion": {
+          "op": "$eq",
+          "attribute": "bu_id",
+          "value": "-1"
+        }
+      }
+    },
+    "getContractNumListSDPlov": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "responseType": "getContractHeaderLovlist",
+        "itemsPath": "items",
+        "keyAttributes": [
+          "header_id",
+          "object_version_num"
+        ],
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "contract_num",
+            "vendor_name",
+            "vendor_site_code"
+          ]
+        },
+        "fetchChain": "getContractHeaderLovFetch"
+      }
+    },
+    "pagingSearch": {
+      "type": "any"
+    },
+    "SearchContractNum": {
+      "type": "any"
+    },
+    "searchObj": {
+      "type": {
+        "activeFlag": "string",
+        "buId": "string",
+        "contractDate": "string",
+        "contractNum": "string",
+        "contractStatus": "string",
+        "fromDate": "string",
+        "toDate": "string",
+        "transContractNum": "string",
+        "vendorId": "string",
+        "vendorName": "string",
+        "vendorSite": "string"
+
+      },
+      "defaultValue": {
+        "activeFlag": "N"
+      }
+    },
+    "transSearchObj": {
+      "type": {
+        "contractNo": "string",
+        "supplierName": "string",
+        "supplierSite": "string",
+        "vendor_id": "string"
+      }
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getBusinessunit": {
+      "endpoint": "getBusinessunit",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getContractHeaderLov": {
+      "endpoint": "getContractHeaderLov",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getContractHeaderLovlist": {
+      "endpoint": "getContractHeaderLov",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "getBusinessunit": {
+      "items": [
+        {
+          "bu_id": "number",
+          "bu_name": "string",
+          "bu_name_ar": "any",
+          "business_group_id": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "effective_end_date": "string",
+          "effective_start_date": "string",
+          "last_update_date": "string",
+          "last_update_login": "any",
+          "last_updated_by": "string",
+          "legal_entity_id": "number",
+          "location_id": "number",
+          "primary_ledger_id": "number",
+          "source_rowid": "string",
+          "status": "string",
+          "trx_source": "string"
+        }
+      ]
+    },
+    "getContractHeaderLov": {
+      "items": [
+        {
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "attribute_json": "any",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "string",
+          "revision_num": "number",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+        }
+      ]
+    },
+    "getContractHeaderLovlist": {
+      "items": [
+        {
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "attribute_json": "any",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "string",
+          "revision_num": "number",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chain": "OnClickDrawerPopup"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "OnClickdrawerSearch"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chain": "OnclickdrawerReset"
+        }
+      ]
+    },
+    "buttonAction4": {
+      "chains": [
+        {
+          "chain": "onClickPrevious",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick": {
+      "chains": [
+        {
+          "chain": "HyperlinkClickChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chain": "Onclickcontractlov",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "selectValueItem2": {
+      "chains": [
+        {
+          "chainId": "onClickBUName",
+          "parameters": {
+            "data": "[[ $event.detail.value.data ]]",
+            "key": "[[ $event.detail.value.key ]]",
+            "metadata": "[[ $event.detail.value.metadata ]]"
+          }
+        }
+      ]
+    },
+    "smartSearchPageTemplateSpInFlowBack": {
+      "chains": [
+        {
+          "chain": "SmartSearchPageTemplateSpInFlowBackChain"
+        }
+      ]
+    },
+    "smartSearchPageTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chain": "OnClickReset"
+        }
+      ]
+    },
+    "smartSearchPageTemplateSpSecondaryAction": {
+      "chains": [
+        {
+          "chain": "OnClickSearch",
+          "parameters": {
+            "actionId": "{{$event.detail.secondaryItem}}"
+          }
+        }
+      ]
+    },
+    "switchValue": {
+      "chains": [
+        {
+          "chain": "OnClickactiveflag",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onload"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-collapsible": {
+        "path": "ojs/ojcollapsible"
+      },
+      "oj-drawer-popup": {
+        "path": "ojs/ojdrawerpopup"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-paging-control": {
+        "path": "ojs/ojpagingcontrol"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-smart-search-page": {
+        "path": "oj-sp/smart-search-page/loader"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  }
+}

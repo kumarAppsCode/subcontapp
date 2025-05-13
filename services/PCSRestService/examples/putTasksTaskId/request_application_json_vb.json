@@ -1,0 +1,16 @@
+{
+    "identities": [
+        {
+            "id": "Testdawood.aladhoobi@omansail.com",
+            "type": "user"
+        }
+    ],
+    "action": {
+        "id": "REASSIGN",
+        "type": "SYSTEM"
+    },
+    "comment": {
+        "commentStr": "Test",
+        "commentScope": "TASK"
+    }
+}

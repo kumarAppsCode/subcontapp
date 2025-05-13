@@ -1,0 +1,63 @@
+{
+
+            "term_id": 1,
+
+            "object_version_num": 0,
+
+            "header_id": 300000003299996,
+
+            "revision_num": 0,
+
+            "adv_percent": 5,
+
+            "adv_amount": 5,
+
+            "adv_rec_percent": 5,
+
+            "adv_rec_amount": 5,
+
+            "reten_percent": 5,
+
+            "reten_amount": 5,
+
+            "reten_rel_percent": 5,
+
+            "reten_rel_amount": 5,
+
+            "material_percent": 5,
+
+            "material_amount": 5,
+
+            "remarks": null,
+
+            "attribute_json": null,
+
+            "bu_id": null,
+
+            "adv_calc_mode":null,
+
+            "adv_rec_calc_mode":null,
+
+            "ret_calc_mode":null,
+
+            "ret_rel_calc_mode":null,
+
+            "mat_calc_mode":null,
+
+            "created_by": "api",
+
+            "created_date": "2023-02-15T20:44:44.959Z",
+
+            "last_updated_by": "api",
+
+            "last_updated_date": "2023-02-15T20:44:44.959Z",
+
+            "last_updated_login": "api",
+
+             "mat_adv_rec_calc_mode":null,
+
+            "mat_adv_rec_percent":null,
+
+            "mat_adv_rec_amount":null
+
+        }

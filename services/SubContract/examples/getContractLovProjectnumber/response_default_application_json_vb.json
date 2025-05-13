@@ -1,0 +1,30 @@
+{
+    "items": [
+        {
+            "project_id": 300000002925221,
+            "project_num": "OM10002"
+        },
+        {
+            "project_id": 300000003667214,
+            "project_num": "OM10010"
+        },
+        {
+            "project_id": 300000003277840,
+            "project_num": "OM10005"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 3,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/contract/lov/projectnumber"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/metadata-catalog/contract/lov/item"
+        }
+    ]
+}

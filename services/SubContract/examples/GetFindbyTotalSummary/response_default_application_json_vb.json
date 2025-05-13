@@ -1,0 +1,43 @@
+{
+    "items": [
+        {
+            "header_id": 300000003751229,
+            "revision_num": 1,
+            "adv_calc_mode": "P",
+            "adv_percent": 10,
+            "adv_rec_calc_mode": "P",
+            "adv_rec_percent": 10,
+            "ret_calc_mode": "P",
+            "reten_percent": 10,
+            "ret_rel_calc_mode": "P",
+            "reten_rel_percent": 10,
+            "mat_calc_mode": "P",
+            "material_percent": null,
+            "remarks": null,
+            "bu_id": 300000002724021,
+            "mat_adv_rec_calc_mode": "P",
+            "mat_adv_rec_percent": null,
+            "total_adv_amount": 10000,
+            "total_adv_rec_amount": 10000,
+            "total_reten_amount": 10000,
+            "total_reten_rel_amount": 10000,
+            "total_material_amount": null,
+            "total_mat_adv_rec_amount": null,
+            "total_contract_amt": 100000
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/contract/findby/totalsummary?cont_header_id=300000003751229"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/contract/findby/item"
+        }
+    ]
+}

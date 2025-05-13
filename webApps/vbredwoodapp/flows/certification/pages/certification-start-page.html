@@ -1,0 +1,484 @@
+<oj-sp-smart-search-page page-title="Certification" display-mode="light" primary-action.display="on"
+  primary-action.label="Reset"
+  secondary-actions='[{"label":"Search","id":"search","icon":"oj-ux-ico-content-item-search"}]'
+  on-sp-secondary-action="[[$listeners.smartSearchPageTemplateSpSecondaryAction]]"
+  on-sp-primary-action="[[$listeners.smartSearchPageTemplateSpPrimaryAction]]">
+
+  <!-- <div class="oj-panel oj-panel-shadow-md oj-selected"> -->
+  <oj-drawer-popup style="width:35%;" opened="{{ $variables.drawerPopup }}" edge="end" modality="modeless"
+    auto-dismiss="none">
+    <!-- <oj-collapsible  id="c4">-->
+    <oj-toolbar chroming="solid" style="background-color:#013766;">
+
+      <oj-button display="icons" chroming="borderless" on-oj-action="[[$listeners.buttonAction3]]">
+        <span class="oj-ux-ico-chevron-left" slot="startIcon"></span>
+      </oj-button>
+      <h1 id="h4" style="font-size: larger; color:white; font-weight: bold; margin-left:1% ">Search Certification</h1>
+
+    </oj-toolbar>
+    <!-- <br>
+    <oj-form-layout columns="2" direction="column" max-columns="2" class="oj-forme-control oj-sm-align-self-center">
+      <oj-form-layout label-edge="start">
+        <!--BusinessUnit 
+        <oj-select-single item-text="bu_name"
+          label-hint="[[$application.translations.appBundle.select_single_label_hint_5f28]]"
+          placeholder="[[$application.translations.appBundle.select_single_placeholder]]"
+          data="[[ $variables.getBusinessUnitListSDP ]]" value="{{ $variables.searchObj.buid }}">
+          <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+              vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results" columns=' [
+                                {"headerText":"BusinessUnit","field":"bu_name"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+              selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}">
+            </oj-table>
+          </template>
+        </oj-select-single>
+
+
+        <!--Contract Num 
+        <oj-bind-if test='true'>
+          <oj-select-single item-text="certification_number"
+            label-hint="[[$application.translations.appBundle.certificationNumber]]"
+            placeholder="Certification Number"
+            value="{{ $variables.transSearchObj.certificationno }}"
+            on-value-item-changed="[[$listeners.selectValueItem2]]"
+            data="[[$variables.getSearchCertficationnumberListSDP]]">
+            <template slot="collectionTemplate" data-oj-as="collection">
+              <oj-input-text class="oj-form-control-full-width" style="width: 15rem;"
+                label-hint="[[$application.translations.appBundle.input_text_label_hint_1166]]"
+                placeholder="[[$application.translations.appBundle.input_text_placeholder_45ee]]"
+                value="{{ $variables.searchcertificationnum }}"></oj-input-text>
+              <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+               columns=' [{"headerText":"Certification Number","field":"certification_number"},
+                                {"headerText":"Contract Number","field":"contract_num"},
+                                {"headerText":"Application Num","field":"application_number"},
+                                {"headerText":"Supplier Name","field":"vendor_name"},
+                                {"headerText":"Supplier Site","field":"vendor_site_code"}]'  on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}">
+              </oj-table>
+            </template>
+
+          </oj-select-single>
+        </oj-bind-if>
+
+        <!--From Date  
+        <oj-input-date converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+          label-hint="[[$application.translations.appBundle.input_date_label_hint]]"
+          placeholder="[[$application.translations.appBundle.input_date_placeholder]]"
+          value="{{ $variables.searchObj.fromDate }}"></oj-input-date>
+
+      </oj-form-layout>    
+       
+
+
+      <!-- end 
+
+      <oj-form-layout label-edge="start">
+
+        <!--Vendor Name  
+        <oj-input-text label-hint="[[$application.translations.appBundle.input_text_label_hint_31f9]]"
+          placeholder="[[$application.translations.appBundle.input_text_placeholder]]" disabled="true"
+          value="{{ $variables.transSearchObj.supplierName }}">
+        </oj-input-text>
+
+        <!--Vendor Site  
+        <oj-input-text label-hint="[[$application.translations.appBundle.input_text_label_hint]]"
+          placeholder="[[$application.translations.appBundle.input_text_placeholder_9af1]]" disabled="true"
+          value="{{ $variables.transSearchObj.supplierSite }}">
+        </oj-input-text>
+
+        <oj-input-date label-hint="[[$application.translations.appBundle.input_date_label_hint_2456]]"
+          converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+          placeholder="[[$application.translations.appBundle.input_date_placeholder_a306]]"
+          value="{{ $variables.searchObj.toDate }}">
+        </oj-input-date>
+
+        <!-- <oj-switch label-hint="Active" on-value-changed="[[$listeners.switchValue]]"
+          value="{{ $variables.searchObj.activeFlag == 'Y' ? true:false }}"></oj-switch> 
+
+      </oj-form-layout>
+    </oj-form-layout>
+     
+    <div style="display:flex; justify-content:flex-end;">
+      <oj-button style="searchBtn margin-left:0.5%;margin-right:0.5%;"
+        label="[[$application.translations.appBundle.button_label]]" on-oj-action="[[$listeners.buttonAction]]">
+        <!-- <oj-bind-text value="[[$application.translations.app.search]]"></oj-bind-text> 
+      </oj-button>
+      <oj-button style="resetBtn margin-left:0.5%;margin-right:0.5%;"
+        label="[[$application.translations.appBundle.button_label_caa9]]" on-oj-action="[[$listeners.buttonAction2]]">
+        <!-- <oj-bind-text value="[[$application.translations.app.reset]]"></oj-bind-text> 
+      </oj-button>
+    </div> -->
+    <!-- </oj-collapsible> -->
+    <!-- </div> -->
+
+  <div class="oj-helper-justify-content-flex-end">
+<oj-form-layout columns="1" label-edge="start" direction="column" max-columns="2" class="oj-forme-control oj-sm-align-self-center">
+ <br>
+ <oj-select-single label-hint="Business Unit" style="width: 21rem;" item-text="bu_name" placeholder="Business Unit"
+   data="[[ $variables.getBusinessUnitListSDP ]]" value="{{ $variables.newSearchObj.p_bu_id }}">
+   <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+              columns=' [
+                                {"headerText":"Business Unit","field":"bu_name"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]"
+              data="[[collection.data]]" selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}"
+              display="grid" horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+            </oj-table>
+          </template></oj-select-single>
+
+
+
+ <oj-select-single label-hint="Supplier Name" style="width: 21rem;" item-text="vendor_name"
+   value="{{ $variables.newSearchObj.p_vendor_site_id }}" data="[[$variables.getVendorsListSDP]]"
+   placeholder="Supplier Name" >
+     <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+              columns=' [
+                                {"headerText":"Supplier Name","field":"vendor_name"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]"
+              data="[[collection.data]]" selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}"
+              display="grid" horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+            </oj-table>
+          </template></oj-select-single>
+ <!-- <oj-select-single label-hint="Contract Number" style="width: 21rem;"></oj-select-single> -->
+ 
+ <oj-select-single label-hint=" Contract Number" style="width: 21rem;" item-text="contract_num"
+   value="{{ $variables.newSearchObj.p_contract_num }}"
+   data="[[$variables.getCertificationModuleLovContractnumberListSDP]]" placeholder=" Contract Number" 
+      >
+        <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+              columns=' [
+                                {"headerText":"Contract Number","field":"contract_num"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]"
+              data="[[collection.data]]" selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}"
+              display="grid" horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+            </oj-table>
+          </template>
+      </oj-select-single>
+	  
+	  
+ <oj-select-single label-hint="Application Number" style="width: 21rem;" item-text="application_num"
+   data="[[$variables.getCertificationModuleFindSearchApplicationlovListSDP]]"
+   value="{{ $variables.newSearchObj.p_application_num }}" placeholder="Application Number">
+   <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+              columns=' [
+                                {"headerText":"Application Number","field":"application_num"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]"
+              data="[[collection.data]]" selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}"
+              display="grid" horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+            </oj-table>
+          </template>
+   </oj-select-single>
+
+   
+   <oj-select-single label-hint="Certification Number" style="width: 21rem;" item-text="certification_num"
+     data="[[$variables.getSearchCertficationnumberListSDP2]]"
+     value="{{ $variables.newSearchObj.p_certification_num }}" placeholder="Certification Number">
+     <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+              columns=' [
+                                {"headerText":"Certification Number","field":"certification_num"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]"
+              data="[[collection.data]]" selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}"
+              display="grid" horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+            </oj-table>
+          </template></oj-select-single>
+
+     <!-- <oj-select-single label-hint="Certification Status" style="width: 21rem;" placeholder="Certification Status"
+       value="{{ $variables.newSearchObj.p_cert_application_status_disp }}"
+       ></oj-select-single> -->
+    
+	<oj-select-single label-hint="Approval Status" style="width: 21rem;" item-text="lookup_value_name_disp"
+   value="{{ $variables.newSearchObj.p_approval_status }}" data="[[$variables.getookupdetailListSDP]]"
+   placeholder="Approval Status"
+       >
+       <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+              columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+              columns=' [
+                                {"headerText":"Approval Status","field":"lookup_value_name_disp"}
+                               
+                            ]' on-oj-row-action="[[collection.handleRowAction]]"
+              data="[[collection.data]]" selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}"
+              display="grid" horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+            </oj-table>
+          </template>
+       
+       </oj-select-single>
+      <!-- <oj-select-single label-hint="Payment Type" style="width: 21rem;"></oj-select-single> -->
+
+<oj-select-single label-hint="Payment Type" style="width: 21rem;" item-text="lookup_value_name_disp" "=""
+  value="{{ $variables.newSearchObj.p_payment_type }}" data="[[$variables.getookupdetailListSDP2]]"
+  placeholder="Payment Type" 
+     >
+     
+     
+        <template slot="collectionTemplate" data-oj-as="collection">
+            <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                  vertical-grid-visible="disabled" selection-mode='{"row": "single"}' 
+                  columns-default='{"resizable": "disabled","sortable": "disabled"}' 
+                  class="oj-select-results" 
+                  columns=' [{"headerText":"Payment Type","field":"lookup_value_name_disp"}]' 
+                on-oj-row-action="[[collection.handleRowAction]]"
+                data="[[collection.data]]" selected.row="[[collection.selected]]"
+                current-row="{{collection.currentRow}}" display="grid">
+            </oj-table>
+          </template>
+          </oj-select-single>
+
+ <oj-input-date label-hint="Certification From Date" style="width: 21rem;"
+          converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+          placeholder="Certification From Date" value="{{ $variables.newSearchObj.p_from_cert_date }}"
+         >
+        </oj-input-date>
+ <oj-input-date label-hint="Certification to Date" style="width: 21rem;"
+   converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' placeholder="Certification to Date"
+   value="{{ $variables.newSearchObj.p_to_cert_date }}" min="[[ $variables.newSearchObj.p_from_cert_date ]]"
+           >
+        </oj-input-date>
+        <oj-input-date label-hint="Payment Due From Date"  style="width: 21rem;"
+          converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+          placeholder="Payment Due From Date" value="{{ $variables.newSearchObj.p_from_payment_due_date }}"
+         ></oj-input-date>
+           <oj-input-date label-hint="Payment Due to Date" style="width: 21rem;"
+             converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' placeholder="Payment Due to Date"
+             value="{{ $variables.newSearchObj.p_to_payment_due_date }}"
+             min="[[ $variables.newSearchObj.p_from_payment_due_date ]]"></oj-input-date>
+      </oj-form-layout >
+  </div>
+   
+    <div style="display:flex; justify-content:flex-end;">
+      <oj-button style="searchBtn margin-left:0.5%;margin-right:0.5%;"
+        label="[[$application.translations.appBundle.button_label]]" on-oj-action="[[$listeners.buttonAction]]">
+        <!-- <oj-bind-text value="[[$application.translations.app.search]]"></oj-bind-text>  -->
+      </oj-button>
+      <oj-button style="resetBtn margin-left:0.5%;margin-right:0.5%;"
+        label="[[$application.translations.appBundle.button_label_caa9]]" on-oj-action="[[$listeners.buttonAction2]]">
+         <!-- <oj-bind-text value="[[$application.translations.app.reset]]"></oj-bind-text>  -->
+      </oj-button>
+    </div>
+
+  </oj-drawer-popup>
+
+
+  <div id="sampleDemo" style="" class="demo-padding demo-container">
+    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+      <div id="mainContent">
+        <!-- <oj-sample-export-data></oj-sample-export-data> -->
+        <div class="oj-flex oj-sm-justify-content-flex-end">
+          <oj-button label="Create Certificate" on-oj-action="[[$listeners.buttonAction4]]" id="chromin"
+            chroming="half">
+          <img slot="startIcon"  :src="[[ $flow.path + 'resources/images/MicrosoftTeams-image_(1).png' ]]" >
+</oj-button>
+  <oj-sample-export-data style="margin-left:3px;" class="oj-flex-item oj-sm-flex-initial" max-rows="10000"
+    format="plain" chroming="half" file-name="Certification Information" data="[[ $variables.exportCertificationADP ]]"
+    columns='[    {        "headerText": "Certification Number",        "field": "certification_number",        "width": 218,        "template": "edit",        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Certification Date",        "field": "certification_date",        "template": "certDate",        "width": 189,        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Contract Number",        "field": "contract_num",        "template": "",        "width": 198,        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Contract Name",        "field": "contract_name",        "template": "",        "width": 173,        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Payment Type",        "field": "payment_type",        "template": "",        "width": 161,        "resizable": "enabled"    },    {        "headerText": "Certification Status",        "field": "cert_application_status_disp",        "template": "",        "width": 205,        "resizable": "enabled"    },    {        "headerText": "Approval Status",        "field": "cert_approval_status_disp",        "template": "",        "width": 175,        "resizable": "enabled"    },     {        "headerText": "Payment Due Date",        "field": "payment_due_date",        "template": "paymentDueDate",        "width": 199,        "resizable": "enabled"    },    {        "headerText": "Vendor Name",        "field": "vendor_name",        "template": "",        "width": 210,        "resizable": "enabled"    },    {        "headerText": "Vendor Site",        "field": "vendor_site_code",        "template": "",        "width": 170,        "resizable": "enabled"    },    {        "headerText": "Business Unit",        "field": "bu_name",        "template": "",        "width": 190,        "resizable": "enabled"    }]' ><span><oj-bind-text value="Export"></oj-bind-text></span>
+  <img slot="startIcon" width="15" height="15" :src="[[ $flow.path + 'resources/images/excel_img.png' ]]">
+</oj-sample-export-data>
+
+          <oj-table style="width:80%" scroll-policy="loadMoreOnScroll" class="oj-sm-width-full oj-bg-body tablerowdata"
+            selection-mode.row="single" id="searchSSTable" display="grid" selection-mode.column="single"
+            data="[[ $application.variables.searchData ]]" columns="{{ $variables.Columns }}">
+            <!-- edit -->
+            <template slot="edit">
+              <a target="_blank" on-click="[[$listeners.hyperlinkClick]]">
+                <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+              </a>
+            </template>
+            <!-- contractDate -->
+            <template slot="contractDate">
+              <oj-input-date value="[[$current.data]]" readonly="true"
+                converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+            </template>
+
+<template slot="approvalstatus">
+          
+<oj-bind-if test='[[ $current.row.approval_status_code === "Approved" ]]'>
+  <span class="oj-badge oj-badge-success oj-badge-sm" style="margin-left: 40px;">Approved</span>
+</oj-bind-if>
+<oj-bind-if test='[[ $current.row.approval_status_code === "Draft" ]]'>
+  <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Draft</span>
+</oj-bind-if>
+<oj-bind-if test='[[ $current.row.approval_status_code === "Withdraw" ]]'>
+  <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Withdraw</span>
+</oj-bind-if>
+<oj-bind-if test='[[ $current.row.approval_status_code === "Pending" ]]'>
+  <span class="oj-badge oj-badge-sm oj-badge-waring" style="margin-left: 40px;" >Pending</span>
+</oj-bind-if>
+<oj-bind-if test='[[ $current.row.approval_status_code === "Rejected" ]]'>
+  <span class="oj-badge oj-badge-sm oj-badge-danger" style="margin-left: 40px;" >Rejected</span>
+</oj-bind-if>
+
+            </template>
+
+
+            <!-- Contract Status Template -->
+            <template slot="activeFlagTemplate">
+              <oj-bind-if test='[[ $current.data==="N" ]]'>
+                <img :src="[[ $application.path + 'resources/images/Cancel.png' ]]"  style="margin-left:40%;" >
+              </oj-bind-if>
+              <oj-bind-if test='[[ $current.data!=="N" ]]'>
+                <img :src="[[ $flow.path + 'resources/images/isActive_Y.png' ]]"  style="margin-left:35%;" >
+              </oj-bind-if>
+            </template>
+            <template slot="ContractAmount">
+              <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                converter='{"options":{"minimumFractionDigits":2},"type":"number"}'> 
+                        </oj-input-number>
+                     
+            </template>
+            <template slot="TaxAmount">
+              <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                converter='{"options":{"minimumFractionDigits":2},"type":"number"}'> 
+                        </oj-input-number>
+                     
+            </template>
+            <template slot="NetContractAmount">
+              <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                converter='{"options":{"minimumFractionDigits":2},"type":"number"}'> 
+                        </oj-input-number>
+                     
+            </template>
+          
+   <template slot="delete">
+             <oj-bind-if
+              test="[[ $current.row.approval_status_code == 'Draft' || $current.row.approval_status_code ==  'Rejected'  || $current.row.approval_status_code ==  'Withdraw' ]]"  >
+            
+          <oj-button style="alt= center;" display="icons" chroming="borderless"
+            on-oj-action="[[$listeners.buttonAction9]]"  >
+            <img :src="[[ $flow.path + 'resources/images/deleteBtn.png' ]]" width="15" height="15">
+            <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+          </oj-button>
+             </oj-bind-if> 
+			 
+			   <oj-bind-if
+              test="[[ $current.row.approval_status_code == 'Pending' || $current.row.approval_status_code ==  'Submitted' ||$current.row.approval_status_code ==  'Approved' ]]"  >
+            
+          <oj-button style="alt= center;" display="icons" chroming="borderless"
+             >
+            <img width="15" height="15" :src="[[ $flow.path + 'resources/images/disable_delete.png' ]]">
+            <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+          </oj-button>
+             </oj-bind-if> 
+            </template> 
+
+
+ <template slot="certDate">
+          <oj-input-date value="[[$current.data]]" readonly="true" 
+            converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+        </template>
+
+            <oj-paging-control id="paging" class="oj-sm-width-full" style="margin-left:38%;" page-size="10" slot="bottom"
+              data="[[ $application.variables.searchData ]]">
+            </oj-paging-control>
+          </oj-table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- new dialog -->
+
+<!-- new dialog -->
+  <oj-dialog style="width: 550px; height: 550px;" dialog-title="Certification" id="certicationDialog">
+    <div slot="body">
+     
+         
+   <oj-validation-group id="createCertificationDialog">     
+   
+             <!--Application No  -->
+<oj-form-layout class="oj-forme-control" label-edge="start">
+         
+	
+	
+	<!-- <oj-input-text label-hint="Payment Type" value="{{ $variables.postCertHdrTrans.paymentType }}" disabled="true">
+            </oj-input-text> -->
+             
+  <oj-select-single label-hint="* Application Number" style="width: 22rem;margin-bottom:0.3rem;" placeholder="Application Number"
+    data="[[ $variables.getApplicationnumberlov ]]" item-text="application_num"
+    value="{{ $variables.postCertHdrTrans.applicationNumber }}" on-value-item-changed="[[$listeners.selectValueItem3]]"
+    user-assistance-density="compact">
+	  
+      
+    <template slot="collectionTemplate" data-oj-as="collection">
+        
+      <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled" vertical-grid-visible="disabled"
+        selection-mode='{"row": "single"}' columns-default='{"resizable": "disabled","sortable": "disabled"}'
+        columns=' [ {"headerText":"Application Number","field":"application_num"},
+                      {"headerText":"Payment Type","field":"payment_type"},
+                      {"headerText":"Contract Number","field":"contract_num"},
+                      {"headerText":"Supplier Name","field":"vendor_name"},
+                      {"headerText":"Supplier Site","field":"vendor_site_code"},
+                      {"headerText":"Business Unit","field":"bu_name"}]'
+        on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+        selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}">
+        </oj-table>
+      
+    </template>
+    
+  </oj-select-single>
+  <oj-input-text label-hint="Contract Number" value="{{ $variables.postCertHdrTrans.contractNo }}" disabled="true">
+            </oj-input-text>
+            <oj-input-text label-hint="Business Unit" value="{{ $variables.postCertHdrTrans.businessUnit }}" disabled="true">
+            </oj-input-text>
+            <oj-input-text label-hint="Supplier Name" disabled="true" value="{{ $variables.postCertHdrTrans.supplierName }}">
+            </oj-input-text>
+            <oj-input-text label-hint="Supplier Site" disabled="true" value="{{ $variables.postCertHdrTrans.supplierSite }}">
+            </oj-input-text>
+</oj-form-layout>   
+     </oj-validation-group>  
+    
+     
+    </div>
+    <div slot="footer">
+     <oj-button chroming="solid" label="Save and Close" on-oj-action="[[$listeners.buttonAction6]]" ></oj-button> 
+      <oj-button chroming="solid" label="Close" on-oj-action="[[$listeners.buttonAction5]]"></oj-button> 
+    </div>
+  </oj-dialog>
+
+
+     <oj-dialog style="display:none; width: 400px;height: 200px;" dialog-title="Note" id="Information">
+ <div slot="body">
+    <h6 style="font-size:smaller; font-weight: bold;">Are you sure want to save and continue?</h6>
+  <!-- <oj-button label="Are you sure want to save and continue?" chroming="borderless" disabled="true"></oj-button> -->
+  </div>
+  <div slot="footer">
+  
+    <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction7]]"  >OK</oj-button>
+     <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction8]]"  >Cancel</oj-button>
+  </div>
+</oj-dialog>
+
+
+ <oj-dialog dialog-title="Delete" id="DeletePopup">
+  <div slot="body">
+     <h6 style="font-size:medium; font-weight: bold;">Are you sure want to delete?</h6>
+    
+  </div>
+  <div slot="footer">
+    <oj-button on-oj-action="[[$listeners.buttonAction11]]" >Yes</oj-button>
+     <oj-button on-oj-action="[[$listeners.buttonAction10]]"  >No</oj-button>
+  </div>
+</oj-dialog>
+
+
+</oj-sp-smart-search-page>

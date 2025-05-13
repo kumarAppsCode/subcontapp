@@ -1,0 +1,34 @@
+{
+  "component-dependencies": {
+    "oj-sp": {
+      "version": "2310.0.1",
+      "components": {
+        "smart-search-page": "2310.0.1",
+        "simple-create-edit": "2310.0.1",
+        "message-unsaved-changes": "2310.0.1",
+        "input-currency": "2310.0.1",
+        "select-single-currency": "2310.0.1",
+        "detail-panel": "2310.0.1",
+        "foldout-panel-overflow": "2310.0.1",
+        "expandable-list-item": "2310.0.1",
+        "bottom-drawer-template": "2310.0.1",
+        "data-management-page": "2310.0.1",
+        "collection-container-advanced": "2310.0.1",
+        "general-drawer-template": "2310.0.1",
+        "collection-container": "2310.0.1"
+      }
+    },
+    "oj-dynamic": {
+      "version": "14.1.2",
+      "components": {
+        "form": "14.1.2"
+      }
+    },
+    "oj-sample": {
+      "version": "8.0.0",
+      "components": {
+        "export-data": "8.0.0"
+      }
+    }
+  }
+ }

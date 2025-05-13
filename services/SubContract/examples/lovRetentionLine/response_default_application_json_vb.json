@@ -1,0 +1,73 @@
+{
+    "items": [
+        {
+            "cont_header_id": 300000003751229,
+            "cert_invoice_id": 805,
+            "invoice_num": "CONT-04-02",
+            "invoice_date": "2023-09-02T00:00:00Z",
+            "invoice_amount": 30000,
+            "certification_number": "CERT805",
+            "ret_rel_amt": 3000,
+            "paid_ret_rel_amt": 1600,
+            "bal_ret_rel_amt": 1400
+        },
+        {
+            "cont_header_id": 300000003599044,
+            "cert_invoice_id": 830,
+            "invoice_num": "test-app-828",
+            "invoice_date": "2023-09-07T00:00:00Z",
+            "invoice_amount": 50000,
+            "certification_number": "CERT830",
+            "ret_rel_amt": 5000,
+            "paid_ret_rel_amt": 5000,
+            "bal_ret_rel_amt": 0
+        },
+        {
+            "cont_header_id": 300000003599044,
+            "cert_invoice_id": 838,
+            "invoice_num": "test-App-836",
+            "invoice_date": "2023-09-06T00:00:00Z",
+            "invoice_amount": 20000,
+            "certification_number": "CERT838",
+            "ret_rel_amt": 2000,
+            "paid_ret_rel_amt": 2000,
+            "bal_ret_rel_amt": 0
+        },
+        {
+            "cont_header_id": 300000003599044,
+            "cert_invoice_id": 834,
+            "invoice_num": "Test-app-832",
+            "invoice_date": "2023-09-06T00:00:00Z",
+            "invoice_amount": 30000,
+            "certification_number": "CERT834",
+            "ret_rel_amt": 3000,
+            "paid_ret_rel_amt": 3000,
+            "bal_ret_rel_amt": 0
+        },
+        {
+            "cont_header_id": 300000003751229,
+            "cert_invoice_id": 821,
+            "invoice_num": "test-123",
+            "invoice_date": "2023-09-12T00:00:00Z",
+            "invoice_amount": 70000,
+            "certification_number": "CERT821",
+            "ret_rel_amt": 7000,
+            "paid_ret_rel_amt": 3000,
+            "bal_ret_rel_amt": 4000
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 5,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/RetentionRelease/module/lov/retentionlineview"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/RetentionRelease/module/lov/item"
+        }
+    ]
+}

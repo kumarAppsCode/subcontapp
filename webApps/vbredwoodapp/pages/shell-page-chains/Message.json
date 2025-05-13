@@ -1,0 +1,12 @@
+{
+  "root": "fireDataProviderEventMessageADP",
+  "description": "",
+  "actions": {
+    "fireDataProviderEventMessageADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "[[ $page.variables.messageADP ]]"
+      }
+    }
+  }
+}

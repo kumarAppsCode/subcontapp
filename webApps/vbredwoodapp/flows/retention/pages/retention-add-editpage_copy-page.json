@@ -1,0 +1,541 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "displayOptionsVar": {
+      "type": {
+        "approve": "string",
+        "reject": "string",
+        "save": "boolean",
+        "submit": "string"
+      }
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "lineCloumns": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Item Number",
+          "field": "item_num",
+          "template": "",
+          "width": 172,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+
+        },
+        {
+          "headerText": "Item Description",
+          "field": "item_description",
+          "width": 190,
+          "template": "",
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Project Number ",
+          "field": "project_num",
+          "template": "",
+          "width": 189,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": " Task Number",
+          "field": "task_num",
+          "template": "",
+          "width": 170,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": " Expenditure Type",
+          "field": "expenditure_type",
+          "template": "",
+          "width": 190,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Remarks",
+          "field": "remarks",
+          "template": "remarks",
+          "resizable": "enabled"
+        }        ,
+        {
+          "headerText": "Retention  Percentage",
+          "field": "cont_retention_percent",
+          "template": "taxRate",
+          "resizable": "enabled",
+          "width": 193
+        }        ,
+        {
+          "headerText": "Retention  Amount",
+          "field": "ret_amount",
+          "template": "taxRate",
+          "resizable": "enabled",
+          "width": 120,
+          "frozenEdge": "end"
+        }        ,
+        {
+          "headerText": "Previous Retention Release  Amount",
+          "field": "ret_rel_amount_paid",
+          "template": "taxRate",
+          "resizable": "enabled",
+          "width": 180,
+          "frozenEdge": "end"
+        }        ,
+        {
+          "headerText": "Retention Release Amount",
+          "field": "ret_rel_amount",
+          "template": "ret_rel_amount",
+          "resizable": "enabled",
+          "width": 180,
+          "frozenEdge": "end"
+
+        }        
+      ]
+    },
+    "LineTable": {
+      "type": "any"
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "p_ContHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pageVar": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "PostHeaderVar": {
+      "type": "postRententionHeader"
+    },
+    "postRententionHeaderSaveVar": {
+      "type": "postRententionHeaderSave"
+    },
+    "postSubmitForApprovalPkgVar": {
+      "type": "postSubmitForApprovalPkg"
+    },
+    "pRetHeader_id": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "retLineADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getRetentionReleaseLines",
+        "keyAttributes": "line_id"
+      }
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "Sysdate": {
+      "type": "string",
+      "defaultValue": "[[ $application.functions.appSysDatesWithTimeStamp() ]]"
+    },
+    "Task_id": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "triggervar": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getRetentionReleaseLines": {
+      "endpoint": "FindByRetentionRelease",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.postRententionHeader": {
+      "endpoint": "postRententionHeader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postRententionHeaderSave": {
+      "endpoint": "postRententionHeader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postSubmitForApprovalPkg": {
+      "endpoint": "postSubmitForApprovalPkg",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.UpdateRententionheader": {
+      "endpoint": "UpdateRententionheader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "getRetentionReleaseLines": {
+      
+          "attribute_json": "any",
+          "bu_id": "number",
+          "category_id": "number",
+          "code_combination_id": "number",
+          "cont_header_id": "number",
+          "cont_line_amount": "number",
+          "cont_line_id": "number",
+          "cont_net_line_amount": "number",
+          "cont_retention_amount": "number",
+          "cont_retention_amount_max": "any",
+          "cont_retention_percent": "number",
+          "cont_revision_num": "number",
+          "cont_tax_amount": "number",
+          "cont_tax_code": "any",
+          "cont_tax_rate": "any",
+          "created_by": "string",
+          "created_date": "string",
+          "expenditure_type": "any",
+          "expenditure_type_id": "any",
+          "header_id": "number",
+          "item_description": "string",
+          "item_id": "number",
+          "item_num": "string",
+          "item_spec": "string",
+          "last_updated_by": "string",
+          "last_updated_date": "string",
+          "last_updated_login": "string",
+          "line_id": "number",
+          "line_num": "number",
+          "line_type_id": "number",
+          "object_version_num": "number",
+          "po_distribution_id": "number",
+          "po_distribution_num": "number",
+          "po_header_id": "number",
+          "po_line_id": "number",
+          "po_line_num": "number",
+          "project_id": "any",
+          "project_num": "any",
+          "quantity": "number",
+          "remarks": "any",
+          "ret_amount": "any",
+          "ret_rel_amount": "number",
+          "ret_rel_amount_paid": "any",
+          "task_id": "any",
+          "task_num": "any",
+          "unit_price": "number",
+          "uom_code": "string"
+   
+    },
+    "postRententionHeader": {
+      "address1": "string",
+      "address2": "any",
+      "address3": "any",
+      "address4": "any",
+      "approval_status": "string",
+      "approval_status_code": "string",
+      "bill_to_location_code": "string",
+      "bill_to_location_id": "number",
+      "bu_id": "number",
+      "bu_name": "string",
+      "buyer_id": "number",
+      "cancel_flag": "any",
+      "comments": "any",
+      "cont_header_id": "number",
+      "cont_revision_num": "number",
+      "contract_amount": "number",
+      "contract_date": "string",
+      "contract_name": "string",
+      "contract_num": "string",
+      "contract_status": "string",
+      "contract_status_disp": "string",
+      "conversion_rate": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "currency_code": "string",
+      "document_status": "string",
+      "email_address": "string",
+      "end_date": "any",
+      "full_name": "string",
+      "header_id": "number",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "mobile_number": "string",
+      "net_contract_amount": "number",
+      "object_version_num": "number",
+      "party_name": "string",
+      "payment_term": "any",
+      "payment_term_id": "number",
+      "phone_number": "string",
+      "po_header_id": "number",
+      "po_number": "string",
+      "remarks": "any",
+      "ret_rel_amount": "number",
+      "ret_rel_date": "string",
+      "ret_rel_num": "string",
+      "ret_rel_type": "string",
+      "ret_release_status_id": "any",
+      "ship_to_location_code": "string",
+      "ship_to_location_id": "number",
+      "source_rowid": "string",
+      "start_date": "any",
+      "subcontract_type": "string",
+      "tax_amount": "number",
+      "trx_source": "string",
+      "vendor_id": "number",
+      "vendor_name": "string",
+      "vendor_num": "string",
+      "vendor_site_code": "string",
+      "vendor_site_id": "number",
+      "vendor_type_code": "any",
+      "version_type": "string"
+
+    },
+    "postRententionHeaderSave": {
+      "ap_invoice_id": "any",
+      "approval_status_id": "number",
+      "attribute_json": "any",
+      "bu_id": "number",
+      "comments": "any",
+      "cont_header_id": "number",
+      "cont_revision_num": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "header_id": "number",
+      "interface_error_msg": "any",
+      "interface_event_id": "any",
+      "interface_flow_id": "any",
+      "interface_response_id": "any",
+      "interface_status": "any",
+      "interface_status_flag": "any",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "object_version_num": "number",
+      "ret_amount": "number",
+      "ret_rel_amount": "number",
+      "ret_rel_amount_paid": "any",
+      "ret_rel_date": "string",
+      "ret_rel_num": "string"
+    },
+    "postSubmitForApprovalPkg": {
+      "P_APPR_PROCESS": "string",
+      "P_TRX_ID": "string",
+      "P_USER_ID": "string"
+    },
+    "UpdateRententionheader": {
+      "p_cont_header_id": "number",
+      "p_header_id": "number",
+      "p_login_name": "string"
+    }
+
+  },
+  "eventListeners": {
+
+    "buttonAction4": {
+      "chains": [
+        {
+          "chain": "onClickCancel"
+        }
+      ]
+    },
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chainId": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSsce1SpPrimaryAction": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpPrimaryActionChain"
+        }
+      ]
+    },
+    "ojSsce1SpSecondaryAction": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpSecondaryActionChain",
+          "parameters": {
+            "actionId": "{{ $event.detail.secondaryItem }}"
+          }
+        }
+      ]
+    },
+    "retRelAmountValue": {
+      "chains": [
+        {
+          "chain": "onValueRetetionReleaseAmount",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onLoad"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-paging-control": {
+        "path": "ojs/ojpagingcontrol"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  }
+}

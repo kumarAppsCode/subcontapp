@@ -1,0 +1,118 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ApprovalServices",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/vbprocess",
+            "description": "Vbprocess"
+        }
+    ],
+    "paths": {
+        "//443/bpm/api/4.0/tasks/{taskId}": {
+            "parameters": [
+                {
+                    "name": "taskId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "/bpm/api/4.0/tasks/{taskId}": {
+            "parameters": [
+                {
+                    "name": "taskId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "operationId": "putBpmApi4_0TasksTaskId",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PutBpmApi4_0TasksTaskIdRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/putBpmApi4_0TasksTaskId/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Put443BpmApi4_0TasksTaskIdRequest": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "comment": {
+                        "type": "object",
+                        "properties": {
+                            "commentStr": {
+                                "type": "string"
+                            },
+                            "commentScope": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "PutBpmApi4_0TasksTaskIdRequest": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "comment": {
+                        "type": "object",
+                        "properties": {
+                            "commentStr": {
+                                "type": "string"
+                            },
+                            "commentScope": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

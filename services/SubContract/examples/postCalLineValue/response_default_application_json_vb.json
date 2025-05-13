@@ -1,0 +1,10 @@
+{
+    "l_err_code": "E",
+    "l_err_msg": "ORA-01476: divisor is equal to zero",
+    "l_res_cum_amt": 0,
+    "l_res_cum_qty": 0,
+    "l_res_cum_per": 0,
+    "l_res_cur_amt": 0,
+    "l_res_cur_qty": 0,
+    "l_res_cur_per": 0
+}

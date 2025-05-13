@@ -1,0 +1,239 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" page-title="Certification" avatar="{{$page.variables.avatar}}"
+    primary-action.disabled="{{ $variables.displayOption.save }}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    display-mode="[[$page.variables.displayMode]]" on-sp-cancel="[[$listeners.ojSpCancel]]"
+    on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]" on-sp-primary-action="[[$listeners.ojSpSubmit]]"
+    badge.status="info" badge.text='[[ "Cert-"+$variables.pcertHeaderId ]]' page-subtitle=" "
+    primary-action.label="Save"
+    secondary-actions='[[ [{"label":"Save & close","id":"saveclose","display":$variables.displayOption.saveClose}] ]]'
+    on-sp-secondary-action="[[$listeners.ojSsce1SpSecondaryAction2]]" 
+  >
+
+  <div slot="main">
+    
+        <div class="oj-panel oj-panel-shadow-md oj-selected">
+          <div class="demo-tab-content">
+            <div id="mainContent">
+              <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold;">Certification Details</h1>
+
+
+              <oj-table scroll-policy="loadMoreOnScroll" class="oj-sm-width-full oj-bg-body oj-search-table"
+                selection-mode.row="none" id="searchTable1" display="grid" horizontal-grid-visible="enabled"
+                vertical-grid-visible="enabled"
+                columns='[{"headerText":"Item Number","field":"item_num","template":"","width":172,"resizable":"enabled","frozenEdge":"start"},{"headerText":"Item Desccription","field":"item_description","width":242,"template":"","resizable":"enabled","frozenEdge":"start"},{"headerText":"Project Number ","field":"project_num","template":"","width":189,"resizable":"enabled","frozenEdge":"start"},{"headerText":"Task Number","field":"task_num","template":"","width":160,"resizable":"enabled","frozenEdge":"start"},{"headerText":" Expenditure Type","field":"expenditure_type","template":"","width":190,"resizable":"enabled"},{"headerText":"Quantity","field":"quantity","template":"quantity","width":166,"resizable":"enabled"},{"headerText":"Unit Price","field":"unit_price","template":"unitprice","width":166,"resizable":"enabled"},{"headerText":"UOM","field":"uom_code","template":"","width":120,"resizable":"enabled"},{"headerText":"Tax Code","field":"tax_code","template":"","width":161,"resizable":"enabled"},{"headerText":"Line Amount","field":"cont_line_amount","template":"lineamount","width":169,"resizable":"enabled"},{"headerText":"Tax Rate","field":"tax_rate","template":"taxRate","width":161,"resizable":"enabled"},{"headerText":"Tax Amount","field":"tax_amount","template":"TaxAmount","width":161,"resizable":"enabled"},{"headerText":"Total Line Amount","field":"cont_net_line_amount","template":"TaxAmount","width":200,"resizable":"enabled"},{"headerText":"Evaluation Type","field":"","template":"certpaymentType","width":200,"resizable":"enabled"},{"headerText":"Cumulative Percentage","field":"cum_percentage","template":"cumPerc","width":150,"resizable":"enabled"},{"headerText":"Cumulative Quantity","field":"cum_quantity","template":"cumQty","width":150,"resizable":"enabled"},{"headerText":"Cumulative Amount","field":"cum_amount","template":"cumAmount","width":150,"resizable":"enabled"},{"headerText":"Previous Percentage","field":"pre_percentage","template":"prevPerc","width":150,"resizable":"enabled"},{"headerText":"Previous Quantity","field":"pre_quantity","template":"prevQty","width":150,"resizable":"enabled"},{"headerText":"Previous Amount","field":"pre_amount","template":"prevAmount","width":150,"resizable":"enabled"},{"headerText":"Current Percentage","field":"cur_percentage","template":"currPerc","width":150,"resizable":"enabled"},{"headerText":"Current Quantity","field":"cur_quantity","template":"currQty","width":150,"resizable":"enabled"},{"headerText":"Current Amount","field":"cur_amount","template":"currAmount","width":125,"resizable":"enabled"},{"headerText":"Application Cumulative Percentage","field":"appl_cum_percentage","template":"cum_perc","width":203,"resizable":"enabled"},{"headerText":"Application Cumulative Quantity","field":"appl_cum_quantity","template":"cum_tot_qty","width":200,"resizable":"enabled"},{"headerText":"Application Cumulative Amount","field":"appl_cum_amount","template":"cum_amount","width":200,"resizable":"enabled"},{"headerText":"Application Previous Percentage","field":"appl_pre_percentage","template":"prev_perc","width":187,"resizable":"enabled"},{"headerText":"Application Previous Quantity","field":"appl_pre_quantity","template":"prev_tot_qty","width":183,"resizable":"enabled"},{"headerText":"Application Previous Amount","field":"appl_pre_amount","template":"prev_amount","width":183,"resizable":"enabled"},{"headerText":"Application Current Percentage","field":"appl_cur_percentage","template":"curr_perc","width":178,"resizable":"enabled"},{"headerText":"Application Current Quantity","field":"appl_cur_quantity","template":"curr_tot_qty","width":173,"resizable":"enabled"},{"headerText":"Application Current Amount ","field":"appl_cur_amount","template":"curr_amount","width":173,"resizable":"enabled"}]'
+                selection-mode.column="none" data="[[ $variables.certLineADP ]]">
+
+
+
+
+                </template>
+                <template slot="taxRate">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]"
+                    converter='{"type":"number"}' readonly="true">
+                  </oj-input-number>
+                </template>
+                <template slot="TaxAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="quantity">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="prevPerc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prevQty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prevAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="currPerc">
+                  <oj-input-number :id="[['cur_percentage'+$current.index]]" style="text-align: right;"
+                    value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="currQty">
+                  <oj-input-number :id="[['cur_quantity'+$current.index]]" style="text-align: right;"
+                    value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="currAmount">
+                  <oj-input-number :id="[['cur_amount'+$current.index]]" style="text-align: right;"
+                    value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="certpaymentType">
+
+                  <!-- <oj-combobox-one :id="[['cert_payment_type'+$current.index]]" " value="{{ $current.row.cert_payment_type }}"  required="true" <oj-option value="P">Percentage</oj-option>
+          <oj-option value="Q">Quantity</oj-option>
+        </oj-combobox-one> -->
+                  <oj-combobox-one :id="[['calc_mode'+$current.index]]" placeholder="Select Payment Type"
+                    required="true" value="{{ $current.row.calc_mode }}"
+                    on-value-changed="[[$listeners.certPaymentTypeValue]]"
+                    disabled="[[ $variables.getCertificationByHeaderIdVar.approval_status_code === 'Pending' || $variables.getCertificationByHeaderIdVar.approval_status_code === 'Approved' || $variables.getCertificationByHeaderIdVar.payment_type_code == 'FINAL' ]]"
+                   >
+
+                    <oj-option value="P">Percentage</oj-option>
+                    <oj-option value="Q">Quantity</oj-option>
+                  </oj-combobox-one>
+
+                </template>
+                <!-- cumulative amount fields -->
+
+
+                <!-- <template slot="cumPerc">
+                  <oj-input-number :id="[['cum_percentage'+$current.index]]" virtual-keyboard="number"
+                    style="text-align: right;" value="[[$current.row.cum_percentage]]"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    readonly="[[ $current.row.cert_payment_type == null ]]"
+                    on-value-changed="[[$listeners.cumPercentageValue]]"
+                    ></oj-input-number>
+       </template> 
+ 
+
+<template slot=" cumQty">
+                    <oj-input-number :id="[['cum_quantity'+$current.index]]" style="text-align: right;"
+                      virtual-keyboard="number" value="[[ $current.row.cum_quantity]]"
+                      converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                      readonly="[[ $current.row.cert_payment_type == null ]]"
+                      on-value-changed="[[$listeners.cumQuantityValue]]"
+                      ></oj-input-number>
+                </template> --> <template slot="cumPerc">
+                  <oj-input-number :id="[['cum_percentage'+$current.index]]"
+                    on-value-changed="[[$listeners.cumPercentageValue]]" virtual-keyboard="number"
+                    style="text-align: right;" value="[[$current.row.cum_percentage]]" converter='{"type":"number"}'
+                    max="[[ $current.row.appl_cum_percentage ]]" min="[[ $current.row.pre_percentage ]]"
+                    readonly="[[ $current.row.calc_mode == 'Q' || $variables.getCertificationByHeaderIdVar.approval_status_code == 'Approved'||  $variables.getCertificationByHeaderIdVar.approval_status_code == 'Pending' || $variables.getCertificationByHeaderIdVar.payment_type_code == 'FINAL' ]]" ></oj-input-number>
+                </template>
+                <template slot="cumQty">
+                  <oj-input-number :id="[['cum_quantity'+$current.index]]"
+                    on-value-changed="[[$listeners.cumQuantityValue]]" virtual-keyboard="number"
+                    style="text-align: right;" value="[[$current.row.cum_quantity]]"
+                    converter='{"type":"number"}'
+                    readonly="[[ $current.row.calc_mode == 'P'  || $variables.getCertificationByHeaderIdVar.approval_status_code == 'Approved'||  $variables.getCertificationByHeaderIdVar.approval_status_code == 'Pending' || $variables.getCertificationByHeaderIdVar.payment_type_code == 'FINAL' ]]"
+                    max="[[ $current.row.appl_cum_quantity ]]" min="[[ $current.row.pre_quantity ]]"></oj-input-number>
+                </template> 
+                <template slot="cumAmount">
+                  <oj-input-number :id="[['cum_amount'+$current.index]]" style="text-align: right;"
+                    value="[[$current.row.cum_amount]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="cumAmount">
+                  <oj-input-number :id="[['cum_amount'+$current.index]]" style="text-align: right;"
+                    value="[[$current.row.cum_amount]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <!-- retention fields now not required -->
+
+                
+                <!-- <template slot="ret_percentage">
+                  <oj-input-number :id="[['cur_ret_percentage'+$current.index]]" virtual-keyboard="number" value="[[ $current.row.cur_ret_percentage ]]" style="text-align: right;" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' readonly="true"></oj-input-number>
+                </template>
+
+                <template slot="ret_amount">
+                  <oj-input-number :id="[['cur_ret_amount'+$current.index]]" virtual-keyboard="number" value="[[ $current.row.cur_ret_amount ]]" style="text-align: right;" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' readonly="true"></oj-input-number>
+                </template> -->
+
+                <!-- retention fields -->
+
+
+
+                <!-- new fields -->
+                <template slot="lineamount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="recretAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="recadvAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="recmatAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="netAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="unitprice">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="cum_amount">
+
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="cum_tot_qty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <template slot="cum_perc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <template slot="curr_amount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <template slot="curr_tot_qty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="curr_perc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="prev_amount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prev_tot_qty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prev_perc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"type":"number"}'></oj-input-number>
+                </template>
+
+              </oj-table>
+            </div>
+          </div>
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+ 
+  </oj-sp-simple-create-edit>
+  
+</div>

@@ -1,0 +1,315 @@
+<div>
+<oj-sp-simple-create-edit id="oj_ssce1" page-title="Application " page-subtitle=" "
+   avatar="{{$page.variables.avatar}}"
+   primary-action.disabled="{{ $variables.displayOptionsVar.primaryaction }}"
+   display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+   display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+   contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+   display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+   display-mode="[[$page.variables.displayMode]]" on-sp-cancel="[[$listeners.ojSpCancel]]"
+   on-sp-save="[[$listeners.ojSpSave]]" on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]"
+   badge.text="[[ $variables.postApplHdr.application_num ]]" badge.status="info" primary-action.label="Save"
+   secondary-actions='[[ [{"label":"Attachment","id":"attachment"},{"label":"Submit for Approval","id":"submit","display":$variables.displayOptionsVar.submit},{"label":"Approval History","id":"approvalHistory","display":"on"},{"label":"Approve","id":"approve","display":$variables.displayOptionsVar.approve},{"label":"Reject","id":"reject","display":$variables.displayOptionsVar.reject},{"label":"Reassign","id":"reassign","display":$variables.displayOptionsVar.reassign},{"label":"Withdraw","id":"withdraw","display":$variables.displayOptionsVar.withdraw},{"label":"View Contract","id":"viewcontract","display":$variables.displayNavi.contract},{"label":"View Certification","id":"viewcertification","display":$variables.displayNavi.application},{"label":"About","id":"about"}] ]]'
+   on-sp-secondary-action="[[$listeners.ojSsce1SpSecondaryAction]]"
+   on-sp-primary-action="[[$listeners.ojSsce1SpPrimaryAction]]">
+   <div slot="main">
+      <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type_code === "INTERIM" || $variables.ApplicationheaderDetailsVar.payment_type_code === "FINAL" ]]'>
+         <div class="oj-panel oj-panel-shadow-md oj-selected">
+            <oj-collapsible id="c4" expanded="true">
+            <h1 id="h4" slot="header" style=" color: #013766; font-size: larger; font-weight: bold;">Application Information</h1>
+            <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Application Information</h4> -->
+            <oj-validation-group id="applicationHdrForm">
+               <oj-form-layout max-columns="3" label-edge="start" class="oj-forme-control" columns="3" direction="column" colspan-wrap="wrap">
+                  <oj-form-layout max-columns="1" label-edge="start" class="oj-forme-control" columns="1"
+                     direction="column" colspan-wrap="wrap">
+                     <oj-input-text style="width: 24rem;" disabled="true" label-hint="Contract Numnber" value="{{ $variables.ApplicationheaderDetailsVar.contract_num }}"></oj-input-text>
+                     <oj-input-text style="width: 24rem;" disabled="true" label-hint="Business Unit" value="{{ $variables.ApplicationheaderDetailsVar.bu_name }}"></oj-input-text>
+                     <oj-input-text style="width: 24rem;" disabled="true" label-hint="Supplier Name"
+                        value="{{ $variables.ApplicationheaderDetailsVar.vendor_name }}"></oj-input-text>
+                     <oj-input-text style="width: 24rem;" disabled="true" label-hint="Application Number" value="{{ $variables.postApplHdr.application_num }}"></oj-input-text>
+                     <oj-input-date style="width: 24rem;" value="{{ $variables.postApplHdr.application_date }}" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' disabled="true" placeholder="[[$application.translations.appBundle.yearFormate]]" label-hint="Application Date"></oj-input-date>
+                  </oj-form-layout>
+                  <oj-form-layout max-columns="1" label-edge="start" class="oj-forme-control" columns="1"
+                     direction="column" colspan-wrap="wrap">
+                     <oj-input-text value="{{ $variables.ApplicationheaderDetailsVar.payment_type }}" style="width: 24rem;" disabled="true" label-hint="Payment Type"></oj-input-text>
+                     <oj-input-text required="true" style="width: 24rem; margin-bottom:6px;" value="{{ $variables.postApplHdr.invoice_num}}" label-hint="* Invoice Number" user-assistance-density="compact" disabled="[[ $variables.accessFlag ]]"></oj-input-text>
+                     <oj-input-date value="{{ $variables.postApplHdr.invoice_date}}" style="width: 24rem; margin-bottom:6px;" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' required="true" user-assistance-density="compact" disabled="[[ $variables.accessFlag ]]" placeholder="[[$application.translations.appBundle.yearFormate]]" label-hint="* Invoice Date"></oj-input-date>
+                     <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type  == "Advance" || $variables.ApplicationheaderDetailsVar.payment_type  == "Material Advance" ]]'>
+                        <oj-input-number style="width: 24rem; margin-bottom:6px;" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' class="oj-form-control-text-align-right customfield" value="{{ $variables.postApplHdr.cur_amount }}" label-hint="*Application Amount" required="true" user-assistance-density="compact" max="[[ $variables.ApplicationheaderDetailsVar.cur_amount ]]" disabled="[[ $variables.accessFlag ]]"></oj-input-number>
+                     </oj-bind-if>
+                     <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type  == "Interim" || $variables.ApplicationheaderDetailsVar.payment_type  == "Final" ]]'>
+                        <oj-input-number style="width: 24rem; " converter='{"options":{"minimumFractionDigits":3},"type":"number"}' class="oj-form-control-text-align-right customfield" value="{{ $variables.postApplHdr.cur_amount }}" label-hint="Application Amount" disabled="true"></oj-input-number>
+                     </oj-bind-if>
+                     <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                        value="{{ $variables.postApplHdr.cur_ret_amount }}" label-hint="Retention Amount" disabled="true"></oj-input-number>
+                  </oj-form-layout>
+                  <oj-form-layout max-columns="1" label-edge="start" class="oj-forme-control" columns="1"
+                     direction="column" colspan-wrap="wrap">
+                     <oj-input-text value="{{ $variables.postApplHdr.approval_status }}" style="width: 24rem;" disabled="true" label-hint="Approval Status"></oj-input-text>
+                     <oj-input-text value="{{ $variables.postApplHdr.application_status }}" style="width: 24rem;" disabled="true" label-hint="Application Status"></oj-input-text>
+                     <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                        value="{{ $variables.postApplHdr.cur_adv_rec_amount }}" label-hint="Advance Recovery Amount"
+                        disabled="true"></oj-input-number>
+                     <!--  not required for Omran Client
+                        <oj-input-number disabled="true" style="width: 24rem;" class="oj-form-control-text-align-right customfield" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' value="{{ $variables.postApplHdr.cur_mat_adv_rec_amount }}" label-hint="Material Amount"></oj-input-number> -->
+                     <!-- <oj-input-text disabled="true" style="width: 24rem;" value="{{ $variables.postApplHdr.approval_status }}" label-hint="Approval Status "></oj-input-text> -->
+                     <!-- <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield" value="{{ $variables.postApplHdr.tax_rate }}" disabled="true" label-hint="Tax Percentage"></oj-input-number> -->
+                     <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' disabled="true" value="{{ $variables.postApplHdr.tax_amount }}" label-hint="Tax Amount"></oj-input-number>
+                     <oj-input-number disabled="true" style="width: 24rem;" class="oj-form-control-text-align-right customfield" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' value="{{ $variables.postApplHdr.net_amount }}" label-hint="Net Amount"></oj-input-number>
+                     <oj-button label="Application Lines" style="margin-left:50%; margin-top:10px;"
+                        on-oj-action="[[$listeners.buttonAction5]]"></oj-button>
+                  </oj-form-layout>
+               </oj-form-layout>
+            </oj-validation-group>
+         </div>
+         <br>
+      </oj-bind-if>
+   </div>
+   <!-- Start of Advance Tab (This Tab is used  display the Advance Payments) -->
+   <div slot="main">
+      <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type_code === "ADVANCE" || $variables.ApplicationheaderDetailsVar.payment_type_code === "RET_REL" ]]'>
+      <div class="oj-panel oj-panel-shadow-md oj-selected">
+         <oj-collapsible id="c4" expanded="true">
+         <h1 id="h4" slot="header" style=" color: #013766; font-size: larger; font-weight: bold;">Application Information</h1>
+         <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Application Information</h4> -->
+         <oj-validation-group id="applicationHdrForm">
+            <oj-form-layout max-columns="3" label-edge="start" class="oj-forme-control" columns="3" direction="column" colspan-wrap="wrap">
+            <oj-form-layout>
+               <oj-input-text style="width: 24rem;" disabled="true" label-hint="Contract Numnber" value="{{ $variables.ApplicationheaderDetailsVar.contract_num }}"></oj-input-text>
+               <oj-input-text style="width: 24rem;" disabled="true" label-hint="Business Unit" value="{{ $variables.ApplicationheaderDetailsVar.bu_name }}"></oj-input-text>
+               <oj-input-text style="width: 24rem;" disabled="true" label-hint="Supplier Name"
+                  value="{{ $variables.ApplicationheaderDetailsVar.vendor_name }}"></oj-input-text>
+               <oj-input-date value="{{ $variables.postApplHdr.application_date }}" style="width: 24rem;" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' disabled="true" placeholder="[[$application.translations.appBundle.yearFormate]]" label-hint="Application Date"></oj-input-date>
+               <oj-input-text style="width: 24rem;" disabled="true" label-hint="Application Number" value="{{ $variables.postApplHdr.application_num }}"></oj-input-text>
+            </oj-form-layout>
+            <oj-form-layout>
+               <oj-input-text value="{{ $variables.ApplicationheaderDetailsVar.payment_type }}" style="width: 24rem;" disabled="true" label-hint="Payment Type"></oj-input-text>
+               <!-- <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type  == "Interim" || $variables.ApplicationheaderDetailsVar.payment_type  == "Final" ]]'>
+                  <oj-input-number style="width: 24rem; " converter='{"options":{"minimumFractionDigits":3},"type":"number"}' class="oj-form-control-text-align-right customfield" value="{{ $variables.postApplHdr.cur_amount }}" label-hint="Application Amount" disabled="true"></oj-input-number>
+                  </oj-bind-if> -->
+               <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type_code  == "ADVANCE" || $variables.ApplicationheaderDetailsVar.payment_type_code  == "RET_REL" ]]'>
+                  <oj-input-number style="width: 24rem; margin-bottom:6px;"
+                     converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                     class="oj-form-control-text-align-right customfield"
+                     value="{{ $variables.postApplHdr.cur_amount }}" label-hint="*Application Amount" required="true"
+                     user-assistance-density="compact" disabled="[[ $variables.accessFlag ]]"
+                     on-value-changed="[[$listeners.inputNumberValue]]"></oj-input-number>
+               </oj-bind-if>
+               <!-- <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield" value="{{ $variables.postApplHdr.tax_rate }}" disabled="true" label-hint="Tax Percentage"></oj-input-number> -->
+               <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' disabled="true" value="{{ $variables.postApplHdr.tax_amount }}" label-hint="Tax Amount"></oj-input-number>
+               <oj-input-number disabled="true" style="width: 24rem;" class="oj-form-control-text-align-right customfield" converter='{"options":{"minimumFractionDigits":3},"type":"number"}' value="{{ $variables.postApplHdr.net_amount }}" label-hint="Net Amount"></oj-input-number>
+            </oj-form-layout>
+            <oj-form-layout>
+               <oj-input-text disabled="true" style="width: 24rem;" value="{{ $variables.postApplHdr.approval_status }}" label-hint="Approval Status "></oj-input-text>
+               <oj-input-text value="{{ $variables.postApplHdr.application_status }}" style="width: 24rem;" disabled="true" label-hint="Application Status"></oj-input-text>
+               <oj-input-text required="true" style="width: 24rem; margin-bottom:6px;" value="{{ $variables.postApplHdr.invoice_num}}" label-hint="* Invoice Number" user-assistance-density="compact" disabled="[[ $variables.accessFlag ]]"></oj-input-text>
+               <oj-input-date value="{{ $variables.postApplHdr.invoice_date}}" style="width: 24rem; margin-bottom:6px;" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' required="true" user-assistance-density="compact" disabled="[[ $variables.accessFlag ]]" placeholder="[[$application.translations.appBundle.yearFormate]]" label-hint="* Invoice Date"></oj-input-date>
+            </oj-form-layout>
+         </oj-validation-group>
+      </div>
+      <br>
+   </div>
+   <!-- End of Advance Tab (This Tab is used  display the Advance Payments) -->
+   
+   <!-- Start of Interim Tab (This Tab is used  display the Interim and Final Payments) -->
+   <div slot="main">
+      <oj-bind-if test='[[ $variables.ApplicationheaderDetailsVar.payment_type_code === "INTERIM" || $variables.ApplicationheaderDetailsVar.payment_type_code === "FINAL" ]]'>
+         <div class="oj-panel oj-panel-shadow-md oj-selected">
+            <oj-collapsible id="c4" expanded="true">
+            <h1 id="h4" slot="header" style=" color: #013766; font-size: larger; font-weight: bold;">Payment Infolet</h1>
+            <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Application Information</h4> -->
+            <oj-validation-group id="applicationHdrForm">
+               <oj-form-layout label-edge="start" direction="column" colspan-wrap="wrap" columns="3">
+                  <oj-form-layout label-edge="start" direction="column" colspan-wrap="wrap">
+                     <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold;margin-left:130px;" class="oj-helper-justify-content-center oj-helper-text-align-center">  Contract Value </h1>
+                     <!-- --------newly added field -->
+                     <oj-input-number disabled="true" style="width: 24rem;" class="oj-form-control-text-align-right customfield" label-hint="Total Amount" value="{{$variables.ApplicationheaderDetailsVar.contract_amount}}" converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     <oj-bind-if test="[[ $variables.ret_obj.ret_amount_bol ]]">
+                        <oj-input-number disabled="true" style="width: 24rem;"
+                           class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                           value="{{$variables.ApplicationheaderDetailsVar.retention_amount}}"
+                           converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     </oj-bind-if>
+                     <oj-bind-if test="[[ $variables.ret_obj.retention_max_amount_bol ]]">
+                        <oj-input-number disabled="true" style="width: 24rem;"
+                           class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                           value="{{$variables.ApplicationheaderDetailsVar.retention_max_amount}}"
+                           converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     </oj-bind-if>
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield"
+                        value="{{$variables.ApplicationheaderDetailsVar.advance_amount}}" label-hint="Advance Amount"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     <oj-bind-if test="[[false]]">
+                        <oj-input-number disabled="true" style="width: 24rem;"
+                           class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                           value="{{ $variables.TotalSummaryVar.total_material_amount }}"
+                           converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     </oj-bind-if>
+                  </oj-form-layout>
+                  <oj-form-layout label-edge="start" direction="column" colspan-wrap="wrap">
+                     <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold;margin-left:120px; " class="oj-helper-justify-content-center oj-helper-text-align-center">Cumulative Value</h1>
+                     <!-- --------newly added field -->
+                     <!-- --------newly added field -->
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield"
+                        value="{{ $variables.ApplicationheaderDetailsVar.cum_amount }}" label-hint="Total Amount"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                        value="{{ $variables.ApplicationheaderDetailsVar.cum_ret_amount }}"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield" label-hint="Advance Recovery Amount"
+                        value="{{ $variables.ApplicationheaderDetailsVar.cum_adv_rec_amount }}"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     <oj-bind-if test="[[false]]">
+                        <oj-input-number disabled="true" style="width: 24rem;"
+                           class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                           value="{{ $variables.ApplicationheaderDetailsVar.cum_mat_adv_rec_amount }}"
+                           converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                     </oj-bind-if>
+                  </oj-form-layout>
+                  <oj-form-layout label-edge="start" direction="column" colspan-wrap="wrap">
+                     <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold; margin-left:120px;" class="oj-helper-justify-content-center oj-helper-text-align-center">Previous Value</h1>
+                     <!-- --------newly added BY USING DB COLUMNS-->
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield" label-hint="Total Amount"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                        value="{{ $variables.ApplicationheaderDetailsVar.pre_amount }}"></oj-input-number>
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                        value="{{ $variables.ApplicationheaderDetailsVar.pre_ret_amount }}"></oj-input-number>
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                        class="oj-form-control-text-align-right customfield" label-hint="Advance Recovery Amount"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                        value="{{ $variables.ApplicationheaderDetailsVar.pre_adv_rec_amount }}"></oj-input-number>
+                     <oj-bind-if test="[[false]]">
+                        <oj-input-number disabled="true" style="width: 24rem;"
+                           class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                           converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                           value="{{ $variables.ApplicationheaderDetailsVar.pre_mat_adv_rec_amount }}"></oj-input-number>
+                     </oj-bind-if>
+                     <!-- --------newly added BY USING DB COLUMNS-->
+                  </oj-form-layout>
+               </oj-form-layout>
+            </oj-validation-group>
+         </div>
+         <br>
+      </oj-bind-if>
+   </div>
+   <!-- End of Interim Tab (This Tab is used  display the Interim and Final Payments) -->
+   <!-- Start of About Information -->
+   <oj-dialog dialog-title="About Information" id="About" style="width: 450px;" cancel-behavior="icon" position.collision="flip" position.at.horizontal="right" position.at.vertical="top" position.my.horizontal="end" position.my.vertical="top">
+      <div slot="body">
+         <div class="oj-flex">
+            <oj-form-layout label-edge="start" label-width="39%" direction="row" readonly="true">
+               <br>
+               <oj-input-text style="width:14rem;" class="customfield" label-hint="Created By :" readonly="true" value="{{ $variables.postApplHdr.created_by }}"></oj-input-text>
+               <br>
+               <oj-input-date style="width:14rem;" class="customfield" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Create Date :" readonly="true" value="{{ $variables.postApplHdr.created_date }}"></oj-input-date>
+               <br>
+               <oj-input-text style="width:14rem;" class="customfield" label-hint="Updated by : " readonly="true" value="{{ $variables.postApplHdr.last_updated_by }}"></oj-input-text>
+               <br>
+               <oj-input-date style="width:14rem;" class="customfield" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Updated Date :" readonly="true" value="{{ $variables.postApplHdr.last_updated_date }}"></oj-input-date>
+            </oj-form-layout>
+         </div>
+      </div>
+   </oj-dialog>
+   <!-- End of About Information -->
+   <!-- Start of Approve Dialog Information -->
+   <oj-dialog dialog-title="Approve" id="approvePopUp" cancel-behavior="icon">
+      <div slot="body">
+         <oj-label for="app-1"></oj-label>
+         <oj-text-area id="app-1"  placeholder="Comments" value="{{ $variables.ApprovalBodyVar.comment.commentStr }}"  ></oj-text-area>
+      </div>
+      <div slot="footer">
+         <oj-validation-group>
+            <oj-button on-oj-action="[[$listeners.buttonAction6]]"   >Submit</oj-button>
+            <oj-button on-oj-action="[[$listeners.buttonAction8]]"    >Cancel</oj-button>
+         </oj-validation-group>
+      </div>
+   </oj-dialog>
+   <!-- End of Approve Dialog Information -->
+   <!-- Start of Reject Dialog Information -->
+   <oj-dialog dialog-title="Reject" id="RejectPopup" cancel-behavior="icon">
+      <div slot="body">
+         <oj-label for="app-1"></oj-label>
+         <oj-text-area id="app-1"  placeholder="Comments" value="{{ $variables.ApprovalBodyVar.comment.commentStr }}"  ></oj-text-area>
+      </div>
+      <div slot="footer">
+         <oj-validation-group>
+            <oj-button on-oj-action="[[$listeners.buttonAction7]]"   >Submit</oj-button>
+            <oj-button on-oj-action="[[$listeners.buttonAction9]]"   >Cancel</oj-button>
+         </oj-validation-group>
+      </div>
+   </oj-dialog>
+   <!-- End of Reject Dialog Information -->
+   <!-- Start of Progress popup -->
+   <oj-dialog dialog-title="Please wait..." id="progressMsg" class="wd200">
+      <div slot="body">
+         <div class="oj-flex full_stretch lg_button_width">
+            <oj-progress-bar class="full_stretch oj-flex-item oj-sm-12 oj-md-12" value="-1"></oj-progress-bar>
+         </div>
+      </div>
+   </oj-dialog>
+   <!-- End  of Progress popup -->
+   <!-- Start of Reassign popup -->
+   <oj-dialog dialog-title="Reassign" id="Reassign" cancel-behavior="icon" style="width: 900px; height: 300px;"
+      resize-behavior="resizable" drag-affordance="title-bar">
+      <div slot="body">
+         <oj-validation-group id="reassignvalidation">
+            <oj-form-layout label-edge="start" user-assistance-density="compact" columns="2" max-columns="2">
+               <oj-select-single label-hint="* Current Approver" style="width: 21rem; margin-bottom:3px;" class="customfield"
+                  required="true" item-text="response_user" data="[[$variables.currentReassignUsersListSDP]]"
+                  value="{{ $variables.PostApproverReassignPkgVar.p_from_person_id }}">
+                  <template slot="collectionTemplate" data-oj-as="collection">
+                     <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                        vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+                        columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results "
+                        columns='[{"headerText":"Current Approver","field":"response_user","width":190},{"headerText":" Email ID","field":"response_email_address"}]'
+                        on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                        selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"></oj-table>
+                  </template>
+               </oj-select-single>
+               <oj-select-single label-hint="* Reassign To" style="width: 21rem; margin-bottom:3px;" class="customfield"
+                  required="true" item-text="user_name" data="[[$variables.approvalUserslovListSDP]]"
+                  value="{{ $variables.PostApproverReassignPkgVar.p_to_person_id }}"
+                  on-value-item-changed="[[$listeners.selectValueItem]]" >
+                  <template slot="collectionTemplate" data-oj-as="collection">
+                     <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                        selection-mode='{"row": "single"}'
+                        columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results "
+                        columns='[{"headerText":"Reassign Approver","field":"user_name","width":180},{"headerText":"Email Id","field":"email_address"}]'
+                        on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                        selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"
+                        vertical-grid-visible="disabled"></oj-table>
+                  </template>
+               </oj-select-single>
+               <oj-text-area label-hint="* Comments" required="true" "
+                  resize-behavior="both" value="{{ $variables.PostApproverReassignPkgVar.p_comments }}">
+               </oj-text-area>
+            </oj-form-layout>
+         </oj-validation-group>
+      </div>
+      <div slot="footer">
+         <oj-button on-oj-action="[[$listeners.buttonAction11]]" >Submit</oj-button>
+         <oj-button on-oj-action="[[$listeners.buttonAction10]]" >Cancel</oj-button>
+      </div>
+   </oj-dialog>
+   <!-- End of Reassign popup -->
+   <!-- Start of Withdraw popup -->   
+   <oj-dialog dialog-title="Withdraw" id="withdrawpopup" cancel-behavior="icon">
+      <div slot="body">
+         <h6 style="font-size:medium; font-weight: bold;">Are you sure you want to withdraw the Payment Application?</h6>
+      </div>
+      <div slot="footer">
+         <oj-button on-oj-action="[[$listeners.buttonAction13]]" >Yes</oj-button>
+         <oj-button on-oj-action="[[$listeners.buttonAction12]]" >No</oj-button>
+      </div>
+   </oj-dialog>
+   <!-- End of Withdraw popup -->   
+</oj-sp-simple-create-edit>

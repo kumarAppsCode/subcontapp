@@ -1,0 +1,60 @@
+{
+    "items": [
+        {
+            "lookup_value_id": 100001,
+            "lookup_type_id": 100001,
+            "lookup_value_name": "GUARANTEE",
+            "lookup_value_name_disp": "Guarantee",
+            "lookup_value_name_disp_ar": null,
+            "child_lookup_type_id": null,
+            "lookup_type_name": "CONT_GUARANTEE_TYPE",
+            "lookup_type_name_disp": "Contract Guarantee Type",
+            "lookup_type_name_disp_ar": null,
+            "child_lookup_type_name": "CONT_GUARANTEE_TYPE",
+            "child_lookup_type_name_disp": "Contract Guarantee Type",
+            "child_lookup_type_name_disp_ar": null,
+            "display_order": 1,
+            "status": "Y",
+            "created_by": "api",
+            "creation_date": "2022-01-01T00:00:00Z",
+            "last_updated_by": "api",
+            "last_update_date": "2022-01-01T00:00:00Z",
+            "last_update_login": "api"
+        },
+        {
+            "lookup_value_id": 100010,
+            "lookup_type_id": 100001,
+            "lookup_value_name": "INSURANCE",
+            "lookup_value_name_disp": "Insurance",
+            "lookup_value_name_disp_ar": null,
+            "child_lookup_type_id": null,
+            "lookup_type_name": "CONT_GUARANTEE_TYPE",
+            "lookup_type_name_disp": "Contract Guarantee Type",
+            "lookup_type_name_disp_ar": null,
+            "child_lookup_type_name": "CONT_GUARANTEE_TYPE",
+            "child_lookup_type_name_disp": "Contract Guarantee Type",
+            "child_lookup_type_name_disp_ar": null,
+            "display_order": 2,
+            "status": "Y",
+            "created_by": "api",
+            "creation_date": "2022-01-01T00:00:00Z",
+            "last_updated_by": "api",
+            "last_update_date": "2022-01-01T00:00:00Z",
+            "last_update_login": "api"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/admin/module/findbylookupdetail/CONT_GUARANTEE_TYPE?p_searchval=undefined"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/admin/module/findbylookupdetail/item"
+        }
+    ]
+}

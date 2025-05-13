@@ -1,0 +1,10 @@
+{
+	"action": {
+		"id": "REJECT",
+		"type": "CUSTOM"
+	},
+	"comment": {
+		"commentStr": "Approved",
+		"commentScope": "BPM"
+	}
+}

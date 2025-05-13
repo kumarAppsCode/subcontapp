@@ -1,0 +1,59 @@
+{
+    "items": [
+        {
+            "vendor_id": 300000004907233,
+            "vendor_site_id": 300000005544910,
+            "effective_end_date": "4712-12-31T00:00:00Z",
+            "effective_start_date": "2022-08-18T00:00:00Z",
+            "effective_sequence": 9999,
+            "inactive_date": null,
+            "location_id": 300000004988119,
+            "party_site_id": 300000004988120,
+            "vendor_site_code": "Dubai",
+            "purchasing_site_flag": "Y",
+            "rfq_only_site_flag": "N",
+            "pay_site_flag": "Y",
+            "primary_pay_site_flag": "N",
+            "vendor_site_spk_id": 300000005544909,
+            "address1": "Dubai",
+            "address2": null,
+            "address3": null,
+            "address4": null,
+            "city": "Dubai",
+            "postal_code": null,
+            "state": null,
+            "country": "AE",
+            "assignment_id": 300000005559469,
+            "bill_to_location_id": 300000004180353,
+            "bill_to_location_code": "DBRED",
+            "ship_to_location_id": 300000004180353,
+            "ship_to_location_code": "DBRED",
+            "liability_ccid": 300000004106898,
+            "prepayment_ccid": 300000004106899,
+            "bill_payable_ccid": 300000004106900,
+            "distribution_set_id": null,
+            "bu_id": 300000004067468,
+            "trx_source": "Fusion",
+            "source_rowid": "AAAjD4AAEAACc4mAAP",
+            "created_by": "Z001",
+            "creation_date": "2022-08-18T14:06:23.370Z",
+            "last_updated_by": "Z001",
+            "last_update_date": "2022-08-18T14:06:23.400Z",
+            "last_update_login": "E67B59FBD6F65765E053C89AE50A1D2B"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/staging/list/vendorsite?p_vendor_id=300000004907233&p_bu_id=300000004067468"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/staging/list/item"
+        }
+    ]
+}

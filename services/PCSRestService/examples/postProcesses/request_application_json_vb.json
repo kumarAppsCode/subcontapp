@@ -1,0 +1,7 @@
+{
+    "action": "submit",
+    "operation": "start",
+    "payload": "{\"p_trx_id\":\"2285\",\"p_action_id\":\"1297\"}",
+    "processDefId": "oracleinternalpcs~Application_Process!1.5~ApprovalProcess",
+    "serviceName": "ApprovalProcess.service"
+}

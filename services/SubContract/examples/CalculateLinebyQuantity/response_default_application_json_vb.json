@@ -1,0 +1,10 @@
+{
+    "l_err_code": "S",
+    "l_err_msg": "ORA-0000: normal, successful completion",
+    "l_res_cum_per": 100,
+    "l_res_cum_amt": 1050,
+    "l_res_cum_qty": 1,
+    "l_res_cur_amt": 1010,
+    "l_res_cur_qty": 0.96,
+    "l_res_cur_per": 96
+}

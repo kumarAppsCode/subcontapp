@@ -1,0 +1,2021 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "accessFlag": {
+      "type": "boolean"
+    },
+    "accessFlag1": {
+      "type": "boolean"
+    },
+    "accessHeader": {
+      "type": "boolean"
+    },
+    "appDeletekey": {
+      "type": "string"
+    },
+    "applicationColoumnList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Action",
+          "field": "",
+          "width": 100,
+          "template": "delete",
+          "resizable": "enabled",
+          "frozenEdge": "start",
+          "sortable": "disabled"
+        },
+        {
+          "headerText": "Application Number",
+          "field": "application_num",
+          "width": 204,
+          "template": "edit",
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Payment Type",
+          "field": "payment_type",
+          "template": "",
+          "width": 161,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Application Date",
+          "field": "application_date",
+          "template": "applDate",
+          "width": 176,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Application Status",
+          "field": "application_status",
+          "template": "",
+          "width": 205,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Approval Status",
+          "field": "approval_status",
+          "template": "approvalstatus",
+          "width": 176,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Supplier Name",
+          "field": "vendor_name",
+          "template": "",
+          "width": 170,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Supplier Site",
+          "field": "vendor_site_code",
+          "template": "",
+          "width": 170,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Business Unit",
+          "field": "bu_name",
+          "template": "",
+          "width": 175,
+          "resizable": "enabled"
+        }
+      ]
+    },
+    "applicationTableData": {
+      "type": "any"
+    },
+    "AppPaymentTypelookupdetailListSDP5": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getookupdetail",
+        "itemsPath": "items",
+        "responseType": "getookupdetailResponse5",
+        "uriParameters": {
+          "p_lookup_type_name": "PAYMENT_TYPE"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name_disp"
+          ]
+        },
+        "keyAttributes": "lookup_value_id"
+      }
+    },
+    "attachmentColumn": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Action",
+          "field": "",
+          "template": "download",
+          "width": "120px"
+        },
+        {
+          "headerText": "Document Name",
+          "field": "FileName",
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Created By",
+          "field": "CreatedBy",
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Creation Date",
+          "field": "CreationDate",
+          "resizable": "enabled",
+          "template": "cfd_date"
+        }
+      ]
+    },
+    "attachmentObj": {
+      "type": {
+        "APPL_CODE": "string",
+        "APPL_REF_ID": "string",
+        "APPL_REF_NUM": "string",
+        "CREATED_BY": "string",
+        "DESCRIPTION": "string",
+        "DOCUMENT_CATEGORY": "string",
+        "document_id": "string",
+        "DOCUMENT_NAME": "string",
+        "DOCUMENT_TYPE": "string",
+        "p_document_file": "any"
+      },
+      "defaultValue": {
+        "CREATED_BY": "[[ $application.variables.saasGetLogin.email_address ]]"
+      }
+    },
+    "AttachmentTable": {
+      "type": "any"
+    },
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "certDeletekey": {
+      "type": "string"
+    },
+    "certificationColoumnList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Action",
+          "field": "",
+          "width": 100,
+          "template": "delete",
+          "resizable": "enabled",
+          "frozenEdge": "start",
+          "sortable": "disabled"
+        },
+        {
+          "headerText": "Certification Number",
+          "field": "certification_num",
+          "width": 218,
+          "template": "edit",
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Payment Type",
+          "field": "payment_type",
+          "template": "",
+          "width": 161,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Certification Date",
+          "field": "certification_date",
+          "template": "certDate",
+          "width": 189,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Certification Status",
+          "field": "certification_status",
+          "template": "",
+          "width": 205,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Approval Status",
+          "field": "approval_status",
+          "template": "approvalstatus",
+          "width": 175,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Payment Due Date",
+          "field": "payment_due_date",
+          "template": "certDate",
+          "width": 199,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Supplier Name",
+          "field": "vendor_name",
+          "template": "",
+          "width": 210,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Supplier Site",
+          "field": "vendor_site_code",
+          "template": "",
+          "width": 170,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Business Unit",
+          "field": "bu_name",
+          "template": "",
+          "width": 190,
+          "resizable": "enabled"
+        }
+      ]
+    },
+    "certificationTableData": {
+      "type": "any"
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "displayOptionsVar": {
+      "type": {
+        "approve": "string",
+        "reject": "string",
+        "save": "string",
+        "submit": "string"
+      }
+    },
+    "documentKey": {
+      "type": "string"
+    },
+    "filepreview": {
+      "type": "any"
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "getApplicationCreateLovListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "keyAttributes": "header_id",
+        "itemsPath": "items",
+        "responseType": "getApplicationCreateLovResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "application_number"
+          ]
+        },
+        "fetchChainId": "customFetchActionChain"
+      }
+    },
+    "getAttachmentFindbyLookupListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getAttachmentFindbyLookup",
+        "keyAttributes": "lookup_value_name",
+        "itemsPath": "items",
+        "responseType": "getAttachmentFindbyLookupResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name"
+          ]
+        }
+      }
+    },
+    "getContractbyHeaderidVar": {
+      "type": "getContractbyHeaderid"
+    },
+    "getContractFindbyApplicationlovHeaderidListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getContractFindbyApplicationlovHeaderid",
+        "keyAttributes": "header_id",
+        "itemsPath": "items",
+        "responseType": "getContractFindbyApplicationlovHeaderidResponse",
+        "uriParameters": {
+          "p_cont_header_id": "{{ $variables.p_ContractHeader }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "application_num"
+          ]
+        }
+      }
+    },
+    "getookupdetailListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getookupdetail",
+        "keyAttributes": "lookup_value_id",
+        "itemsPath": "items",
+        "responseType": "getookupdetailResponse",
+        "uriParameters": {
+          "p_lookup_type_name": "CONT_GUARANTEE_TYPE"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name_disp"
+          ]
+        }
+      }
+    },
+    "getookupdetailListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getookupdetail",
+        "keyAttributes": "lookup_value_id",
+        "itemsPath": "items",
+        "responseType": "getookupdetailResponse2",
+        "uriParameters": {
+          "p_lookup_type_name": "GAUR_CATEGORY"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name_disp"
+          ]
+        }
+      }
+    },
+    "getookupdetailListSDP3": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getookupdetail",
+        "keyAttributes": "lookup_value_id",
+        "itemsPath": "items",
+        "responseType": "getookupdetailResponse3",
+        "uriParameters": {
+          "p_lookup_type_name": "CONT_GUARANTEE_TYPE"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name_disp"
+          ]
+        }
+      }
+    },
+    "getookupdetailListSDP4": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/getookupdetail",
+        "keyAttributes": "lookup_value_id",
+        "itemsPath": "items",
+        "responseType": "getookupdetailResponse4",
+        "uriParameters": {
+          "p_lookup_type_name": "GAUR_CATEGORY"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name_disp"
+          ]
+        }
+      }
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "guaranteeColumnsList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Action",
+          "field": "",
+          "width": 120,
+          "template": "Edit",
+          "resizable": "enabled",
+          "sortable": "disabled"
+        },
+        {
+          "headerText": "Type of Document",
+          "field": "guarantee_type_name",
+          "width": 190,
+          "template": "hyperlink",
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Category",
+          "field": "category_id",
+          "width": 190,
+          "template": "Category",
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Institution",
+          "field": "institution",
+          "width": 123,
+          "template": "institution",
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Start Date",
+          "field": "start_date",
+          "template": "stratDate",
+          "width": 132,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "End Date",
+          "field": "end_date",
+          "template": "endDate",
+          "width": 118,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Remarks",
+          "field": "remarks",
+          "template": "Remarks",
+          "width": 110,
+          "resizable": "enabled"
+        }
+      ]
+    },
+    "guaranteeKey": {
+      "type": "string"
+    },
+    "guaranteeMethod": {
+      "type": "string"
+    },
+    "GuaranteeObjinlineEdit": {
+      "type": "inLineEditContractbyGuarantee"
+    },
+    "guaranteePagingSearch": {
+      "type": "any"
+    },
+    "GuaranteetableADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "inLineEditContractbyGuarantee",
+        "keyAttributes": "guarantee_id"
+      }
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "LineColumnsList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Item Number",
+          "field": "item_num",
+          "width": 151,
+          "template": "",
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Item Description",
+          "field": "item_description",
+          "width": 160,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "UOM",
+          "field": "uom_code",
+          "template": "",
+          "width": 100,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Qunatity",
+          "field": "quantity",
+          "template": "Quantity",
+          "width": 110,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Unit Price",
+          "field": "unit_price",
+          "template": "UnitPrice",
+          "width": 127,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Line Amount",
+          "field": "line_amount",
+          "template": "lineamount",
+          "width": 169,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Tax Rate",
+          "field": "tax_rate",
+          "template": "TaxRate",
+          "width": 140,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Tax Amount",
+          "field": "tax_amount",
+          "template": "TaxAmount",
+          "width": 145,
+          "resizable": "enabled"
+        },
+{
+          "headerText": "Total Line Amount",
+          "field": "total_line_amount",
+          "template": "TotalLineAmount",
+          "width": 170,
+          "resizable": "enabled"
+        }
+      ]
+    },
+    "linePagingSearch": {
+      "type": "any"
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "p_ContractHeader": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "p_Revision_Number": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pageVar": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "paymentCalOff": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "paymentKey": {
+      "type": "string"
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "pBuId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pContNum": {
+      "type": "string",
+      "required": false,
+      "input": "none",
+      "defaultValue": "[[ $variables.getContractbyHeaderidVar.contract_num ]]"
+    },
+    "pguaranteeid": {
+      "type": "string"
+    },
+    "poAttachmentData": {
+      "type": "any"
+    },
+    "postContPayment": {
+      "type": "postContractterms",
+      "defaultValue": {
+        "created_by": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "last_updated_date": "[[ $application.functions.appSysDatesWithTimeStamp() ]]",
+         "last_updated_login": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "last_updated_by": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "created_date": "[[ $application.functions.getSysdate() ]]",
+        "adv_calc_mode": "P",
+        "adv_rec_calc_mode": "P",
+        "mat_adv_rec_calc_mode": "P",
+        "mat_calc_mode": "P",
+        "ret_calc_mode": "P",
+        "ret_rel_calc_mode": "P"
+      }
+    },
+    "postCreateApplHdr": {
+      "type": {
+        "P_CONTRACT_HEADER_ID": "string",
+        "P_CONTRACT_REVISION_NUMBER": "string",
+        "P_LOGIN_USER": "string",
+        "P_PAYMENT_TYPE_ID": "string"
+      },
+      "defaultValue": {
+        "P_LOGIN_USER": "[[ $application.variables.saasGetLogin.email_address ]]"
+      }
+    },
+    "postCreateCertHdr": {
+      "type": {
+        "p_application_id": "string",
+        "P_LOGIN_USER": "string"
+      },
+      "defaultValue": {
+        "P_LOGIN_USER": "[[ $application.variables.saasGetLogin.email_address ]]"
+      }
+    },
+    "postPkgContractGuaranteeVar": {
+      "type": "postPkgContractGuarantee",
+      "defaultValue": {
+        "created_by": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "created_date": "[[ $application.functions.appSysDatesWithTimeStamp() ]]",
+        "last_updated_date": "[[ $application.functions.appSysDatesWithTimeStamp() ]]",
+        "last_updated_login": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "last_updated_by": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "object_version_num": 0
+      }
+    },
+    "postRententiontHeaderVar": {
+      "type": "postRententionHeader",
+      "defaultValue": {
+        "created_by": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "last_updated_by": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "object_version_num": 0,
+        "last_updated_date": "[[ $application.functions.appSysDatesWithTimeStamp() ]]",
+        "last_updated_login": "[[ $application.variables.saasGetLogin.email_address ]]",
+        "created_date": "[[ $application.functions.appSysDatesWithTimeStamp() ]]"
+      }
+    },
+    "postRetentionReleaseCreateVar": {
+      "type": "postRetentionReleaseCreate"
+    },
+    "postSubmitForApprovalPkgVar": {
+      "type": "postSubmitForApprovalPkg"
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "RetenDeletekey": {
+      "type": "string"
+    },
+    "retentionColoumnList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Action",
+          "field": "",
+          "width": 100,
+          "template": "delete",
+          "resizable": "enabled",
+          "frozenEdge": "start",
+          "sortable": "disabled"
+        },
+        {
+          "headerText": "Retention release Number",
+          "field": "ret_rel_num",
+          "template": "edit",
+          "width": 240,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Retention Date",
+          "field": "ret_rel_date",
+          "template": "contractDate",
+          "width": 164,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Approval Status",
+          "field": "approval_status",
+          "width": 188,
+          "template": "approvalstatus",
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Retention Release Amount",
+          "field": "ret_rel_amount",
+          "template": "ContractAmount",
+          "width": 240,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Comments",
+          "field": "comments",
+          "resizable": "enabled"
+
+        }
+      ]
+    },
+    "retentionTableData": {
+      "type": "any"
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "sysdateVar": {
+      "type": "string",
+      "defaultValue": "[[ $application.functions.appSysDatesWithTimeStamp() ]]"
+    },
+    "TabHideVar": {
+      "type": "boolean",
+      "defaultValue": true,
+      "required": true,
+      "input": "fromUrl"
+    },
+    "tableAttachmentType": {
+      "type": "string",
+      "defaultValue": "Attachment"
+    },
+    "tabSelectedItem": {
+      "type": "string",
+      "defaultValue": "oj-tab-bar--1691641440-1-tab-1"
+    },
+    "tapplicationTable": {
+      "type": "string",
+      "defaultValue": "Application"
+    },
+    "taskId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "tcertificationTable": {
+      "type": "string",
+      "defaultValue": "Certification"
+    },
+    "tcontractLine": {
+      "type": "string",
+      "defaultValue": "ContractLine"
+    },
+    "tGuarantee": {
+      "type": "string",
+      "defaultValue": "Guarantee"
+    },
+    "tretentionTable": {
+      "type": "string",
+      "defaultValue": "Retention"
+    },
+    "validationObj": {
+      "type": {
+        "adv_amt": "boolean",
+        "adv_per": "boolean",
+        "adv_rec_amt": "boolean",
+        "adv_rec_per": "boolean",
+        "mat_adv_amt": "boolean",
+        "mat_adv_per": "boolean",
+        "ret_amt": "boolean",
+        "ret_per": "boolean",
+        "ret_rel_amt": "boolean",
+        "ret_rel_per": "boolean"
+      }
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getApplicationCreateLovResponse": {
+      "endpoint": "getApplicationCreateLov",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getAttachmentFindbyLookupResponse": {
+      "endpoint": "getAttachmentFindbyLookup",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getContractbyHeaderid": {
+      "endpoint": "getContractbyHeaderid",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getContractFindbyApplicationlovHeaderidResponse": {
+      "endpoint": "getContractFindbyApplicationlovHeaderid",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getContractHeaderSearchResponse": {
+      "endpoint": "getContractHeaderSearch",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getookupdetailResponse": {
+      "endpoint": "getookupdetail",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getookupdetailResponse2": {
+      "endpoint": "getookupdetail",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getookupdetailResponse3": {
+      "endpoint": "getookupdetail",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getookupdetailResponse4": {
+      "endpoint": "getookupdetail",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getookupdetailResponse5": {
+      "endpoint": "getookupdetail",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.inLineEditContractbyGuarantee": {
+      "endpoint": "getContractbyGuarantee",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.postContractterms": {
+      "endpoint": "postContractterms",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postPkgContractGuarantee": {
+      "endpoint": "postPkgContractGuarantee",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postRententionHeader": {
+      "endpoint": "postRententionHeader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postRetentionReleaseCreate": {
+      "endpoint": "postRetentionReleaseModulePkgCreateretentionrelease",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postSubmitForApprovalPkg": {
+      "endpoint": "postSubmitForApprovalPkg",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "getApplicationCreateLovResponse": {
+      "items": [
+        {
+          "application_number": "string",
+          "header_id": "number",
+          "payment_type": "string"
+        }
+      ]
+    },
+    "getAttachmentFindbyLookupResponse": {
+      "items": [
+        {
+          "lookup_value_name": "string"
+        }
+      ]
+    },
+    "getContractbyHeaderid": {
+    
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+      "approval_status_code": "string",
+      "approval_status_disp": "string",
+          "attribute_json": "any",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+      "created_date": "string",
+      "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+          "revision_num": "number",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+     
+    },
+    "getContractFindbyApplicationlovHeaderidResponse": {
+      "items": [
+        {
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "application_date": "string",
+          "application_num": "string",
+          "application_status": "string",
+          "application_status_code": "string",
+          "application_status_id": "number",
+          "approval_status": "string",
+          "approval_status_code": "string",
+          "approval_status_id": "number",
+          "attribute_json": "any",
+          "bill_to_location_code": "any",
+          "bill_to_location_id": "any",
+          "bu_id": "number",
+          "bu_name": "string",
+          "comments": "any",
+          "cont_header_id": "number",
+          "cont_revision_num": "number",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_payment_term": "any",
+          "contract_status": "string",
+          "contract_tax_amount": "number",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "created_date": "string",
+          "cum_adv_rec_amount": "any",
+          "cum_app_amount": "any",
+          "cum_mat_adv_rec_amount": "any",
+          "cum_ret_amount": "any",
+          "cur_adv_rec_amount": "any",
+          "cur_app_amount": "any",
+          "cur_mat_adv_rec_amount": "any",
+          "cur_ret_amount": "any",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "any",
+          "full_name": "any",
+          "header_id": "number",
+          "invoice_date": "string",
+          "invoice_num": "string",
+          "last_updated_by": "string",
+          "last_updated_date": "string",
+          "last_updated_login": "string",
+          "mobile_number": "any",
+          "net_app_amount": "any",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "any",
+          "payment_due_date": "any",
+          "payment_term_id": "any",
+          "payment_type": "string",
+          "phone_number": "any",
+          "po_header_id": "number",
+          "po_number": "string",
+          "pre_adv_rec_amount": "any",
+          "pre_app_amount": "any",
+          "pre_mat_adv_rec_amount": "any",
+          "pre_ret_amount": "any",
+          "ship_to_location_code": "any",
+          "ship_to_location_id": "any",
+          "subcontract_type": "string",
+          "tax_amount": "any",
+          "tax_code": "any",
+          "tax_rate": "any",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+        }
+      ]
+    },
+    "getContractHeaderSearchResponse": {
+      "items": [
+        {
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "attribute_json": "any",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+          "revision_num": "number",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+        }
+      ]
+    },
+    "getookupdetailResponse": {
+      "items": [
+        {
+          "child_lookup_type_name_disp": "string",
+          "child_lookup_type_name_disp_ar": "any",
+          "created_by": "string",
+          "creation_date": "string",
+          "display_order": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "lookup_type_id": "number",
+          "lookup_type_name": "string",
+          "lookup_type_name_disp": "string",
+          "lookup_type_name_disp_ar": "any",
+          "lookup_value_id": "number",
+          "lookup_value_name": "string",
+          "lookup_value_name_disp": "string",
+          "lookup_value_name_disp_ar": "any",
+          "status": "string"
+        }
+      ]
+    },
+    "getookupdetailResponse2": {
+      "items": [
+        {
+          "child_lookup_type_name_disp": "string",
+          "child_lookup_type_name_disp_ar": "any",
+          "created_by": "string",
+          "creation_date": "string",
+          "display_order": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "lookup_type_id": "number",
+          "lookup_type_name": "string",
+          "lookup_type_name_disp": "string",
+          "lookup_type_name_disp_ar": "any",
+          "lookup_value_id": "number",
+          "lookup_value_name": "string",
+          "lookup_value_name_disp": "string",
+          "lookup_value_name_disp_ar": "any",
+          "status": "string"
+        }
+      ]
+    },
+    "getookupdetailResponse3": {
+      "items": [
+        {
+          "lookup_value_id": "number",
+          "lookup_value_name_disp": "string"
+        }
+      ]
+    },
+    "getookupdetailResponse4": {
+      "items": [
+        {
+          "lookup_value_id": "number",
+          "lookup_value_name_disp": "string"
+        }
+      ]
+    },
+    "getookupdetailResponse5": {
+      "items": [
+        {
+          "lookup_value_id": "number",
+          "lookup_value_name_disp": "string"
+        }
+      ]
+    },
+    "inLineEditContractbyGuarantee": {
+      "bu_id": "number",
+      "category_id": "any",
+      "cont_header_id": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "duration": "any",
+      "end_date": "string",
+      "guarantee_id": "number",
+      "guarantee_type_name": "string",
+      "institution": "string",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "object_version_num": "number",
+      "ref_number": "any",
+      "remarks": "any",
+      "revision_num": "number",
+      "start_date": "string",
+      "type_id": "number",
+      "value": "any"
+    },
+    "postContractterms": {
+      "adv_amount": "number",
+      "adv_calc_mode": "any",
+      "adv_percent": "number",
+      "adv_rec_amount": "number",
+      "adv_rec_calc_mode": "any",
+      "adv_rec_percent": "number",
+      "attribute_json": "any",
+      "bu_id": "any",
+      "created_by": "string",
+      "created_date": "string",
+      "header_id": "number",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "mat_adv_rec_amount": "any",
+      "mat_adv_rec_calc_mode": "any",
+      "mat_adv_rec_percent": "any",
+      "mat_calc_mode": "any",
+      "material_amount": "number",
+      "material_percent": "number",
+      "object_version_num": "number",
+      "remarks": "any",
+      "ret_calc_mode": "any",
+      "ret_rel_calc_mode": "any",
+      "reten_amount": "number",
+      "reten_percent": "number",
+      "reten_rel_amount": "number",
+      "reten_rel_percent": "number",
+      "revision_num": "number",
+      "term_id": "number"
+
+    },
+    "postPkgContractGuarantee": {
+      "bu_id": "number",
+      "category_id": "any",
+      "cont_header_id": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "duration": "any",
+      "end_date": "string",
+      "guarantee_id": "number",
+      "institution": "string",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "object_version_num": "number",
+      "ref_number": "any",
+      "remarks": "any",
+      "revision_num": "number",
+      "start_date": "string",
+      "type_id": "number",
+      "value": "any"
+
+    },
+    "postRententionHeader": {
+      "address1": "string",
+      "address2": "any",
+      "address3": "any",
+      "address4": "any",
+      "approval_status": "string",
+      "approval_status_disp": "string",
+      "approval_status_id": "number",
+      "bill_to_location_code": "string",
+      "bill_to_location_id": "number",
+      "bu_id": "number",
+      "bu_name": "string",
+      "buyer_id": "number",
+      "cancel_flag": "any",
+      "comments": "any",
+      "cont_header_id": "number",
+      "cont_version_num": "number",
+      "contract_amount": "number",
+      "contract_date": "string",
+      "contract_name": "string",
+      "contract_num": "string",
+      "contract_status": "string",
+      "contract_status_disp": "string",
+      "conversion_rate": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "currency_code": "string",
+      "document_status": "string",
+      "email_address": "string",
+      "end_date": "any",
+      "full_name": "string",
+      "header_id": "number",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "mobile_number": "string",
+      "net_contract_amount": "number",
+      "object_version_num": "number",
+      "party_name": "string",
+      "payment_term": "any",
+      "payment_term_id": "number",
+      "phone_number": "string",
+      "po_header_id": "number",
+      "po_number": "string",
+      "remarks": "any",
+      "ret_rel_amt": "number",
+      "ret_rel_date": "string",
+      "ret_rel_number": "string",
+      "ret_rel_type": "string",
+      "ret_release_status_id": "any",
+      "ship_to_location_code": "string",
+      "ship_to_location_id": "number",
+      "source_rowid": "string",
+      "start_date": "any",
+      "subcontract_type": "string",
+      "tax_amount": "number",
+      "trx_source": "string",
+      "vendor_id": "number",
+      "vendor_name": "string",
+      "vendor_num": "string",
+      "vendor_site_code": "string",
+      "vendor_site_id": "number",
+      "vendor_type_code": "any",
+      "version_type": "string"
+
+    },
+    "postRetentionReleaseCreate": {
+      "P_CONTRACT_HEADER_ID": "number",
+      "P_CONTRACT_REVISION_NUMBER": "number",
+      "P_LOGIN_USER": "string"
+    },
+    "postSubmitForApprovalPkg": {
+      "P_APPR_PROCESS": "string",
+      "P_TRX_ID": "string",
+      "P_USER_ID": "string"
+    }
+
+  },
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chain": "onClickGuaranteeAdd"
+        }
+      ]
+    },
+    "buttonAction10": {
+      "chains": [
+        {
+          "chain": "onClickAttachmentDownload",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction11": {
+      "chains": [
+        {
+          "chain": "onClickDocumentDelete",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction12": {
+      "chains": [
+        {
+          "chain": "onClickOkDelete"
+        }
+      ]
+    },
+    "buttonAction13": {
+      "chains": [
+        {
+          "chain": "onClickAttachmentDeleteCancel"
+        }
+      ]
+    },
+    "buttonAction14": {
+      "chains": [
+        {
+          "chain": "inLineGuaranteeAdd"
+        }
+      ]
+    },
+    "buttonAction15": {
+      "chains": [
+        {
+          "chain": "onClickSaveGuarantee"
+        }
+      ]
+    },
+    "buttonAction16": {
+      "chains": [
+        {
+          "chain": "onClickDelete",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction17": {
+      "chains": [
+        {
+          "chain": "inlineAddAttachment1",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction18": {
+      "chains": [
+        {
+          "chain": "inlineViewAttachment",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction19": {
+      "chains": [
+        {
+          "chain": "onClickDelGuaranteeNo"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "contractGuaranteeSaveAdd"
+        }
+      ]
+    },
+    "buttonAction20": {
+      "chains": [
+        {
+          "chain": "onClickDelguaranteeYes"
+        }
+      ]
+    },
+    "buttonAction21": {
+      "chains": [
+        {
+          "chain": "onClickApplicationCreate"
+        }
+      ]
+    },
+    "buttonAction22": {
+      "chains": [
+        {
+          "chain": "appCreateClose"
+        }
+      ]
+    },
+    "buttonAction23": {
+      "chains": [
+        {
+          "chain": "appSaveandCreate"
+        }
+      ]
+    },
+    "buttonAction24": {
+      "chains": [
+        {
+          "chain": "appSaveOk"
+        }
+      ]
+    },
+    "buttonAction25": {
+      "chains": [
+        {
+          "chain": "AppSaveCancel"
+        }
+      ]
+    },
+    "buttonAction26": {
+      "chains": [
+        {
+          "chain": "appDelete",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction27": {
+      "chains": [
+        {
+          "chain": "appDeleteYes"
+        }
+      ]
+    },
+    "buttonAction28": {
+      "chains": [
+        {
+          "chain": "appDeleteNo"
+        }
+      ]
+    },
+    "buttonAction29": {
+      "chains": [
+        {
+          "chain": "certSaveCreate"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chain": "onClickContGuaranteSaveClose"
+        }
+      ]
+    },
+    "buttonAction30": {
+      "chains": [
+        {
+          "chain": "CertCreate"
+        }
+      ]
+    },
+    "buttonAction31": {
+      "chains": [
+        {
+          "chain": "CertSaveOk"
+        }
+      ]
+    },
+    "buttonAction32": {
+      "chains": [
+        {
+          "chain": "certCreateClose"
+        }
+      ]
+    },
+    "buttonAction33": {
+      "chains": [
+        {
+          "chain": "certCreateCancel"
+        }
+      ]
+    },
+    "buttonAction34": {
+      "chains": [
+        {
+          "chain": "certDelete",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction35": {
+      "chains": [
+        {
+          "chain": "certDeleteNo"
+        }
+      ]
+    },
+    "buttonAction36": {
+      "chains": [
+        {
+          "chain": "CertDeleteYes"
+        }
+      ]
+    },
+    "buttonAction37": {
+      "chains": [
+        {
+          "chain": "createRetention"
+        }
+      ]
+    },
+    "buttonAction38": {
+      "chains": [
+        {
+          "chain": "RetentionDelete"
+        }
+      ]
+    },
+    "buttonAction39": {
+      "chains": [
+        {
+          "chain": "RetentionDeletee",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction4": {
+      "chains": [
+        {
+          "chain": "onclickGuranteePopup",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction40": {
+      "chains": [
+        {
+          "chain": "retentionDeleteNo"
+        }
+      ]
+    },
+    "buttonAction41": {
+      "chains": [
+        {
+          "chain": "appDelete",
+          "parameters": {
+            "current": "{{ $current }}",
+            "index": "{{ $current.index }}",
+            "key": "{{ $current.key }}"
+          }
+        }
+      ]
+    },
+    "buttonAction42": {
+      "chains": [
+        {
+          "chain": "onClickRetentionReleaseOk"
+        }
+      ]
+    },
+    "buttonAction43": {
+      "chains": [
+        {
+          "chain": "onClickRetentionReleaseClose"
+        }
+      ]
+    },
+    "buttonAction5": {
+      "chains": [
+        {
+          "chain": "guaranteeEdit"
+        }
+      ]
+    },
+    "buttonAction6": {
+      "chains": [
+        {
+          "chain": "onClickGuaranteAttachment"
+        }
+      ]
+    },
+    "buttonAction7": {
+      "chains": [
+        {
+          "chain": "onClickGuaranteeAttacSaveAdd"
+        }
+      ]
+    },
+    "buttonAction8": {
+      "chains": [
+        {
+          "chain": "onClickGuaranteeAttacSaveClose"
+        }
+      ]
+    },
+    "buttonAction9": {
+      "chains": [
+        {
+          "chain": "onClickViewAttachment",
+          "parameters": {
+            "tAttachment": "[[ $event.detail.originalEvent ]]"
+          }
+        }
+      ]
+    },
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "disValue": {
+      "chains": [
+        {
+          "chain": "onClickCalMaterialRecoveryPer",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "filepickerSelect": {
+      "chains": [
+        {
+          "chain": "FilePickerSelectChain",
+          "parameters": {
+            "files": "[[ Array.prototype.slice.call($event.detail.files) ]]"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick": {
+      "chains": [
+        {
+          "chain": "HyperlinkClickChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick2": {
+      "chains": [
+        {
+          "chain": "HyperlinkClickChain1",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick3": {
+      "chains": [
+        {
+          "chain": "retentionEdit",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick4": {
+      "chains": [
+        {
+          "chain": "HyperlinkClickChain2",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue": {
+      "chains": [
+        {
+          "chain": "onClickadvancePer",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue10": {
+      "chains": [
+        {
+          "chain": "onClickCalRetentionRecoverypAmt",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue11": {
+      "chains": [
+        {
+          "chain": "onClickCalMaterialRecoveryAmt",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue2": {
+      "chains": [
+        {
+          "chain": "onClickadvanceAmt",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue3": {
+      "chains": [
+        {
+          "chain": "onClickCalRetentionPer",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue4": {
+      "chains": [
+        {
+          "chain": "onClickCalRetentionAmt",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue5": {
+      "chains": [
+        {
+          "chain": "onClickCalMaterialPer",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue6": {
+      "chains": [
+        {
+          "chain": "onClickCalMaterialAmt",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue7": {
+      "chains": [
+        {
+          "chain": "onClickAdvanceRecovery",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue8": {
+      "chains": [
+        {
+          "chain": "onClickAdvanceRecoveryAmt",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "inputNumberValue9": {
+      "chains": [
+        {
+          "chain": "onClickCalRetentionRecoveryper",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chainId": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $variables.pageVar }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSpSave": {
+      "chains": [
+        {
+          "chainId": "spSaveChain"
+        }
+      ]
+    },
+    "ojSsce1SpPrimaryAction": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpPrimaryActionChain"
+        }
+      ]
+    },
+    "ojSsce1SpSecondaryAction": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpSecondaryActionChain",
+          "parameters": {
+            "actionId": "{{ $event.detail.secondaryItem }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onLoad"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-action-card": {
+        "path": "ojs/ojactioncard"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-date-time-picker": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-file-picker": {
+        "path": "ojs/ojfilepicker"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-paging-control": {
+        "path": "ojs/ojpagingcontrol"
+      },
+      "oj-popup": {
+        "path": "ojs/ojpopup"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-switcher": {
+        "path": "ojs/ojswitcher"
+      },
+      "oj-tab-bar": {
+        "path": "ojs/ojnavigationlist"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-70-icoSimpleCreateAndEdit48Svg"
+  }
+}

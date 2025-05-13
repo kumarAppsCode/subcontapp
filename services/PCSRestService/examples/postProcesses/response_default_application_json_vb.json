@@ -1,0 +1,23 @@
+{
+    "levels": 0,
+    "links": [
+        {
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/144985"
+        },
+        {
+            "length": 0,
+            "rel": "audit",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/144985/audit"
+        }
+    ],
+    "title": "Instance #144985 of ApprovalProcess",
+    "processId": "144985",
+    "processDefId": "oracleinternalpcs/Application_Process!1.5/ApprovalProcess",
+    "processName": "ApprovalProcess",
+    "priority": 5,
+    "owner": "Application Process.ProcessOwner",
+    "creator": "ociadmin@omran.om",
+    "state": "OPEN"
+}

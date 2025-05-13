@@ -1,0 +1,13 @@
+{
+  "description": "Notify primary action is triggered",
+  "variables": {
+    "detail": {
+      "type": "any",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "root": "",
+  "actions": {
+  }
+}

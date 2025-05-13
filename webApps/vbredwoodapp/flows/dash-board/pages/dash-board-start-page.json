@@ -1,0 +1,20 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {},
+  "metadata": {},
+  "types": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onload"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {}
+  }
+}

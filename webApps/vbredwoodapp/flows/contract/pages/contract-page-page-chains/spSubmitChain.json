@@ -1,0 +1,20 @@
+{
+  "description": "Notify primary action is triggered",
+  "variables": {
+    "detail": {
+      "type": "any",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "root": "callComponentAboutPopOpen",
+  "actions": {
+    "callComponentAboutPopOpen": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.getElementById('About') }}",
+        "method": "open"
+      }
+    }
+  }
+}

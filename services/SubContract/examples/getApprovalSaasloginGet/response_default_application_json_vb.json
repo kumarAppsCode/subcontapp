@@ -1,0 +1,39 @@
+{
+    "items": [
+        {
+            "user_id": 300000003999352,
+            "user_name": "Bala.Kumar",
+            "user_guid": "DE482929BC497B8DE053235BE80A412A",
+            "business_group_id": 1,
+            "active_flag": "Y",
+            "start_date": "2020-01-01T00:00:00Z",
+            "end_date": null,
+            "person_id": 300000004149630,
+            "person_number": null,
+            "person_full_name": null,
+            "person_name": null,
+            "email_address": "BalaKumar@Deyaar.co",
+            "trx_source": "Fusion",
+            "source_rowid": "AAAkoWAAFAAADIeAAF",
+            "created_by": "FUSION_APPS_HCM_SOA_APPID",
+            "creation_date": "2022-05-26T06:41:42Z",
+            "last_updated_by": "HR Impl",
+            "last_update_date": "2022-11-16T08:08:07Z",
+            "last_update_login": "ED1BD367DB69230DE053919FE50A47F1"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/approval/saaslogin/get?saasuserlogin=BalaKumar%40Deyaar.co"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/approval/saaslogin/item"
+        }
+    ]
+}

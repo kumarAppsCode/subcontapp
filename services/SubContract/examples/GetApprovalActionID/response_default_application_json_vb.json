@@ -1,0 +1,37 @@
+{
+    "items": [
+        {
+            "action_id": 1326,
+            "appr_request_id": 100201,
+            "transaction_id": 2313,
+            "transaction_num": "0",
+            "requester_user_id": "300000003193234",
+            "requester_email_id": "krishnaprasanth.s@4iapps.com",
+            "approver_user_id": null,
+            "approver_email_id": null,
+            "approver_level": 1,
+            "approval_category_code": "EMPLOYEE",
+            "approval_pcs_instance_num": "145349",
+            "status_code": "O",
+            "created_by": "300000003193234",
+            "creation_date": "2024-05-25T20:07:15Z",
+            "last_updated_by": "300000003193234",
+            "last_update_date": "2024-05-25T20:07:15Z",
+            "last_update_login": "300000003193234"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/approval/findby/approvalaction?p_transaction_id=2313"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/metadata-catalog/approval/findby/item"
+        }
+    ]
+}

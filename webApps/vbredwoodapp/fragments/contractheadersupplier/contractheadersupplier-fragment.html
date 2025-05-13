@@ -1,0 +1,149 @@
+<!-- <div class="oj-flex"> -->
+  <div class="oj-panel oj-panel-shadow-md oj-selected">
+    <oj-collapsible  id="c4" expanded="true">
+    <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Contract Header Information</h4> -->
+<h1 id="h4" slot="header" style="color: #013766;font-size: larger; font-weight: bold;">Contract Header Information</h1> 
+    <oj-form-layout max-columns="3" label-edge="start" columns="3" direction="column" colspan-wrap="wrap">
+      <oj-input-text label-hint="[[$application.translations.appBundle.BusinessUnit]]" style="width: 24rem;"
+        disabled="true" class="customfield" value="{{ $variables.contHeader.bu_name }}" >
+      </oj-input-text>
+      <!--<br> -->
+      <oj-input-text disabled="true" style="width: 24rem;" value="{{ $variables.contHeader.contract_num }}"
+        class="customfield" label-hint="[[$application.translations.appBundle.ContractNumber]]">
+        <oj-button chroming="outlined" label="[[ $variables.revisionNum ]]" slot="end" display="label"
+          style="width: 4.2rem;background-color: white;height: 2rem; color:black;" disabled="true">
+        </oj-button>
+
+      
+      </oj-input-text>
+      <!--<br> -->
+       <!-- placeholder="[[$application.translations.app.yearFormate]]" -->
+      <oj-input-date class="customfield" style="width: 24rem;"
+        style="width: 24rem;"
+        converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+        value="{{ $variables.contHeader.contract_date }}" disabled="true"
+        label-hint="[[$application.translations.appBundle.ContractCreationDate]]">
+      </oj-input-date>
+      <!--<br> -->
+      <oj-input-text style="width: 24rem;" disabled="true" class="customfield"
+        value="{{ $variables.contHeader.vendor_name }}"
+        label-hint="[[$application.translations.appBundle.supplierName]]"></oj-input-text>
+      <!--<br> -->
+      <oj-input-text style="width: 24rem;" disabled="true" class="customfield"
+        value="{{ $variables.contHeader.vendor_site_code }}"
+        label-hint="[[$application.translations.appBundle.supplierSite]]"></oj-input-text>
+      <!--<br> -->
+      <oj-input-text disabled="true" style="width: 24rem;" value="{{ $variables.contHeader.bill_to_location_code }}"
+        class="customfield" label-hint="[[$application.translations.appBundle.billToLocation]]"></oj-input-text>
+      <!--<br> -->
+      <oj-input-text disabled="true" style="width: 24rem;" value="{{ $variables.contHeader.ship_to_location_code }}"
+        class="customfield" label-hint="[[$application.translations.appBundle.shipToLocation]]"></oj-input-text>
+      
+      <oj-input-text style="width: 24rem;" disabled="true" class="customfield"
+        value="{{ $variables.contHeader.address1 }}" label-hint="[[$application.translations.appBundle.Address1]]"></oj-input-text>
+      <!--<br> -->
+      <oj-input-text style="width: 24rem;" disabled="true" class="customfield"
+        value="{{ $variables.contHeader.address2 }}" label-hint="[[$application.translations.appBundle.Address2]]"></oj-input-text>
+      <!--<br> -->
+      <oj-input-text style="width: 24rem;" disabled="true" class="customfield"
+        value="{{ $variables.contHeader.email_address }}" label-hint="[[$application.translations.appBundle.email]]"></oj-input-text>
+      <!--<br> -->
+      <oj-input-text disabled="true" value="{{ $variables.contHeader.phone_number }}" style="width: 24rem;"
+        class="customfield" label-hint="[[$application.translations.appBundle.PhoneNo]]">
+      </oj-input-text>
+      <!--<br> -->
+      <oj-input-text disabled="true" value="{{ $variables.contHeader.mobile_number }}" style="width: 24rem;"
+        class="customfield" label-hint="[[$application.translations.appBundle.MobileNo]]">
+      </oj-input-text>
+      <!--<br> -->
+      <oj-input-date class="customfield" style="width: 24rem;"
+        converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' disabled="true"
+        label-hint="[[$application.translations.appBundle.StartDate1]]" value="{{ $variables.contHeader.start_date }}" >
+      </oj-input-date>
+      
+      <oj-input-date class="customfield" style="width: 24rem;"
+        converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' disabled="true"
+        label-hint="[[$application.translations.appBundle.EndDate1]]" value="{{ $variables.contHeader.end_date }}"></oj-input-date>
+     
+     
+      <oj-input-text class="customfieldNum" style="width: 24rem;"
+        value="{{ $variables.contHeader.contract_status_disp }}" disabled="true"
+        label-hint="[[$application.translations.appBundle.ContractStatus]]"></oj-input-text>
+  
+      <oj-input-text style="margin-top:0.5%; width: 24rem;" class="customfieldNum"
+        value="{{ $variables.contHeader.po_approval_status }}" disabled="true"
+      
+        label-hint="[[$application.translations.appBundle.POApprovalStatus]]"></oj-input-text>
+
+        <oj-input-text style="width: 24rem;" disabled="true" class="customfieldNum"
+      
+        value="{{ $variables.contHeader.currency_code }}" label-hint="[[$application.translations.appBundle.Currency]]"></oj-input-text>
+      <!--<br> -->
+   
+       <oj-input-number style="width: 24rem;" value="{{ $variables.contHeader.contract_amount }}"
+         class="customfieldNum oj-form-control-text-align-right"
+         label-hint="[[$application.translations.appBundle.ContractAmount]]"
+         converter='{"options":{"style":"decimal","minimumFractionDigits":3},"type":"number"}'
+         disabled="true">
+      </oj-input-number>
+      
+      <!-- <oj-input-text style="margin-top:0.5%; width: 24rem;" class="customfieldNum"
+        value="{{ $variables.contHeader.approval_status }}" disabled="true"
+      
+        label-hint="[[$application.translations.appBundle.ApprovalStatus]]"></oj-input-text> -->
+
+      <oj-input-number disabled="true" value="{{ $variables.contHeader.tax_amount }}" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right" converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        label-hint="[[$application.translations.appBundle.TaxAmount]]">
+      </oj-input-number>
+      <!--<br> -->
+   
+      <oj-input-number disabled="true" value="{{ $variables.contHeader.net_contract_amount }}" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right" converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        label-hint="[[$application.translations.appBundle.NetAmount]]">
+      </oj-input-number>
+
+      
+     
+      
+    </oj-form-layout>
+  <hr class="oj-hr oj-bg-info-30">
+
+
+ <!-- oj-bg-neutral-180 --- black -->
+
+
+    <oj-form-layout label-edge="start" columns="3">
+      <oj-input-text label-hint="Advance Percentage" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right"
+        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        disabled="true" value="{{ $variables.contHeader.advance_per }}"></oj-input-text>
+      <oj-input-text label-hint="Retention Percentage" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right"
+        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        disabled="true" value="{{ $variables.contHeader.retention_per }}"></oj-input-text>
+     <oj-input-number disabled="true" style="width: 24rem;" class="customfieldNum oj-form-control-text-align-right"
+        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        label-hint="[[$application.translations.appBundle.RecoupmentPercentage]]"
+        value="{{ $variables.contHeader.advance_rec_per }}">
+      </oj-input-number>
+     
+        <oj-input-text label-hint="Advance Amount" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right"
+        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        disabled="true" value="{{ $variables.contHeader.advance_amount }}"></oj-input-text>
+        <oj-input-text label-hint="Retention Amount" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right"
+        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        disabled="true" value="{{ $variables.contHeader.retention_amount }}"></oj-input-text>
+      <oj-input-text label-hint="Max Retention Amount" style="width: 24rem;"
+        class="customfieldNum oj-form-control-text-align-right"
+        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+        disabled="true" value="{{ $variables.contHeader.retention_max_amount }}"></oj-input-text>
+
+
+  
+</oj-form-layout>
+  </div>
+</oj-collapsible>
+<!-- </div> -->

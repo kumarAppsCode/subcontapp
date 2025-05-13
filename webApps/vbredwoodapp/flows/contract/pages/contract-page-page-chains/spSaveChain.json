@@ -1,0 +1,13 @@
+{
+  "description": "Submit form data",
+  "variables": {},
+  "root": "isFormValid",
+  "actions": {
+    "isFormValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.formState === 'valid' ]]"
+      }
+    }
+  }
+}

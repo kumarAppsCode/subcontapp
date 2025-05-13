@@ -1,0 +1,325 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" page-title="Retention Release" page-subtitle=" "
+    avatar="{{$page.variables.avatar}}"
+    display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    display-mode="[[$page.variables.displayMode]]" on-sp-cancel="[[$listeners.ojSpCancel]]"
+    on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]"
+    secondary-actions='[[ [{"label":"Attachment","id":"attachment"},{"label":"Submit for Approval","id":"submit","display":$variables.displayOptionsVar.submit},{"label":"Approval History","id":"approvalhistory"},{"label":"Approve","id":"approve","display":$variables.displayOptionsVar.approve},{"label":"Reject","id":"reject","display":$variables.displayOptionsVar.reject},{"label":"Reassign","id":"reassign","display":$variables.displayOptionsVar.reassign},{"label":"View Contract","id":"viewcontract"},{"label":"About","id":"about"},{"label":"Withdraw","id":"withdraw","display":$variables.displayOptionsVar.withdraw},{"label":"Transfer to AP","id":"transfer","display":$variables.displayoptionTransferAP.transferAP}] ]]'
+    badge.status="info" badge.text="[[ $variables.PostHeaderVar.ret_rel_num ]]"
+    on-sp-secondary-action="[[$listeners.ojSsce1SpSecondaryAction2]]" primary-action.label="Save"
+    on-sp-primary-action="[[$listeners.ojSsce1SpPrimaryAction2]]"
+    primary-action.disabled="[[ $variables.displayOptionsVar.save ]]">
+
+    <div slot="main" class="oj-flex-item oj-sm-12 oj-md-12 oj-lg-12 oj-xl-12 oj-panel oj-panel-shadow-md oj-selected"
+      style="width:300rem;">
+      <div class="oj-flex">
+        <div class="oj-flex-item oj-sm-12 oj-md-12">
+          <oj-validation-group id="RetentionHeaderForm">
+            <oj-form-layout label-edge='start' columns="3" direction="column" label-width="39%">
+              <oj-form-layout>
+                <oj-input-text class="customfield" disabled="true" value="{{ $variables.PostHeaderVar.bu_name }}"
+                  label-hint="Business Name"></oj-input-text>
+                <oj-input-text class="customfield" disabled="true" value="{{ $variables.PostHeaderVar.contract_num }}"
+                  label-hint="Contract Number"></oj-input-text>
+
+                <!-- <oj-input-text class="customfield" disabled="true" value="{{ $variables.PostHeaderVar.contract_name }}"
+                  label-hint="Contract Name"></oj-input-text> -->
+
+                <!-- <oj-input-text disabled="true" class="customfield" value="{{ $variables.PostHeaderVar.po_number }}"
+                  label-hint="Po Number"></oj-input-text> -->
+                
+                <oj-input-date disabled="true" class="customfield" value="{{ $variables.PostHeaderVar.contract_date }}"
+                  label-hint="Contract Date" converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'>
+                </oj-input-date>
+                <oj-input-text disabled="true" class="customfield" value="{{ $variables.PostHeaderVar.vendor_name }}"
+                  label-hint="Supplier Name"></oj-input-text>
+
+
+                <!-- <oj-input-text label-hint="[[$application.translations.app.input_text_label_hint_a397]]" disabled="true"
+     value="{{ $variables.HdrDetails.Release_Date }}"></oj-input-text> -->
+
+
+              </oj-form-layout>
+              <oj-form-layout label-width="39%">
+       <!-- <oj-input-text disabled="true" class="customfield"
+                  value="{{ $variables.PostHeaderVar.vendor_site_code }}" label-hint="Supplier Site"></oj-input-text>  -->
+
+                <oj-input-text class="customfield" disabled="true" value="{{ $variables.PostHeaderVar.ret_rel_num }}"
+                  label-hint="Retention Release Number"></oj-input-text>
+
+
+                <oj-input-date class="customfield" disabled="true" value="{{ $variables.PostHeaderVar.ret_rel_date }}"
+                  converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+                  label-hint="Retention Release Date">
+                </oj-input-date>
+                <oj-input-number disabled="true" value="{{ $variables.postRententionHeaderSaveVar.ret_rel_amount }}"
+                  label-hint="Retention Release Amount" class="customfieldNum oj-form-control-text-align-right"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  
+                  <oj-input-number disabled="true" value="{{ $variables.PostHeaderVar.tax_amount }}"
+                  label-hint="Tax Amount" class="customfieldNum oj-form-control-text-align-right"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+
+                  
+
+
+
+
+                <!-- <oj-input-text class="customfield" disabled="true"
+                  value="{{ $variables.PostHeaderVar.subcontract_type }}" label-hint="Subcontract Type"></oj-input-text> -->
+
+              </oj-form-layout>
+              <oj-form-layout label-width="39%">
+                <!-- <oj-input-text class="customfield"  disabled="true"
+    value="{{ $variables.PostHeaderVar.approval_status_disp }}" label-hint="Approval Status" ></oj-input-text> -->
+                <oj-input-text disabled="true" class="customfield"
+                  value="{{ $variables.PostHeaderVar.approval_status }}" label-hint="Approval Status"></oj-input-text>
+
+  <oj-input-text disabled="true" class="customfield"
+                  value="{{ $variables.PostHeaderVar.interface_status }}"
+    label-hint="Interface Status"></oj-input-text>
+
+
+    <oj-input-text disabled="true" class="customfield"
+                  value="{{ $variables.PostHeaderVar.invoice_num }}"
+    label-hint="AP Invoice Number"></oj-input-text>
+
+    <!-- <oj-text-area
+                    disabled="[[ $variables.PostHeaderVar.approval_status_code == 'Approved' || $variables.PostHeaderVar.approval_status_code == 'Pending'  ]]"
+                    value="{{ $variables.postRententionHeaderSaveVar.comments }}"
+                    style="width: 25rem;" label-hint="Comments" resize-behavior="horizontal"></oj-text-area> -->
+
+
+                    <oj-text-area disabled="[[ $variables.PostHeaderVar.approval_status_code == 'Approved' || $variables.PostHeaderVar.approval_status_code == 'Pending'  ]]"
+                    value="{{ $variables.postRententionHeaderSaveVar.comments }}"style="width: 25rem; margin-bottom:6px;"
+                  label-hint="Comments" ></oj-text-area>
+
+  <!-- <oj-input-text disabled="true" class="customfield"
+                  value="{{ $variables.PostHeaderVar.approval_status }}" label-hint="Approval Status"></oj-input-text> -->
+
+
+                
+
+                <!-- <oj-input-text disabled="true" class="customfield"
+                  value="{{ $variables.PostHeaderVar.vendor_type_code }}" label-hint="Vendor Type"></oj-input-text> -->
+
+                
+                
+              </oj-form-layout>
+            </oj-form-layout>
+          </oj-validation-group>
+        </div>
+
+      </div>
+
+    </div>
+    <div slot="main"> <br></div>
+
+    <div slot="main" class="oj-panel oj-panel-shadow-md oj-selected">
+      <div class="demo-tab-content">
+        <div id="mainContent">
+          <div id="sampleDemo" style="" class="demo-padding demo-container">
+
+            <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+
+              <div id="mainContent">
+                <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold;">Retention Line Details</h1>
+                <div class="oj-flex">
+                  <oj-table scroll-policy="loadMoreOnScroll" class="oj-sm-width-full oj-bg-body oj-search-table"
+                    selection-mode.row="none" id="searchTable1" display="grid" horizontal-grid-visible="enabled"
+                    vertical-grid-visible="enabled" selection-mode.column="none" data="[[ $variables.retLineADP ]]"
+                    columns="{{ $variables.lineCloumns }}">
+
+
+                   
+
+
+
+                    <template slot="ret_amount">
+                      <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                    </template>
+                    <template slot="ret_amount_paid">
+                      <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                    </template>
+                    <template slot="ret_amount_available">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}' readonly="true" ></oj-input-number>
+                </template>
+                    <!-- <template slot="lineamount">
+                      <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                    </template> -->
+
+
+ <template slot="ret_rel_amount">
+                  <oj-input-number :id="[['ret_rel_amount'+$current.index]]" virtual-keyboard="number"
+                    style="text-align: right;" value="[[$current.row.ret_rel_amount]]"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    readonly="[[ $variables.PostHeaderVar.approval_status_code == 'Approved' || $variables.PostHeaderVar.approval_status_code == 'Pending'  ]]"
+                    on-value-changed="[[$listeners.retRelAmountValue]]" max="[[ $current.row.ret_amount_available ]]"
+                  ></oj-input-number>
+                </template>
+
+              <template slot="remarks">
+                  <oj-input-text :id="[['remarks'+$current.index]]" 
+                     value="[[$current.row.remarks]]"
+                
+                   readonly="[[ $variables.PostHeaderVar.approval_status_code == 'Approved' || $variables.PostHeaderVar.approval_status_code == 'Pending'  ]]"
+                   
+                    ></oj-input-text>
+                </template> 
+
+
+
+                    <!-- <oj-paging-control slot="bottom" id="paging1" style="margin-left:38%;" class="oj-sm-width-full"
+                      page-size="10" data="[[ $variables.LineTable ]]"></oj-paging-control> -->
+                  </oj-table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <oj-dialog dialog-title="About Information" id="About" style="width: 450px;" cancel-behavior="icon"
+      position.collision="flip" position.at.horizontal="right" position.at.vertical="top" position.my.horizontal="end"
+      position.my.vertical="top">
+      <div slot="body">
+        <div class="oj-flex">
+
+          <oj-form-layout label-edge="start" label-width="39%" direction="row" readonly="true">
+            <br>
+            <oj-input-text style="width:14rem;" class="customfield" label-hint="Created By :" readonly="true"
+              value="{{ $variables.PostHeaderVar.created_by }}"></oj-input-text>
+            <br>
+            <oj-input-date style="width:14rem;" class="customfield"
+              converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Create Date :"
+              readonly="true" value="{{ $variables.PostHeaderVar.created_date }}"></oj-input-date>
+            <br>
+            <oj-input-text style="width:14rem;" class="customfield" label-hint="Updated By : " readonly="true"
+              value="{{ $variables.PostHeaderVar.last_updated_by }}"></oj-input-text>
+            <br>
+            <oj-input-date style="width:14rem;" class="customfield"
+              converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Updated Date :"
+              readonly="true" value="{{ $variables.PostHeaderVar.last_updated_date }}"></oj-input-date>
+          </oj-form-layout>
+        </div>
+      </div>
+
+    </oj-dialog>
+
+
+
+	
+<oj-dialog dialog-title="Approve" id="approvePopUp" cancel-behavior="icon">
+ <div slot="body">
+  <oj-label for="app-1"></oj-label>
+  <oj-text-area id="app-1"  placeholder="Comments" value="{{ $variables.ApprovalBodyVar.comment.commentStr }}"  ></oj-text-area>
+ </div>
+<div slot="footer">
+<oj-validation-group>
+<oj-button on-oj-action="[[$listeners.buttonAction]]"   >Submit</oj-button>
+<oj-button on-oj-action="[[$listeners.buttonAction2]]"    >Cancel</oj-button>
+</oj-validation-group>
+</div>
+</oj-dialog>
+
+
+
+<oj-dialog dialog-title="Reject" id="RejectPopup" cancel-behavior="icon">
+ <div slot="body">
+  <oj-label for="app-1"></oj-label>
+  <oj-text-area id="app-1"  placeholder="Comments" value="{{ $variables.ApprovalBodyVar.comment.commentStr }}"  ></oj-text-area>
+ </div>
+<div slot="footer">
+<oj-validation-group>
+<oj-button on-oj-action="[[$listeners.buttonAction3]]"   >Submit</oj-button>
+<oj-button on-oj-action="[[$listeners.buttonAction5]]"   >Cancel</oj-button>
+</oj-validation-group>
+</div>
+</oj-dialog>
+
+
+
+
+<oj-dialog dialog-title="Please wait..." id="progressMsg" class="wd200">
+
+  <div slot="body">
+
+    <div class="oj-flex full_stretch lg_button_width">
+
+      <oj-progress-bar class="full_stretch oj-flex-item oj-sm-12 oj-md-12" value="-1"></oj-progress-bar>
+
+    </div>
+
+  </div>
+
+</oj-dialog>
+
+
+<oj-dialog dialog-title="Reassign" id="Reassign" cancel-behavior="icon" style="width: 900px; height: 300px;"
+        resize-behavior="resizable" drag-affordance="title-bar">
+        <div slot="body">
+     <oj-validation-group id="reassignvalidation">
+          <oj-form-layout label-edge="start" user-assistance-density="compact" columns="2" max-columns="2">
+        <oj-select-single label-hint="* Current Approver" style="width: 21rem; margin-bottom:3px;" class="customfield"
+          required="true" item-text="response_user" value="{{ $variables.PostApproverReassignPkgVar.p_from_person_id }}"
+          data="[[$variables.currentReassignUsersListSDP]]">
+                <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                    vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+                    columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results "
+                    columns='[{"headerText":"Current Approver","field":"response_user","width":190},{"headerText":" Email ID","field":"response_email_address"}]'
+                    on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                    selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"></oj-table>
+                </template>
+              </oj-select-single>
+
+              <oj-select-single label-hint="* Reassign To" style="width: 21rem; margin-bottom:3px;" class="customfield"
+                required="true" item-text="user_name" value="{{ $variables.PostApproverReassignPkgVar.p_to_person_id }}"
+                data="[[$variables.approvalUserslovListSDP]]" on-value-item-changed="[[$listeners.selectValueItem]]"
+                >
+                <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                    selection-mode='{"row": "single"}'
+                    columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results "
+                    columns='[{"headerText":"Reassign Approver","field":"user_name","width":180},{"headerText":"Email Id","field":"email_address"}]'
+                    on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                    selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"
+                    vertical-grid-visible="disabled"></oj-table>
+                </template>
+              </oj-select-single>
+              <oj-text-area label-hint="* Comments" required="true" "
+                resize-behavior="both" value="{{ $variables.PostApproverReassignPkgVar.p_comments }}">
+              </oj-text-area>
+  </oj-form-layout>
+              </oj-validation-group>
+        </div>
+        <div slot="footer">
+          <oj-button on-oj-action="[[$listeners.buttonAction7]]"  >Submit</oj-button>
+          <oj-button on-oj-action="[[$listeners.buttonAction6]]"  >Cancel</oj-button>
+        </div>
+      </oj-dialog>						
+
+
+    <oj-dialog dialog-title="Withdraw" id="withdrawpopup" cancel-behavior="icon">
+      <div slot="body">
+        <h6 style="font-size:medium; font-weight: bold;">Are you sure you want to withdraw the Retention Release?</h6>
+      </div>
+      <div slot="footer">
+        <oj-button on-oj-action="[[$listeners.buttonAction9]]"  >Yes</oj-button>
+        <oj-button on-oj-action="[[$listeners.buttonAction8]]"  >No</oj-button>
+      </div>
+    </oj-dialog>
+    
+
+  </oj-sp-simple-create-edit>

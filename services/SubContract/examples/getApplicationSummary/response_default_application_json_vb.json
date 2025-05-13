@@ -1,0 +1,27 @@
+{
+    "items": [
+        {
+            "pre_app_amt": 0,
+            "pre_adv_rec_per": 0,
+            "pre_adv_rec_amt": 0,
+            "pre_ret_per": 0,
+            "pre_ret_amt": 0,
+            "pre_mat_adv_per": 0,
+            "pre_mat_adv_amt": 0
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/application/module/findby/applicationsummary?cont_header_id=300000003525241&app_header_id=840"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/application/module/findby/item"
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Integration API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/ics",
+            "description": "Ics"
+        }
+    ],
+    "paths": {
+        "//443/ic/api/integration/v1/flows/rest/CREATE_SUBCONTRAC_INVOICE/1.0/CreateSubcontractInvoice": {},
+        "/ic/api/integration/v1/flows/rest/CREATE_SUBCONTRAC_INVOICE/1.0/CreateSubcontractInvoice": {
+            "post": {
+                "operationId": "PostStandardAPInvoice",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostIcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoiceRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/postIcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoice/request_application_json_vb.json",
+                                    "summary": "Example stored by VB User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostIcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoiceResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/postIcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoice/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+               },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/ic/api/integration/v1/flows/rest/CREATE_RETENTION_RELEASE/1.0/CreateSubcontractInvoice": {
+            "post": {
+                "operationId": "IntegrationretentionReleaseAPI",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostIcApiIntegrationV1FlowsRestCREATE_RETENTION_RELEASE1_0CreateSubcontractInvoiceRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/IntegrationretentionReleaseAPI/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Post443IcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoiceRequest": {
+                "type": "object",
+                "properties": {
+                    "CertificateHeaderId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostIcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoiceRequest": {
+                "type": "object",
+                "properties": {
+                    "CertificateHeaderId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostIcApiIntegrationV1FlowsRestCREATE_SUBCONTRAC_INVOICE1_0CreateSubcontractInvoiceResponse": {
+                "type": "object",
+                "properties": {
+                    "InvoiceStatus": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostIcApiIntegrationV1FlowsRestCREATE_RETENTION_RELEASE1_0CreateSubcontractInvoiceRequest": {
+                "type": "object",
+                "properties": {
+                    "CertificateHeaderId": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

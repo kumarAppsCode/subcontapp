@@ -1,0 +1,689 @@
+{
+    "totalResults": 5,
+    "count": 5,
+    "hasMore": false,
+    "items": [
+        {
+            "title": "\"Approval For Payment Application\"",
+            "number": 200799,
+            "id": "b1a2ac8d-fa2a-4ee1-9885-016f7bb8fb37",
+            "createdBy": "OIC.USER",
+            "fromUserDisplayName": "OIC.USER",
+            "fromUserName": "ociadmin@omran.om",
+            "priority": 3,
+            "groupByName": "assignedDate:desc",
+            "ownerRole": "Application Process.Process Owner",
+            "status": "ASSIGNED",
+            "state": "ASSIGNED",
+            "assignedDate": "2024-05-23T13:05:00.000Z",
+            "createdDate": "2024-05-23T13:04:59.000Z",
+            "updatedById": "ociadmin@omran.om",
+            "updatedDate": "2024-05-23T13:04:59.000Z",
+            "hasSubTasksFlag": false,
+            "processName": "ApprovalProcess",
+            "processId": "145151",
+            "processDefId": "oracleinternalpcs~Application_Process!1.10~ApprovalProcess",
+            "processInstanceDetail": {
+                "length": 0,
+                "rel": "processInstanceDetail",
+                "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/145151"
+            },
+            "assignees": {
+                "hasMore": false,
+                "items": [
+                    {
+                        "levels": 0,
+                        "id": "ociadmin@omran.om",
+                        "type": "user",
+                        "adminFlag": false
+                    }
+                ]
+            },
+            "actionList": [
+                {
+                    "length": 0,
+                    "title": "CREATE_TODO",
+                    "actionId": "CREATE_TODO",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionId": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "RENEW",
+                    "actionId": "RENEW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "START_TASK",
+                    "actionId": "START_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND_TIMERS",
+                    "actionId": "SUSPEND_TIMERS",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "UPDATE_TASK_PAYLOAD",
+                    "actionId": "UPDATE_TASK_PAYLOAD",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "ESCALATE",
+                    "actionId": "ESCALATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "WITHDRAW",
+                    "actionId": "WITHDRAW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "INFO_REQUEST",
+                    "actionId": "INFO_REQUEST",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "REASSIGN",
+                    "actionId": "REASSIGN",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND",
+                    "actionId": "SUSPEND",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DECOMPOSE_TASK",
+                    "actionId": "DECOMPOSE_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DELEGATE",
+                    "actionId": "DELEGATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "APPROVE",
+                    "actionId": "APPROVE",
+                    "actionType": "Custom"
+                },
+                {
+                    "length": 0,
+                    "title": "REJECT",
+                    "actionId": "REJECT",
+                    "actionType": "Custom"
+                }
+            ],
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks/200799"
+        },
+        {
+            "title": "\"Approval For Payment Application\"",
+            "number": 200796,
+            "id": "70e21e2d-b2fa-4315-a982-6cbc818d5b98",
+            "createdBy": "OIC.USER",
+            "fromUserDisplayName": "OIC.USER",
+            "fromUserName": "ociadmin@omran.om",
+            "priority": 3,
+            "groupByName": "assignedDate:desc",
+            "ownerRole": "Application Process.Process Owner",
+            "status": "ASSIGNED",
+            "state": "ASSIGNED",
+            "assignedDate": "2024-05-23T12:40:25.000Z",
+            "createdDate": "2024-05-23T12:40:25.000Z",
+            "updatedById": "ociadmin@omran.om",
+            "updatedDate": "2024-05-23T12:40:25.000Z",
+            "hasSubTasksFlag": false,
+            "processName": "ApprovalProcess",
+            "processId": "145144",
+            "processDefId": "oracleinternalpcs~Application_Process!1.9~ApprovalProcess",
+            "processInstanceDetail": {
+                "length": 0,
+                "rel": "processInstanceDetail",
+                "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/145144"
+            },
+            "assignees": {
+                "hasMore": false,
+                "items": [
+                    {
+                        "levels": 0,
+                        "id": "ociadmin@omran.om",
+                        "type": "user",
+                        "adminFlag": false
+                    }
+                ]
+            },
+            "actionList": [
+                {
+                    "length": 0,
+                    "title": "CREATE_TODO",
+                    "actionId": "CREATE_TODO",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionId": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "RENEW",
+                    "actionId": "RENEW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "START_TASK",
+                    "actionId": "START_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND_TIMERS",
+                    "actionId": "SUSPEND_TIMERS",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "UPDATE_TASK_PAYLOAD",
+                    "actionId": "UPDATE_TASK_PAYLOAD",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "ESCALATE",
+                    "actionId": "ESCALATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "WITHDRAW",
+                    "actionId": "WITHDRAW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "INFO_REQUEST",
+                    "actionId": "INFO_REQUEST",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "REASSIGN",
+                    "actionId": "REASSIGN",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND",
+                    "actionId": "SUSPEND",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DECOMPOSE_TASK",
+                    "actionId": "DECOMPOSE_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DELEGATE",
+                    "actionId": "DELEGATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "APPROVE",
+                    "actionId": "APPROVE",
+                    "actionType": "Custom"
+                },
+                {
+                    "length": 0,
+                    "title": "REJECT",
+                    "actionId": "REJECT",
+                    "actionType": "Custom"
+                }
+            ],
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks/200796"
+        },
+        {
+            "title": "ATDC/TS/424/2024Tender Strategy Approval",
+            "number": 200792,
+            "id": "0f08bb6d-95b6-42ff-b65b-731b7dd91480",
+            "createdBy": "OIC.USER",
+            "fromUserDisplayName": "OIC.USER",
+            "fromUserName": "ociadmin@omran.om",
+            "priority": 3,
+            "groupByName": "assignedDate:desc",
+            "ownerRole": "TenderingStrategyApproval.Process Owner",
+            "status": "ASSIGNED",
+            "state": "ASSIGNED",
+            "assignedDate": "2024-05-23T12:07:50.000Z",
+            "createdDate": "2024-05-23T12:07:50.000Z",
+            "updatedById": "ociadmin@omran.om",
+            "updatedDate": "2024-05-23T12:07:50.000Z",
+            "hasSubTasksFlag": false,
+            "processName": "ApprovalProcess",
+            "processId": "145137",
+            "processDefId": "oracleinternalpcs~TenderingStrategyApproval!1.6~ApprovalProcess",
+            "processInstanceDetail": {
+                "length": 0,
+                "rel": "processInstanceDetail",
+                "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/145137"
+            },
+            "assignees": {
+                "hasMore": false,
+                "items": [
+                    {
+                        "levels": 0,
+                        "id": "ociadmin@omran.om",
+                        "type": "user",
+                        "adminFlag": false
+                    }
+                ]
+            },
+            "actionList": [
+                {
+                    "length": 0,
+                    "title": "CREATE_TODO",
+                    "actionId": "CREATE_TODO",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionId": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "RENEW",
+                    "actionId": "RENEW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "START_TASK",
+                    "actionId": "START_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND_TIMERS",
+                    "actionId": "SUSPEND_TIMERS",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "UPDATE_TASK_PAYLOAD",
+                    "actionId": "UPDATE_TASK_PAYLOAD",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "ESCALATE",
+                    "actionId": "ESCALATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "WITHDRAW",
+                    "actionId": "WITHDRAW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "INFO_REQUEST",
+                    "actionId": "INFO_REQUEST",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "REASSIGN",
+                    "actionId": "REASSIGN",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND",
+                    "actionId": "SUSPEND",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DECOMPOSE_TASK",
+                    "actionId": "DECOMPOSE_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DELEGATE",
+                    "actionId": "DELEGATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "APPROVE",
+                    "actionId": "APPROVE",
+                    "actionType": "Custom"
+                },
+                {
+                    "length": 0,
+                    "title": "REJECT",
+                    "actionId": "REJECT",
+                    "actionType": "Custom"
+                }
+            ],
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks/200792"
+        },
+        {
+            "title": "\"Approval For Payment Application\"",
+            "number": 200790,
+            "id": "917d1ece-d227-4951-85d3-6f07fca06a81",
+            "createdBy": "OIC.USER",
+            "fromUserDisplayName": "OIC.USER",
+            "fromUserName": "ociadmin@omran.om",
+            "priority": 3,
+            "groupByName": "assignedDate:desc",
+            "ownerRole": "Application Process.Process Owner",
+            "status": "ASSIGNED",
+            "state": "ASSIGNED",
+            "assignedDate": "2024-05-23T12:01:01.000Z",
+            "createdDate": "2024-05-23T12:01:01.000Z",
+            "updatedById": "ociadmin@omran.om",
+            "updatedDate": "2024-05-23T12:01:01.000Z",
+            "hasSubTasksFlag": false,
+            "processName": "ApprovalProcess",
+            "processId": "145130",
+            "processDefId": "oracleinternalpcs~Application_Process!1.8~ApprovalProcess",
+            "processInstanceDetail": {
+                "length": 0,
+                "rel": "processInstanceDetail",
+                "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/145130"
+            },
+            "assignees": {
+                "hasMore": false,
+                "items": [
+                    {
+                        "levels": 0,
+                        "id": "ociadmin@omran.om",
+                        "type": "user",
+                        "adminFlag": false
+                    }
+                ]
+            },
+            "actionList": [
+                {
+                    "length": 0,
+                    "title": "CREATE_TODO",
+                    "actionId": "CREATE_TODO",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionId": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "RENEW",
+                    "actionId": "RENEW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "START_TASK",
+                    "actionId": "START_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND_TIMERS",
+                    "actionId": "SUSPEND_TIMERS",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "UPDATE_TASK_PAYLOAD",
+                    "actionId": "UPDATE_TASK_PAYLOAD",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "ESCALATE",
+                    "actionId": "ESCALATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "WITHDRAW",
+                    "actionId": "WITHDRAW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "INFO_REQUEST",
+                    "actionId": "INFO_REQUEST",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "REASSIGN",
+                    "actionId": "REASSIGN",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND",
+                    "actionId": "SUSPEND",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DECOMPOSE_TASK",
+                    "actionId": "DECOMPOSE_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DELEGATE",
+                    "actionId": "DELEGATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "APPROVE",
+                    "actionId": "APPROVE",
+                    "actionType": "Custom"
+                },
+                {
+                    "length": 0,
+                    "title": "REJECT",
+                    "actionId": "REJECT",
+                    "actionType": "Custom"
+                }
+            ],
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks/200790"
+        },
+        {
+            "title": "OTDC/TS/420/2024Tender Strategy Approval",
+            "number": 200763,
+            "id": "a70743bf-812c-4982-ba4b-f96b8a77f78b",
+            "createdBy": "OIC.USER",
+            "fromUserDisplayName": "OIC.USER",
+            "fromUserName": "ociadmin@omran.om",
+            "priority": 3,
+            "groupByName": "assignedDate:desc",
+            "ownerRole": "TenderingStrategyApproval.Process Owner",
+            "status": "ASSIGNED",
+            "state": "ASSIGNED",
+            "assignedDate": "2024-05-23T05:51:33.000Z",
+            "createdDate": "2024-05-23T05:51:33.000Z",
+            "updatedById": "ociadmin@omran.om",
+            "updatedDate": "2024-05-23T05:51:33.000Z",
+            "hasSubTasksFlag": false,
+            "processName": "ApprovalProcess",
+            "processId": "144991",
+            "processDefId": "oracleinternalpcs~TenderingStrategyApproval!1.5~ApprovalProcess",
+            "processInstanceDetail": {
+                "length": 0,
+                "rel": "processInstanceDetail",
+                "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/processes/144991"
+            },
+            "assignees": {
+                "hasMore": false,
+                "items": [
+                    {
+                        "levels": 0,
+                        "id": "ociadmin@omran.om",
+                        "type": "user",
+                        "adminFlag": false
+                    }
+                ]
+            },
+            "actionList": [
+                {
+                    "length": 0,
+                    "title": "CREATE_TODO",
+                    "actionId": "CREATE_TODO",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionId": "SKIP_CURRENT_ASSIGNMENT",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "RENEW",
+                    "actionId": "RENEW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "START_TASK",
+                    "actionId": "START_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND_TIMERS",
+                    "actionId": "SUSPEND_TIMERS",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "UPDATE_TASK_PAYLOAD",
+                    "actionId": "UPDATE_TASK_PAYLOAD",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "ESCALATE",
+                    "actionId": "ESCALATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "WITHDRAW",
+                    "actionId": "WITHDRAW",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "INFO_REQUEST",
+                    "actionId": "INFO_REQUEST",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "REASSIGN",
+                    "actionId": "REASSIGN",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "SUSPEND",
+                    "actionId": "SUSPEND",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DECOMPOSE_TASK",
+                    "actionId": "DECOMPOSE_TASK",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "DELEGATE",
+                    "actionId": "DELEGATE",
+                    "actionType": "System"
+                },
+                {
+                    "length": 0,
+                    "title": "APPROVE",
+                    "actionId": "APPROVE",
+                    "actionType": "Custom"
+                },
+                {
+                    "length": 0,
+                    "title": "REJECT",
+                    "actionId": "REJECT",
+                    "actionType": "Custom"
+                }
+            ],
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks/200763"
+        }
+    ],
+    "links": [
+        {
+            "length": 0,
+            "rel": "parent",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/"
+        },
+        {
+            "length": 0,
+            "rel": "self",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks?status=ASSIGNED&priority=&assignment=MY_AND_GROUP&keyword=&limit=10&offset=0&since=&until="
+        },
+        {
+            "length": 0,
+            "rel": "canonical",
+            "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/tasks"
+        }
+    ],
+    "user": {
+        "length": 0,
+        "rel": "user",
+        "href": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com:443/bpm/api/4.0/identities/user/ociadmin@omran.om"
+    }
+}

@@ -1,0 +1,137 @@
+{
+  "title": "",
+  "description": "",
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onLoad"
+        }
+      ]
+    }
+  },
+  "events": {},
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-collapsible": {
+        "path": "ojs/ojcollapsible"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      }
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.ContractHeader": {
+      "endpoint": "getContractbyHeaderid",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "ContractHeader": {
+     
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+      "advance_amount": "number",
+      "advance_per": "number",
+      "advance_rec_per": "number",
+      "approval_status": "string",
+          "approval_status_disp": "string",
+          "attribute_json": "any",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+      "po_approval_status": "string",
+      "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+      "retention_amount": "number",
+      "retention_max_amount": "number",
+      "retention_per": "number",
+      "revision_num": "number",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+
+    }
+    
+  },
+  "variables": {
+    "contHeader": {
+      "type": "ContractHeader"
+    },
+    "contHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    },
+    "revisionNum": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    }
+  },
+  "referenceable": "self"
+}

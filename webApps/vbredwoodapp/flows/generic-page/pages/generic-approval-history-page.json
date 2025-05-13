@@ -1,0 +1,29 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "p_appr_code": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    },
+    "p_type_id": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onLoad"
+        }
+      ]
+    }
+  },
+  "imports": {}
+}

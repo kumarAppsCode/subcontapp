@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "cont_header_id": 300000003751229,
+            "cert_invoice_id": 805,
+            "invoice_num": "CONT-04-02",
+            "invoice_date": "2023-09-02T00:00:00Z",
+            "invoice_amount": 30000,
+            "certification_number": "CERT805",
+            "ret_rel_amt": 3000,
+            "paid_ret_rel_amt": 1600,
+            "bal_ret_rel_amt": 1400
+        },
+        {
+            "cont_header_id": 300000003751229,
+            "cert_invoice_id": 821,
+            "invoice_num": "test-123",
+            "invoice_date": "2023-09-12T00:00:00Z",
+            "invoice_amount": 70000,
+            "certification_number": "CERT821",
+            "ret_rel_amt": 7000,
+            "paid_ret_rel_amt": 3000,
+            "bal_ret_rel_amt": 4000
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/RetentionRelease/module/search/retentionlineview?p_Cont_header=300000003751229"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/RetentionRelease/module/search/item"
+        }
+    ]
+}

@@ -1,0 +1,612 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "applLineADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getApplicationLinByHdrId",
+        "keyAttributes": "line_id"
+      }
+    },
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "displayOption": {
+      "type": {
+        "save": "boolean",
+        "saveClose": "string"
+      }
+    },
+    "errorMsg": {
+      "type": "string"
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "getApplicationheaderByIdVar": {
+      "type": "getApplicationheaderById"
+    },
+    "getApplicationLinByHdrIdVar": {
+      "type": "getApplicationLinByHdrId"
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "lineColumnsList": {
+      "type": "object[]",
+      "defaultValue": [
+          {
+            "headerText": "Item Number",
+            "field": "item_num",
+            "template": "",
+            "width": 172,
+            "resizable": "enabled",
+            "frozenEdge": "start"
+          },
+          {
+            "headerText": "Item Description",
+            "field": "item_description",
+            "width": 242,
+            "template": "",
+            "resizable": "enabled",
+            "frozenEdge": "start"
+          },
+          {
+            "headerText": "Project Number ",
+            "field": "project_num",
+            "template": "",
+            "width": 189,
+            "resizable": "enabled",
+            "frozenEdge": "start"
+          },
+          {
+            "headerText": " Task Number",
+            "field": "task_num",
+            "template": "",
+            "width": 170,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": " Expenditure Type",
+            "field": "expenditure_type",
+            "template": "",
+            "width": 190,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Quantity",
+            "field": "quantity",
+            "template": "quantity",
+            "width": 105,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Unit Price",
+            "field": "unit_price",
+            "template": "unitprice",
+            "width": 125,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "UOM",
+            "field": "uom_code",
+            "template": "",
+            "width": 120,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Tax Code",
+            "field": "tax_code",
+            "template": "",
+            "width": 161,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Line Amount",
+            "field": "cont_line_amount",
+            "template": "lineamount",
+            "width": 169,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Tax Rate",
+            "field": "cont_tax_rate",
+            "template": "taxRate",
+            "width": 161,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Tax Amount",
+            "field": "cont_tax_amount",
+            "template": "TaxAmount",
+            "width": 154,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Total Line Amount",
+            "field": "cont_net_line_amount",
+            "template": "TaxAmount",
+            "width": 193,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Payment Type",
+            "field": "calc_mode",
+            "template": "paymentType",
+            "width": 160,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Cumulative %",
+            "field": "cum_percentage",
+            "template": "cumPerc",
+            "width": 160,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Cumulative Qty",
+            "field": "cum_quantity",
+            "template": "cumQty",
+            "width": 176,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Cumulative Amount",
+            "field": "cum_amount",
+            "template": "cumAmount",
+            "width": 180,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Previous Percentage",
+            "field": "pre_percentage",
+            "template": "prevPerc",
+            "width": 150,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Previous Quantity",
+            "field": "pre_quantity",
+            "template": "prevQty",
+            "width": 155,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Previous Amount",
+            "field": "pre_amount",
+            "template": "prevAmount",
+            "width": 80,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Current Percentage",
+            "field": "cur_percentage",
+            "template": "currPerc",
+            "width": 80,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Current Quantity",
+            "field": "cur_quantity",
+            "template": "currQty",
+            "width": 150,
+            "resizable": "enabled"
+          },
+          {
+            "headerText": "Current Amount",
+            "field": "cur_amount",
+            "template": "currAmount",
+            "width": 100,
+            "resizable": "enabled"
+          }
+        ]},
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "pageVar": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "papplHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pcontHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "percentageTrigger": {
+      "type": "string",
+      "defaultValue": "0"
+    },
+    "previsionNum": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "QuantityTrigger": {
+      "type": "string",
+      "defaultValue": "0"
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "taskId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getApplicationheaderById": {
+      "endpoint": "getApplicationheaderById",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getApplicationLinByHdrId": {
+      "endpoint": "getApplicationLinByHdrId",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "getApplicationheaderById": {
+     
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "application_date": "string",
+          "application_num": "string",
+          "application_status": "string",
+          "application_status_code": "string",
+          "application_status_id": "number",
+          "approval_status": "string",
+          "approval_status_code": "string",
+          "approval_status_id": "number",
+          "attribute_json": "any",
+          "bill_to_location_code": "any",
+          "bill_to_location_id": "any",
+          "bu_id": "number",
+          "bu_name": "string",
+          "comments": "any",
+          "cont_header_id": "number",
+          "cont_revision_num": "number",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_payment_term": "any",
+          "contract_status": "string",
+          "contract_tax_amount": "number",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "created_date": "string",
+          "cum_adv_rec_amount": "any",
+      "cum_amount": "number",
+      "cum_mat_adv_rec_amount": "any",
+          "cum_ret_amount": "any",
+          "cur_adv_rec_amount": "any",
+      "cur_amount": "number",
+      "cur_mat_adv_rec_amount": "any",
+          "cur_ret_amount": "any",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "any",
+          "full_name": "any",
+          "header_id": "number",
+          "invoice_date": "string",
+          "invoice_num": "string",
+          "last_updated_by": "string",
+          "last_updated_date": "string",
+          "last_updated_login": "string",
+          "mobile_number": "any",
+      "net_amount": "number",
+      "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "any",
+          "payment_due_date": "any",
+          "payment_term_id": "any",
+          "payment_type": "string",
+      "payment_type_code": "string",
+      "payment_type_id": "number",
+      "phone_number": "any",
+          "po_header_id": "number",
+          "po_number": "string",
+          "pre_adv_rec_amount": "any",
+          "pre_app_amount": "number",
+          "pre_mat_adv_rec_amount": "any",
+          "pre_ret_amount": "any",
+          "ship_to_location_code": "any",
+          "ship_to_location_id": "any",
+          "subcontract_type": "string",
+          "tax_amount": "any",
+          "tax_code": "any",
+          "tax_rate": "any",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+     
+    },
+    "getApplicationLinByHdrId": {
+     
+          "attribute_json": "any",
+          "bu_id": "number",
+      "calc_mode": "string",
+      "category_id": "number",
+          "code_combination_id": "number",
+          "cont_header_id": "number",
+          "cont_line_amount": "number",
+          "cont_line_id": "number",
+          "cont_net_line_amount": "number",
+          "cont_revision_num": "number",
+          "cont_tax_amount": "number",
+          "cont_tax_code": "any",
+          "cont_tax_rate": "any",
+          "created_by": "string",
+          "created_date": "string",
+          "cum_adv_rec_amount": "any",
+          "cum_amount": "number",
+          "cum_mat_adv_rec_amount": "any",
+          "cum_percentage": "number",
+          "cum_quantity": "number",
+          "cum_ret_amount": "any",
+          "cur_adv_rec_amount": "any",
+          "cur_amount": "number",
+          "cur_mat_adv_rec_amount": "any",
+          "cur_percentage": "number",
+          "cur_quantity": "number",
+          "cur_ret_amount": "number",
+      "cur_ret_percentage": "number",
+      "expenditure_type": "string",
+          "expenditure_type_id": "number",
+          "header_id": "number",
+          "item_description": "string",
+          "item_id": "any",
+          "item_num": "any",
+          "item_spec": "string",
+          "last_updated_by": "string",
+          "last_updated_date": "string",
+          "last_updated_login": "string",
+          "line_id": "number",
+          "line_num": "number",
+          "line_type_id": "number",
+          "net_amount": "any",
+          "object_version_num": "number",
+          "po_distribution_id": "number",
+          "po_distribution_num": "number",
+          "po_header_id": "number",
+          "po_line_id": "number",
+          "po_line_num": "number",
+          "pre_adv_rec_amount": "any",
+          "pre_amount": "number",
+          "pre_mat_adv_rec_amount": "any",
+          "pre_percentage": "number",
+          "pre_quantity": "number",
+          "pre_ret_amount": "any",
+          "project_id": "number",
+          "project_num": "string",
+          "quantity": "number",
+          "remarks": "any",
+          "task_id": "number",
+          "task_num": "string",
+          "tax_amount": "any",
+          "tax_code": "any",
+          "tax_rate": "any",
+          "unit_price": "number",
+          "uom_code": "string"
+      
+    }
+
+  },
+  "eventListeners": {
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "cumPercentageValue": {
+      "chains": [
+        {
+          "chain": "LineCumCalByPercentage",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "cumQuantityValue": {
+      "chains": [
+        {
+          "chain": "LineCumCalByQuantity",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chainId": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSpSave": {
+      "chains": [
+        {
+          "chainId": "spSaveChain"
+        }
+      ]
+    },
+    "ojSpSubmit": {
+      "chains": [
+        {
+          "chainId": "spSubmitChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "paymentTypeValue": {
+      "chains": [
+        {
+          "chain": "onClickPaymentType",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "linesLoad"
+        }
+      ]
+    },
+    "ojSsce1SpSecondaryAction2": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpSecondaryActionChain",
+          "parameters": {
+            "actionId": "{{ $event.detail.secondaryItem }}"
+          }
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+    },
+    "modules": {
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-10-icoSimpleCreateAndEdit48Svg"
+  }
+}

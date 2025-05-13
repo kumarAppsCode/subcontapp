@@ -1,0 +1,8 @@
+{
+  "id": "sync-setup",
+  "description": "Flow main",
+  "defaultPage": "sync-setup",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

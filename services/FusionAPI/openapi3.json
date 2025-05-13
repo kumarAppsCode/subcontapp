@@ -1,0 +1,224 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Fusion Restservices",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/FusionApi"
+        }
+    ],
+    "paths": {
+        "/fscmRestApi/resources/11.13.18.05/purchaseOrders/{poheaderid}/child/attachments": {
+            "parameters": [
+                {
+                    "name": "poheaderid",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "x-vb": {
+                        "defaultValue": "7001"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "GetPOattachment",
+                "parameters": [
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "FileContents"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetFscmRestApiResources11_13_18_05PurchaseOrdersPoheaderidChildAttachments"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/GetPOattachment/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetFscmRestApiResources11_13_18_05PurchaseOrdersPoheaderidChildAttachments": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "AttachedDocumentId": {
+                                    "type": "integer"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "DatatypeCode": {
+                                    "type": "string"
+                                },
+                                "FileName": {
+                                    "type": "string"
+                                },
+                                "DmFolderPath": {
+                                    "nullable": true
+                                },
+                                "DmDocumentId": {
+                                    "type": "string"
+                                },
+                                "DmVersionNumber": {
+                                    "type": "string"
+                                },
+                                "Url": {
+                                    "nullable": true
+                                },
+                                "CategoryName": {
+                                    "type": "string"
+                                },
+                                "UserName": {
+                                    "type": "string"
+                                },
+                                "Uri": {
+                                    "nullable": true
+                                },
+                                "FileUrl": {
+                                    "type": "string"
+                                },
+                                "UploadedText": {
+                                    "nullable": true
+                                },
+                                "UploadedFileContentType": {
+                                    "type": "string"
+                                },
+                                "UploadedFileLength": {
+                                    "type": "integer"
+                                },
+                                "UploadedFileName": {
+                                    "nullable": true
+                                },
+                                "ContentRepositoryFileShared": {
+                                    "type": "string"
+                                },
+                                "Title": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "ErrorStatusCode": {
+                                    "nullable": true
+                                },
+                                "ErrorStatusMessage": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "FileContents": {
+                                    "type": "string"
+                                },
+                                "ExpirationDate": {
+                                    "nullable": true
+                                },
+                                "LastUpdatedByUserName": {
+                                    "type": "string"
+                                },
+                                "CreatedByUserName": {
+                                    "type": "string"
+                                },
+                                "AsyncTrackerId": {
+                                    "nullable": true
+                                },
+                                "DownloadInfo": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

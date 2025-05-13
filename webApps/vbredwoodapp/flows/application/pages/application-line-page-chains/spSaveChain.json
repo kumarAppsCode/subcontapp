@@ -1,0 +1,44 @@
+{
+  "description": "Submit form data",
+  "variables": {},
+  "root": "isFormValid",
+  "actions": {
+    "isFormValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.formState === 'valid' ]]"
+      },
+      "outcomes": {
+        "true": "resetDirtyDataFlag",
+        "false": "showValidationMessages"
+      }
+    },
+    "showValidationMessages": {
+      "module": "vb/action/builtin/callComponentMethodAction",
+      "parameters": {
+        "component": "{{ document.querySelector('oj-dynamic-form') }}",
+        "method": "showMessages"
+      }
+    },
+    "resetDirtyDataFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.dirtyDataFlag"
+        ]
+      },
+      "outcomes": {
+        "success": "setVariableIsSaved"
+      }
+    },
+    "setVariableIsSaved": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.isSaved": {
+          "source": true,
+          "auto": "always"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "description": "",
+  "root": "assignVariablesTransSearchObj",
+  "actions": {
+
+    "assignVariablesTransSearchObj": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.transSearchObj": {
+          "auto": "always",
+          "reset": "toDefault"
+        },
+        "$page.variables.getContractNumberSDP": {
+          "source": {
+            "filterCriterion": {
+              "op": "$eq",
+              "attribute": "bu_id",
+              "value": "-1"
+            }
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "action": {
+        "id": "APPROVE",
+        "type": "CUSTOM"
+    },
+    "comment": {
+        "commentStr": "test",
+        "commentScope": "BPM"
+    }
+}

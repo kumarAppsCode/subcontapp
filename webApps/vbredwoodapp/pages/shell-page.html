@@ -1,0 +1,180 @@
+<!-- Copyright (c) 2023, Oracle and/or its affiliates -->
+<oj-messages messages="[[ $variables.messageADP ]]" position.at.horizontal="center" position.at.vertical="top"
+   position.collision="flip" position.my.vertical="top" display-options.category="header" class="oj-messages-outlined"></oj-messages>
+<div id="pageContent" class="oj-web-applayout-page">
+   <oj-bind-if test="[[true]]">
+      <div class="oj-flex-bar oj-sm-align-items-center menuList">
+         <oj-bind-if test="[[ $application.variables.setupHideVar == 'Y' ]]">
+            <oj-button class="oj-flex-bar-start" chroming="borderless" on-oj-action="[[$listeners.buttonAction]]">
+               <span class="oj-ux-ico-menu icons"></span>
+               <h6 id="h4" slot="endIcon" class="icons h1">
+                  <oj-bind-text value="Subcontract"></oj-bind-text>
+               </h6>
+            </oj-button>
+         </oj-bind-if>
+      </div>
+   </oj-bind-if>
+   <oj-bind-if test="[[true]]">
+      <div class="oj-web-applayout-content-nopad oj-web-spacing oj-web-applayout-max-width">
+         <div class="oj-flex oj-web-applayout-content oj-flex-items-pad">
+            <oj-vb-content id="vbRouterContent" class="oj-flex-item" config="[[vbRouterFlow]]">
+         </div>
+      </div>
+   </oj-bind-if>
+</div>
+<!--Drawer Popup Starts-->
+<oj-drawer-popup opened='{{ $variables.popupOpen==="Y" }}' close-gesture="none" style="width:80px">
+  <div class="popupheader" >
+ 
+   <h1 id="h4" style="font-size: larger; font-weight: bold;color:white; margin-bottom: 10px; margin-left: 4px; padding-top: 4px;" >SubContract</h1>
+   <!-- <h1 style="color: #01474d; font-size: larger; font-weight: bold; margin: 0;" title="Template" class="h1">Bank </h1> -->
+  <oj-button style="margin-left:260px; margin-top:-40px;" chroming="borderless"
+    on-oj-action="[[$listeners.buttonAction18]]" >
+    <span class="oj-ux-ico-warehouse " slot="startIcon"></span>
+</oj-button>
+
+</div>
+   <!-- <div class="oj-flex"> -->
+   <oj-bind-if test="[[ $application.variables.apptype === 'IT' || $application.variables.apptype === 'ADMIN' ]]">
+   <oj-collapsible expanded="true">
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction14]]" >
+         <span slot="startIcon" class="oj-ux-ico-advanced-create-and-edit-with-sub-tab-template"></span>Contract
+      
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction15]]" >
+         <span slot="startIcon" class="oj-ux-ico-create-site"></span>Application
+      
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction16]]" >
+         <span slot="startIcon" class="oj-ux-ico-create-options"></span>Certification
+      
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction17]]" >
+         <span slot="startIcon" class="oj-ux-ico-financial-list-create"></span>Retention Release
+      
+      </oj-button>
+      <br>
+      <!--First Collapsible-->
+      <!-- <oj-navigation-list class="oj-flex-item oj-sm-12 oj-md-12" display="icons"
+         selection="{{ $variables.MenuSelection }}" on-selection-changed="[[$listeners.navigationListSelection]]" 
+         >
+         <!--First Navigation list
+         <ul>
+            <li id="contract">
+               <a href="#">Contract</a>
+            </li>
+            <li id="application">
+               <a href="#">Application</a>
+            </li>
+            <li id="certification">
+               <a href="#">Certification</a>
+            </li>
+            <li id="retentionrelease">
+               <a href="#">Retention Release</a>
+            </li>
+            <!-- <li id="adminsetup">
+               <a href="#">Admin Setup</a>
+               </li> 
+         </ul>
+      </oj-navigation-list> -->
+      <h1 id="h4" slot="header" style="font-size: larger; font-weight: bold;color:#013766">
+         <oj-bind-text value="SubContract"></oj-bind-text>
+      </h1>
+   </oj-collapsible>
+   </oj-bind-if>
+<oj-bind-if test="[[ $application.variables.apptype === 'IT' ]]">
+   <oj-collapsible >
+      <!--Third Collapsible-->
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction7]]"
+         >
+         <span slot="startIcon" class="oj-ux-ico-lookup-set"></span>Lookup
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction8]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-workflow-role"></span>Role
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction9]]" 
+         >
+         <span slot="startIcon" class="oj-ux-ico-user-configuration"></span>User
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction10]]" 
+         >
+         <span slot="startIcon" class="oj-ux-ico-menu-select-many"></span>Menu
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction11]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-menu-advanced"></span>Menu Access
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction12]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-contact-workflow-role"></span>Approval Role
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction13]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-hierarchy-tabs"></span>Approval Hierarchy
+      </oj-button>
+      <h1 id="h4" slot="header" style="font-size: larger; font-weight: bold;color:#013766">Admin Setup</h1>
+   </oj-collapsible>
+   <oj-collapsible >
+      <!--Fourth Collapsible-->
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction2]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-file-sync"></span>Sync Setup
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction3]]" >
+         <span slot="startIcon" class="oj-ux-ico-file-sync"></span>Sync Process
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction4]]" 
+         >
+         <span slot="startIcon" class="oj-ux-ico-sync"></span>Schedule Sync
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction5]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-log"></span>Sync Process Logs
+      </oj-button>
+      <br>
+      <oj-button chroming="borderless" class="oj-button-sm" on-oj-action="[[$listeners.buttonAction6]]"  
+         >
+         <span slot="startIcon" class="oj-ux-ico-file-error"></span>Error Logs
+      </oj-button>
+      <h1 id="h4" slot="header" style="font-size: larger; font-weight: bold;color:#013766">Sync Setup</h1>
+   </oj-collapsible>
+
+</oj-bind-if>
+   <!-- <oj-collapsible expanded="true"> <!--First Collapsible
+      <oj-navigation-list class="oj-flex-item oj-sm-12 oj-md-12" display="icons"
+        selection="{{ $variables.MenuSelection }}" on-selection-changed="[[$listeners.navigationListSelection]]">
+         
+      
+      <ul>
+      <li id="user">
+        <a href="#">User</a>
+      </li>
+      <li id="role">
+        <a href="#">Role</a>
+      </li>
+      <!-- <li id="certification">
+        <a href="#">Certification</a>
+      </li>
+      <li id="retentionrelease">
+        <a href="#">Retention Release</a>
+      </li>
+      <li id="adminsetup">
+        <a href="#">Admin Setup</a>
+      </li> -->
+   </ul>
+   </oj-navigation-list>
+   </oj-collapsible> 
+</oj-drawer-popup>

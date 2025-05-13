@@ -1,0 +1,39 @@
+{
+  "title": "",
+  "description": "",
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onLoad"
+        }
+      ]
+    }
+  },
+  "events": {},
+  "imports": {},
+  "metadata": {},
+  "types": {},
+  "variables": {
+    "p_appl_code": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    },
+    "p_appl_ref_id": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    },
+    "p_appl_ref_num": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    },
+    "p_attachment_url": {
+      "type": "string"
+    }
+  },
+  "referenceable": "self"
+}

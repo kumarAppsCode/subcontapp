@@ -1,0 +1,50 @@
+{
+    "items": [
+        {
+            "buyer_id": 300000003011071,
+            "buyer_name": "Ahmed Al Saidi"
+        },
+        {
+            "buyer_id": 300000003001880,
+            "buyer_name": "Ahmed Al Hamdani"
+        },
+        {
+            "buyer_id": 300000002888357,
+            "buyer_name": "Kamal Al Harrasi"
+        },
+        {
+            "buyer_id": 300000003076547,
+            "buyer_name": "Saleem Al Hajri"
+        },
+        {
+            "buyer_id": 300000003076897,
+            "buyer_name": "Abdullah Hassan"
+        },
+        {
+            "buyer_id": 300000003029571,
+            "buyer_name": "FERNANDES MARWIN"
+        },
+        {
+            "buyer_id": 300000003006338,
+            "buyer_name": "Nasreen Al Harthi"
+        },
+        {
+            "buyer_id": 300000003006843,
+            "buyer_name": "Badar Al Shukaili"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 8,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/contract/lov/buyername"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/metadata-catalog/contract/lov/item"
+        }
+    ]
+}

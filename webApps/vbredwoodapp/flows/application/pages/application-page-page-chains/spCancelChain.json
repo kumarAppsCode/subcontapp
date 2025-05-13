@@ -1,0 +1,80 @@
+{
+  "description": "",
+  "variables": {
+    "detail": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  },
+  "root": "if",
+  "actions": {
+    "navigateToApplicationStart": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "application-start"
+      }
+    },
+    "ifPageVar": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.pageVar === \"CertificationPage\" ]]"
+      },
+      "outcomes": {
+        "false": "navigateToContractContractPage",
+        "true": "navigateBack"
+      }
+    },
+    "navigateToContractContractPage": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "target": "parent",
+        "flow": "contract",
+        "page": "contract-page",
+        "params": {
+          "p_ContractHeader": "{{ $page.variables.pcontHeaderId }}",
+          "p_Revision_Number": "{{ $page.variables.previsionNum }}",
+          "pBuId": "{{ $page.variables.postApplHdr.bu_id }}",
+          "pageVar": "ContractStart"
+        }
+      },
+      "@dt": {
+        "targetType": "flow"
+      }
+    },
+    "navigateBack": {
+      "module": "vb/action/builtin/navigateBackAction"
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.pageVar === \"ContractPage\" || $page.variables.pageVar === \"CertificationPage\" ]]"
+      },
+      "outcomes": {
+        "false": "if2",
+        "true": "ifPageVar"
+      }
+    },
+    "navigateToGenericPageGenericPagePendingList": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "target": "parent",
+        "flow": "generic-page",
+        "page": "generic-page-pending-list"
+      },
+      "@dt": {
+        "targetType": "flow"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.taskId === null || $page.variables.taskId === undefined ]]"
+      },
+      "outcomes": {
+        "false": "navigateToGenericPageGenericPagePendingList",
+        "true": "navigateToApplicationStart"
+      }
+    }
+  }
+}

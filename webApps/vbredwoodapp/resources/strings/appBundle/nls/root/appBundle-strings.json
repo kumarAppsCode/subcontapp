@@ -1,0 +1,334 @@
+{
+    "sample_page_title": "Welcome to your First Redwood App!!!",
+    "@sample_page_title": {
+        "description": "Sample Page Title"
+    },
+    "sample_page_description": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+    "@sample_page_description": {
+        "description": "Sample Page Description"
+    },
+    "input_text_label_hint": "Supplier Site",
+    "@input_text_label_hint": {
+        "description": ""
+    },
+    "input_date_label_hint": "Contract From Date",
+    "@input_date_label_hint": {
+        "description": ""
+    },
+    "input_date_label_hint_2456": "Contract To Date",
+    "@input_date_label_hint_2456": {
+        "description": ""
+    },
+    "button_label": "Search",
+    "@button_label": {
+        "description": ""
+    },
+    "button_label_caa9": "Reset",
+    "@button_label_caa9": {
+        "description": ""
+    },
+    "input_text_label_hint_31f9": "Supplier Name",
+    "@input_text_label_hint_31f9": {
+        "description": ""
+    },
+    "input_text_placeholder": "Supplier Name",
+    "@input_text_placeholder": {
+        "description": ""
+    },
+    "label__text": "Active Flag",
+    "@label__text": {
+        "description": ""
+    },
+    "input_text_label_hint_1166": "Search",
+    "@input_text_label_hint_1166": {
+        "description": ""
+    },
+    "select_single_label_hint": "Retention Number",
+    "@select_single_label_hint": {
+        "description": ""
+    },
+    "select_single_label_hint_5f28": "Business Unit",
+    "@select_single_label_hint_5f28": {
+        "description": ""
+    },
+    "BusinessUnit": "Business Unit",
+    "@BusinessUnit": {
+        "description": ""
+    },
+    "ContractName": "Contract Name",
+    "@ContractName": {
+        "description": ""
+    },
+    "ContractCreationDate": "Contract Creation Date",
+    "@ContractCreationDate": {
+        "description": ""
+    },
+    "supplierName": "Supplier Name",
+    "@supplierName": {
+        "description": ""
+    },
+    "supplierSite": "Supplier Site",
+    "@supplierSite": {
+        "description": ""
+    },
+    "billToLocation": "Bill To Location",
+    "@billToLocation": {
+        "description": ""
+    },
+    "shipToLocation": "Ship To Location",
+    "@shipToLocation": {
+        "description": ""
+    },
+    "Address1": "Address1",
+    "@Address1": {
+        "description": ""
+    },
+    "Address2": "Address2",
+    "@Address2": {
+        "description": ""
+    },
+    "email": "Email",
+    "@email": {
+        "description": ""
+    },
+    "PhoneNo": "Phone No",
+    "@PhoneNo": {
+        "description": ""
+    },
+    "MobileNo": "Mobile No",
+    "@MobileNo": {
+        "description": ""
+    },
+    "Currency": "Currency",
+    "@Currency": {
+        "description": ""
+    },
+    "ContractAmount": "Contract Amount",
+    "@ContractAmount": {
+        "description": ""
+    },
+    "TaxAmount": "Tax Amount",
+    "@TaxAmount": {
+        "description": ""
+    },
+    "NetAmount": "Net Amount",
+    "@NetAmount": {
+        "description": ""
+    },
+    "ContractStatus": "Contract Status",
+    "@ContractStatus": {
+        "description": ""
+    },
+    "ApprovalStatus": "Approval Status",
+    "@ApprovalStatus": {
+        "description": ""
+    },
+    "StartDate": "* Start Date",
+    "@StartDate": {
+        "description": ""
+    },
+    "EndDate": "* End Date",
+    "@EndDate": {
+        "description": ""
+    },
+    "input_text_placeholder_9af1": "Supplier Site",
+    "@input_text_placeholder_9af1": {
+        "description": ""
+    },
+    "select_single_placeholder": "Business Unit",
+    "@select_single_placeholder": {
+        "description": ""
+    },
+    "select_single_placeholder_cc68": "Retention Number",
+    "@select_single_placeholder_cc68": {
+        "description": ""
+    },
+    "input_date_placeholder": "From Date",
+    "@input_date_placeholder": {
+        "description": ""
+    },
+    "input_date_placeholder_a306": "To Date",
+    "@input_date_placeholder_a306": {
+        "description": ""
+    },
+    "input_text_placeholder_45ee": "Search",
+    "@input_text_placeholder_45ee": {
+        "description": ""
+    },
+    "Advance": "Advance",
+    "@Advance": {
+        "description": ""
+    },
+    "Percentage": "Percentage",
+    "@Percentage": {
+        "description": ""
+    },
+    "Amount": "Amount",
+    "@Amount": {
+        "description": ""
+    },
+    "Add": "Add",
+    "@Add": {
+        "description": ""
+    },
+    "GuaranteeType": "* Guarantee Type",
+    "@GuaranteeType": {
+        "description": ""
+    },
+    "Category": "* Category",
+    "@Category": {
+        "description": ""
+    },
+    "Institution": "Institution",
+    "@Institution": {
+        "description": ""
+    },
+    "yearFormate": "DD-MMM-YYYY",
+    "@yearFormate": {
+        "description": ""
+    },
+    "Remarks": "Remarks",
+    "@Remarks": {
+        "description": ""
+    },
+    "SaveAddAnother": "Save & Add Another",
+    "@SaveAddAnother": {
+        "description": ""
+    },
+    "SaveClose": "Save & Close",
+    "@SaveClose": {
+        "description": ""
+    },
+    "InvalidUserPleaseContactAdministrator": "Invalid User Please Contact Administrator",
+    "@InvalidUserPleaseContactAdministrator": {
+        "description": ""
+    },
+    "_summary": "InvalidUserPleaseContactAdministrator",
+    "@_summary": {
+        "description": "InvalidUserPleaseContactAdministrator"
+    },
+    "RestAPIError": "Rest API Error.",
+    "@RestAPIError": {
+        "description": ""
+    },
+    "Upload": "Upload",
+    "@Upload": {
+        "description": ""
+    },
+    "FileName": "File Name",
+    "@FileName": {
+        "description": ""
+    },
+    "Description": "Description",
+    "@Description": {
+        "description": ""
+    },
+    "SaveAdd": "Save & Add",
+    "@SaveAdd": {
+        "description": ""
+    },
+    "InformationSavedSuccessfully": "Information Saved Successfully.",
+    "@InformationSavedSuccessfully": {
+        "description": ""
+    },
+    "created_by": "Created By :",
+    "@created_by": {
+        "description": ""
+    },
+    "CreatedDate": "Created Date :",
+    "@CreatedDate": {
+        "description": ""
+    },
+    "UpdatedBy": "Updated By :",
+    "@UpdatedBy": {
+        "description": ""
+    },
+    "RestApiError": "Rest API Error.",
+    "@RestApiError": {
+        "description": ""
+    },
+    "TotalAmount": "Total Amount",
+    "@TotalAmount": {
+        "description": ""
+    },
+    "RestAPIErro": "Rest API Error.",
+    "@RestAPIErro": {
+        "description": ""
+    },
+    "PleaseFilltheRequiredField": "Please Fill the Required Fields",
+    "@PleaseFilltheRequiredField": {
+        "description": ""
+    },
+    "ApplicationNumber": "Application Number",
+    "@ApplicationNumber": {
+        "description": ""
+    },
+    "ContractNumber": "Contract Number",
+    "@ContractNumber": {
+        "description": ""
+    },
+    "certificationNumber": "Certification Number",
+    "@certificationNumber": {
+        "description": ""
+    },
+    "_summary_26b9": "Record is not in Draft .",
+    "@_summary_26b9": {
+        "description": ""
+    },
+    "_summary_35ac": "Record not in Draft.",
+    "@_summary_35ac": {
+        "description": ""
+    },
+    "Savetheguaranteerecord": "Save the guarantee record",
+    "@Savetheguaranteerecord": {
+        "description": ""
+    },
+    "thereisnoattachment": "There is no attachment",
+    "@thereisnoattachment": {
+        "description": ""
+    },
+    "RecordwillbedeletedonlyinDraftandRejectedStatus": "Record will be deleted only in Draft  and Rejected Status.",
+    "@RecordwillbedeletedonlyinDraftandRejectedStatus": {
+        "description": ""
+    },
+    "Youcancreaterecordsonlyforapprovedcontract": "You can create records only for approved contract.",
+    "@Youcancreaterecordsonlyforapprovedcontract": {
+        "description": ""
+    },
+    "Certificationnotavailable": "Certification not available.",
+    "@Certificationnotavailable": {
+        "description": ""
+    },
+    "StartDate1": "Start Date",
+    "@StartDate1": {
+        "description": ""
+    },
+    "EndDate1": "End Date",
+    "@EndDate1": {
+        "description": ""
+    },
+    "ProjectNumber": "Project Number",
+    "@ProjectNumber": {
+        "description": ""
+    },
+    "BuyerName": "Buyer Name",
+    "@BuyerName": {
+        "description": ""
+    },
+    "POApprovalStatus": "PO Approval Status",
+    "@POApprovalStatus": {
+        "description": ""
+    },
+    "select_single_placeholder_c204": "Buyer Name",
+    "@select_single_placeholder_c204": {
+        "description": ""
+    },
+    "Advance_Amount": "Advance Amount",
+    "@Advance_Amount": {
+        "description": ""
+    },
+    "RecoupmentPercentage": "Recoupment Percentage",
+    "@RecoupmentPercentage": {
+        "description": ""
+    }
+   }

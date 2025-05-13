@@ -1,0 +1,32 @@
+{
+  "description": "",
+  "variables": {
+    "detail": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  },
+  "root": "ifPageVar",
+  "actions": {
+    "navigateToMainStart": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-start"
+      }
+    },
+    "ifPageVar": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.pageVar === \"ContractStart\" ]]"
+      },
+      "outcomes": {
+        "true": "navigateToMainStart",
+        "false": "navigateBack"
+      }
+    },
+    "navigateBack": {
+      "module": "vb/action/builtin/navigateBackAction"
+    }
+  }
+}

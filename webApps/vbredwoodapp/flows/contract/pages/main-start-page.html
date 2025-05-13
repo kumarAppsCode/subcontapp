@@ -1,0 +1,192 @@
+<oj-sp-smart-search-page page-title="Contract" display-mode="light" primary-action.display="on"
+   primary-action.label="Reset"
+   secondary-actions='[{"label":"Search","id":"search","icon":"oj-ux-ico-content-item-search"}]'
+   on-sp-secondary-action="[[$listeners.smartSearchPageTemplateSpSecondaryAction]]"
+   on-sp-primary-action="[[$listeners.smartSearchPageTemplateSpPrimaryAction]]" page-subtitle=" ">
+   <!-- Drawer Popup Start -->
+   <oj-drawer-popup style="width:35%;" opened="{{ $variables.drawerPopup }}" edge="end" modality="modeless"
+      auto-dismiss="none">
+      <!-- <oj-collapsible  id="c4">-->
+      <oj-toolbar chroming="solid" style="background-color:#013766;">
+         <oj-button display="icons" chroming="borderless" on-oj-action="[[$listeners.buttonAction]]">
+            <span class="oj-ux-ico-chevron-left" slot="startIcon"></span>
+         </oj-button>
+         <h1 id="h4" style="font-size: larger; font-weight: bold; margin-left:1%; color:white; ">Search Contract </h1>
+      </oj-toolbar>
+      <br>
+      <div class="oj-helper-justify-content-flex-end">
+         <oj-form-layout columns="1" direction="column" max-columns="2" class="oj-forme-control" label-edge="start">
+            <!-- <oj-form-layout label-edge="start"> -->
+            <!--BusinessUnit -->
+            <oj-select-single item-text="bu_name" style="width: 21rem;"
+               label-hint="[[$application.translations.appBundle.select_single_label_hint_5f28]]"
+               data="[[ $variables.getBusinessUnitListSDP ]]" value="{{ $variables.postContractTestVar.P_BU_ID }}"
+               placeholder="[[$application.translations.appBundle.select_single_placeholder]]">
+               <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+                     columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results"
+                     columns='[{"headerText":"Business Unit","field":"bu_name"}]'
+                     on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                     selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"
+                     horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+                  </oj-table>
+               </template>
+            </oj-select-single>
+            <!-- Project Number -->
+            <oj-select-single item-text="project_num" style="width: 21rem;"
+               label-hint="[[$application.translations.appBundle.ProjectNumber]]" placeholder="Project Number"
+               value="{{ $variables.postContractTestVar.P_PROJECT_ID }}"
+               data="[[$variables.getContractLovProjectnumberListSDP]]">
+               <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+                     columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results" columns=' [
+                     {"headerText":"Project Number","field":"project_num"}
+                     ]' on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                     selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"
+                     horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+                  </oj-table>
+               </template>
+            </oj-select-single>
+            <!-- Project Number -->
+            <!-- Project Number -->
+            <oj-select-single item-text="buyer_name" style="width: 21rem;"
+               label-hint="[[$application.translations.appBundle.BuyerName]]"
+               data="[[$variables.getContractLovBuyername2ListSDP]]"
+               placeholder="[[$application.translations.appBundle.select_single_placeholder_c204]]"
+               value="{{ $variables.postContractTestVar.P_BUYER_ID }}">
+               <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" selection-mode='{"row": "single"}'
+                     columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results" columns=' [
+                     {"headerText":"Buyer Name","field":"buyer_name"}
+                     ]' on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                     selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"
+                     horizontal-grid-visible="disabled" vertical-grid-visible="disabled">
+                  </oj-table>
+               </template>
+            </oj-select-single>
+            <!-- Project Number -->
+            <!--Contract Num -->
+            <oj-bind-if test='true'>
+               <oj-select-single item-text="contract_num" style="width: 21rem;"
+                  label-hint="[[$application.translations.appBundle.ContractNumber]]"
+                  value="{{ $variables.postContractTestVar.P_CONTRACT_NUM }}"
+                  data="[[$variables.getContractHeaderLovListSDP2]]" placeholder="Contract Number">
+                  <template slot="collectionTemplate" data-oj-as="collection">
+                     <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                        vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+                        columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results" columns=' [
+                        {"headerText":"Contract Number","field":"contract_num"}
+                        ]' on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                        selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid">
+                     </oj-table>
+                  </template>
+               </oj-select-single>
+            </oj-bind-if>
+            <!-- <oj-form-layout label-edge="start"> -->
+            <!--Vendor Name  -->
+            <oj-select-single label-hint="[[$application.translations.appBundle.input_text_label_hint_31f9]]"
+               style="width: 21rem;" value="{{ $variables.postContractTestVar.P_VENDOR_ID }}"
+               data="[[$variables.getVendorsListSDP]]" item-text="vendor_name" placeholder="Supplier Name">
+               <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                     vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+                     columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results" columns=' [
+                     {"headerText":"Vendor Name","field":"vendor_name"}
+                     ]' on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                     selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid">
+                  </oj-table>
+               </template>
+            </oj-select-single>
+            <oj-input-date converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' style="width: 21rem;"
+               label-hint="[[$application.translations.appBundle.input_date_label_hint]]"
+               placeholder="[[$application.translations.appBundle.input_date_placeholder]]"
+               value="{{ $variables.postContractTestVar.P_FROM_CONTRACT_DATE }}"
+               max="[[ $variables.postContractTestVar.P_TO_CONTRACT_DATE ]]">
+            </oj-input-date>
+            <oj-input-date label-hint="[[$application.translations.appBundle.input_date_label_hint_2456]]"
+               converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' style="width: 21rem;"
+               placeholder="[[$application.translations.appBundle.input_date_placeholder_a306]]"
+               value="{{ $variables.postContractTestVar.P_TO_CONTRACT_DATE }}"
+               min="[[ $variables.postContractTestVar.P_FROM_CONTRACT_DATE ]]">
+            </oj-input-date>
+         </oj-form-layout>
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+         <oj-button style="searchBtn margin-left:0.5%;margin-right:0.5%;"
+            label="[[$application.translations.appBundle.button_label]]" on-oj-action="[[$listeners.buttonAction2]]">
+         </oj-button>
+         <oj-button style="resetBtn margin-left:0.5%;margin-right:0.5%;"
+            label="[[$application.translations.appBundle.button_label_caa9]]" on-oj-action="[[$listeners.buttonAction3]]">
+         </oj-button>
+      </div>
+   
+   </oj-drawer-popup>
+   <!-- Drawer Popup End -->
+   <!-- Start of first three Div  (used for Table Horizontal Scrolling)  -->
+   <div id="sampleDemo" style="" class="demo-padding demo-container">
+      <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+         <div id="mainContent">
+            <!-- Start of Export Icon -->
+            <div class="oj-flex oj-sm-justify-content-flex-end">
+               <oj-sample-export-data max-rows="10000" file-name="contract Information" format="plain"
+                  data="[[ $variables.getSearchContractHeaderADP ]]" chroming="half"
+                  columns='[    {        "headerText": "Contract Number",        "field": "contract_num",        "width": 182,        "template": "edit",        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Version",        "field": "object_version_num",        "template": "version",        "width": 130,        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Scope of Work",        "field": "contract_name",        "template": "scopeofWork",        "width": 161,        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Contract Date",        "field": "contract_date",        "template": "contractDate",        "width": 154,        "resizable": "enabled",        "frozenEdge": "start"    },    {        "headerText": "Approval Status",        "field": "approval_status_disp",        "template": "approval_status",        "width": 194,        "resizable": "enabled"    },    {        "headerText": "Contract Status",        "field": "contract_status",        "template": "activeFlagTemplate",        "width": 166,        "resizable": "enabled"    },    {        "headerText": "Supplier Name",        "field": "vendor_name",        "template": "",        "width": 175,        "resizable": "enabled"    },    {        "headerText": "Supplier Site",        "field": "vendor_site_code",        "template": "",        "width": 146,        "resizable": "enabled"    },    {        "headerText": "Currency",        "field": "currency_code",        "template": "",        "width": 110,        "resizable": "enabled"    },    {        "headerText": "Contract Amount",        "field": "contract_amount",        "template": "ContractAmount",        "width": 180,        "resizable": "enabled"    },    {        "headerText": "Tax Amount",        "field": "tax_amount",        "template": "TaxAmount",        "width": 148,        "resizable": "enabled"    },    {        "headerText": "Total Contract Amount",        "field": "net_contract_amount",        "template": "NetContractAmount",        "width": 223,        "resizable": "enabled"    },    {        "headerText": "Business Unit",        "field": "bu_name",        "template": "",        "width": 175,        "resizable": "enabled"    },    {        "headerText": "Previous",        "field": "",        "template": "previous",        "width": 110,        "resizable": "enabled"    }]'>
+                  <span>
+                     <oj-bind-text value="Export"></oj-bind-text>
+                  </span>
+                  <img slot="startIcon" :src="[[ $flow.path + 'resources/images/excel_img_1.png' ]]" width="15" height="15">
+               </oj-sample-export-data>
+               <!-- End of Export Icon -->
+               <!-- Start of of Contract Table -->
+               <oj-table scroll-policy="loadMoreOnScroll" class="oj-sm-width-full oj-bg-body oj-search-table"
+                  selection-mode.row="single" id="searchSSTable" display="grid" selection-mode.column="single"
+                  data="[[ $application.variables.searchData ]]" columns="{{ $variables.contractColumnList }}">
+                  <!-- edit -->
+                  <template slot="edit">
+                     <a target="_blank" on-click="[[$listeners.hyperlinkClick]]">
+                        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                     </a>
+                  </template>
+                  <!-- contractDate -->
+                  <template slot="contractDate">
+                     <oj-input-date value="[[$current.data]]" readonly="true"
+                        converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                  </template>
+                  <!-- Contract Status Template -->
+                  <template slot="approval_status">
+                     <span class="oj-badge oj-flex-item oj-badge-sm oj-badge-success" style="margin-left: 50px;"  >Approved</span>
+                  </template>
+                  <template slot="ContractAmount">
+                     <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true" id="21"
+                        converter='{"type":"number","options":{"minimumFractionDigits":3}}'> 
+                                
+                     </oj-input-number>
+                     <!-- <oj-sp-input-currency style="text-align: right;" value="[[$current.data]]" readonly="true"
+                        currency="[[ $current.row.currency_code ]]" currency-format="standard" disabled="true" label-hint=" "
+                        currency-display="symbol"></oj-sp-input-currency> -->      
+                  </template>
+                  <template slot="TaxAmount">
+                     <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true" id="22"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                
+                     </oj-input-number>
+                            
+                  </template>
+                  <template slot="NetContractAmount">
+                     <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true" id="23"
+                        converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                
+                     </oj-input-number>
+                            
+                  </template>
+                  <oj-paging-control style="margin-left:38%;" id="paging" class="oj-sm-width-full" page-size="10"
+                     slot="bottom" data="[[ $application.variables.searchData ]]">
+                  </oj-paging-control>
+               </oj-table>
+               <!-- End of of Contract Table -->      
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- End of first three Div  (used for Table Horizontal Scrolling)  -->
+</oj-sp-smart-search-page>

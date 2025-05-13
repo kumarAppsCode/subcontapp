@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "lookup_value_id": 100259,
+            "lookup_value_name_disp": "Draft",
+            "lookup_value_name": "Draft"
+        },
+        {
+            "lookup_value_id": 100262,
+            "lookup_value_name_disp": "Notified",
+            "lookup_value_name": "Approved"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/application/module/lov/approvalstatus"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://omranapextest.omran.om/ords/omran_subcon_test/metadata-catalog/application/module/lov/item"
+        }
+    ]
+}

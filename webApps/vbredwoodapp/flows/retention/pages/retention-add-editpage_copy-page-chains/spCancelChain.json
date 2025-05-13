@@ -1,0 +1,32 @@
+{
+  "description": "",
+  "variables": {
+    "detail": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  },
+  "root": "ifPageVar",
+  "actions": {
+    "navigateBack1": {
+      "module": "vb/action/builtin/navigateBackAction"
+    },
+    "navigateToRetentionStart": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "retention-start"
+      }
+    },
+    "ifPageVar": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.pageVar == \"ContractPage\" ]]"
+      },
+      "outcomes": {
+        "true": "navigateBack1",
+        "false": "navigateToRetentionStart"
+      }
+    }
+  }
+}

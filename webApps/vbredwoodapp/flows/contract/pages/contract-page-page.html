@@ -1,0 +1,649 @@
+<div>
+   <oj-sp-simple-create-edit id="oj_ssce1" page-title="Contract" avatar="{{$page.variables.avatar}}"
+      style="background-color:#013766;"
+      display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+      display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+      contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+      display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+      display-mode="[[$page.variables.displayMode]]" on-sp-cancel="[[$listeners.ojSpCancel]]"
+      on-sp-save="[[$listeners.ojSpSave]]" on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]"
+      secondary-actions='[{"label":"Attachment","id":"attachment","display":"off"},{"label":"Submit for Approval","id":"submit","display":"off"},{"label":"Approval History","id":"approvalhistory","display":"off"},{"label":"Approve","id":"approve","display":"off"},{"label":"Reject","id":"reject","display":"off"},{"label":"About","id":"about","display":"off"}]'
+      on-sp-secondary-action="[[$listeners.ojSsce1SpSecondaryAction]]" badge.status="info"
+      badge.text="[[ $variables.getContractbyHeaderidVar.contract_num ]]" page-subtitle=" "
+      on-sp-primary-action="[[$listeners.ojSsce1SpPrimaryAction]]" primary-action.label="About" 
+      >
+      <!-- Start of Header Fragment is used to Display the Contract Header Details -->
+      <div slot="main">
+         <oj-vb-fragment bridge="[[vbBridge]]" name="contractheadersupplier">
+            <oj-vb-fragment-param name="contHeaderId" value="[[ $variables.p_ContractHeader ]]"></oj-vb-fragment-param>
+            <oj-vb-fragment-param name="revisionNum" value="[[ $variables.p_Revision_Number ]]"></oj-vb-fragment-param>
+         </oj-vb-fragment>
+      </div>
+      <!-- End of Header Fragment is used to Display the Contract Header Details -->
+      <!-- Start of Tab Bar -->
+      <div slot="main" >
+         <br>
+         <div class="oj-panel oj-panel-shadow-md oj-selected">
+            <!-- Start of tab Bar -->
+            <oj-tab-bar edge="top" id="oj-tab-bar--1691641440-1" selection="{{$variables.tabSelectedItem}}"
+               class="oj-lg-condense">
+               <ul>
+                  <li id="oj-tab-bar--1691641440-1-tab-1">
+                     <a href="#" id="oj-tab-bar--1691641440-1-tab-1-tab" aria-controls="oj-tab-bar--1691641440-1-tab-1-panel">Contract Line</a>
+                  </li>
+                  <!-- Payment Tab is Not Used For Omran Client -->
+                  <!-- <li id="oj-tab-bar--1691641440-1-tab-2">
+                     <a href="#" id="oj-tab-bar--1691641440-1-tab-2-tab" aria-controls="oj-tab-bar--1691641440-1-tab-2-panel">Payment Information</a>
+                     </li> -->
+                  <!-- Payment Tab is Not Used For Omran Client -->
+                  <li id="oj-tab-bar--1691641440-1-tab-3">
+                     <a href="#" id="oj-tab-bar--1691641440-1-tab-3-tab" aria-controls="oj-tab-bar--1691641440-1-tab-3-panel">Guarantee Information</a>
+                  </li>
+                  <!-- start of  Bind-if is used for  Hiding  Tab Bar Headers (When coming from other Pages it needs to Be Hided)-->
+                  <oj-bind-if test="[[ $variables.TabHideVar ]]">
+                     <li id="oj-tab-bar--1691641440-1-tab-4">
+                        <a href="#" id="oj-tab-bar--1691641440-1-tab-4-tab" aria-controls="oj-tab-bar--1691641440-1-tab-4-panel">Application </a>
+                     </li>
+                     <li id="oj-tab-bar--1691641440-1-tab-5">
+                        <a href="#" id="oj-tab-bar--1691641440-1-tab-5-tab" aria-controls="oj-tab-bar--1691641440-1-tab-5-panel">Certification</a>
+                     </li>
+                     <li id="oj-tab-bar--1691641440-1-tab-6">
+                        <a href="#" id="oj-tab-bar--1691641440-1-tab-6-tab" aria-controls="oj-tab-bar--1691641440-1-tab-6-panel">Retention</a>
+                     </li>
+               </ul>
+               </oj-bind-if>
+               <!-- End of  Bind-if is used for  Hiding  Tab Bar Headers (When coming from other Pages it needs to Be Hided)-->
+            </oj-tab-bar>
+            <!-- End of tab Bar -->  
+            <oj-switcher value="[[$variables.tabSelectedItem]]" id="oj-switcher--1691641440-1">
+               <!-- Start of contract Tab bar -->
+               <div slot="oj-tab-bar--1691641440-1-tab-1" id="oj-tab-bar--1691641440-1-tab-1-panel" aria-labelledby="oj-tab-bar--1691641440-1-tab-1-tab" role="tabpanel">
+                  <!-- Start of contract Table -->
+                  <div id="sampleDemo" style="" class="demo-padding demo-container">
+                     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                        <div id="mainContent">
+                           <div class="oj-flex">
+                              <oj-table scroll-policy="loadMoreOnScroll" data="[[ $variables.linePagingSearch ]]"
+                                 columns="{{ $variables.LineColumnsList }}" display="grid" class="oj-flex-item oj-sm-12 oj-md-12">
+                                 <template slot="UnitPrice">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                                 </template>
+                                 <template slot="lineamount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                                 </template>
+                                 <template slot="TaxAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                                 </template>
+                                 <template slot="TaxRate">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true" converter='{"type":"number"}'>
+                                    </oj-input-number>
+                                 </template>
+                                 <template slot="Quantity">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true" converter='{"type":"number"}'>
+                                    </oj-input-number>
+                                 </template>
+                                 <template slot="TotalLineAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                                 </template>
+                                 <oj-paging-control slot="bottom" id="paging1" style="margin-left:38%;" class="oj-sm-width-full" page-size="10"
+                                    data="[[ $variables.linePagingSearch ]]"></oj-paging-control>
+                              </oj-table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Start of contract Table -->
+               </div>
+               <!-- Start of contract Tab bar -->  
+               <!-- Start Of Payment Information Tab -->
+               <div slot="oj-tab-bar--1691641440-1-tab-2" id="oj-tab-bar--1691641440-1-tab-2-panel"
+                  aria-labelledby="oj-tab-bar--1691641440-1-tab-2-tab" role="tabpanel">
+                  <div class="oj-flex-bar">
+                  </div>
+               </div>
+               <!-- End Of Payment Information Tab -->  
+               <!-- Start Of Guarantee Information Tab -->  
+               <div slot="oj-tab-bar--1691641440-1-tab-3" id="oj-tab-bar--1691641440-1-tab-3-panel"
+                  aria-labelledby="oj-tab-bar--1691641440-1-tab-3-tab" role="tabpanel">
+                  <!-- guarantee details with poup edit and save -->
+                  <div id="sampleDemo" style="" class="demo-padding demo-container">
+                     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                        <div id="mainContent">
+                           <oj-table scroll-policy="loadMoreOnScroll" class="oj-sm-width-full oj-bg-body oj-search-table"
+                              columns="{{ $variables.attachmentColumn }}" data="[[ $variables.AttachmentTable ]]" selection-mode.row="single"
+                              selection-mode.column="single" display="grid">
+                              <template slot="download">
+                                 <oj-button chroming="borderless" on-oj-action="[[$listeners.buttonAction10]]" label="Download"
+                                    display="icons" >
+                                    <img slot="startIcon"  ]]" :src="[[ $flow.path + 'resources/images/downgreenplus_status.png' ]]">
+                                 </oj-button>
+                              </template>
+                              <template slot="D">
+                                 <oj-button display="icons" chroming="borderless" on-oj-action="[[$listeners.buttonAction11]]" >
+                                    <img slot="startIcon" :src="[[ $flow.path + 'resources/images/deleteBtn.png' ]]" width="15" height="15"> 
+                                 </oj-button>
+                              </template>
+                              <template slot="cfd_date">
+                                 <oj-input-date value="[[$current.data]]" readonly="true"
+                                    converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                              </template>
+                              <oj-paging-control style="margin-left:38%" slot="bottom" class="oj-sm-width-full" data="[[ $variables.AttachmentTable ]]">
+                              </oj-paging-control>
+                           </oj-table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!--  end of guarantee edit  table  -->
+               <!-- Start of Application Transaction Table -->
+               <div id="oj-tab-bar--1691641440-1-tab-4-panel" slot="oj-tab-bar--1691641440-1-tab-4"
+                  aria-labelledby="oj-tab-bar--1691641440-1-tab-4-tab" role="tabpanel">
+                  <div id="sampleDemo" style="" class="demo-padding demo-container">
+                     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                        <div id="mainContent">
+                           <div class="oj-flex oj-sm-justify-content-flex-end">
+                              <div class="oj-flex oj-sm-justify-content-flex-end">
+                                 <oj-button chroming="half" label="Create Application" on-oj-action="[[$listeners.buttonAction21]]"
+                                    :hidden="[[ $variables.accessFlag1 ]]">
+                                    <img slot="startIcon" :src="[[ $flow.path + 'resources/images/added_status_1.png' ]]" width="15" height="15" >
+                                 </oj-button>
+                              </div>
+                              <oj-table scroll-policy="loadMoreOnScroll" class="oj-flex-item oj-sm-12 oj-md-12"
+                                 data="[[ $variables.applicationTableData ]]" display="grid"
+                                 columns="{{ $variables.applicationColoumnList }}">
+                                 <template slot="edit">
+                                    <a target="_blank" on-click="[[$listeners.hyperlinkClick]]">
+                                       <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                    </a>
+                                 </template>
+                                 <template slot="contractDate">
+                                    <oj-input-date value="[[$current.data]]" readonly="true"
+                                       converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                                 </template>
+                                 <template slot="applDate">
+                                    <oj-input-date value="[[$current.data]]" readonly="true"
+                                       converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                                 </template>
+                                 <template slot="approvalstatus">
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Approved"]]'>
+                                       <span class="oj-badge oj-badge-success oj-badge-sm" style="margin-left: 40px;">Approved</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Draft"   ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Draft</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Withdraw"   ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Withdraw</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.data === "Pending" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-waring" style="margin-left: 40px;" >Pending</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.data === "Rejected" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-danger" style="margin-left: 40px;" >Rejected</span>
+                                    </oj-bind-if>
+                                 </template>
+                                 <!-- Contract Status Template -->
+                                 <template slot="activeFlagTemplate">
+                                    <oj-bind-if test='[[ $current.data==="N" ]]'>
+                                       <img :src="[[ $application.path + 'resources/images/Cancel.png' ]]"  style="margin-left:40%;" >
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.data!=="N" ]]'>
+                                       <img :src="[[ $flow.path + 'resources/images/isActive_Y.png' ]]"  style="margin-left:35%;" >
+                                    </oj-bind-if>
+                                 </template>
+                                 <template slot="ContractAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="TaxAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="NetContractAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="delete">
+                                    <oj-bind-if
+                                       test="[[ $current.row.approval_status_code == 'Draft' || $current.row.approval_status_code ==  'Rejected' || $current.row.approval_status_code ==  'Withdraw' ]]">
+                                       <oj-button style="alt= center;" display="icons" chroming="borderless"
+                                          on-oj-action="[[$listeners.buttonAction41]]">
+                                          <img :src="[[ $flow.path + 'resources/images/deleteBtn.png' ]]" width="15" height="15">
+                                          <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                       </oj-button>
+                                    </oj-bind-if>
+                                    <oj-bind-if
+                                       test="[[ $current.row.approval_status_code == 'Pending' || $current.row.approval_status_code ==  'Submitted' || $current.row.approval_status_code ==  'Approved' ]]">
+                                       <oj-button style="alt= center;" display="icons" chroming="borderless">
+                                          <img  width="15" height="15" :src="[[ $flow.path + 'resources/images/disable_delete.png' ]]">
+                                          <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                       </oj-button>
+                                    </oj-bind-if>
+                                 </template>
+                                 <!-- </oj-bind-if> -->
+                                 <oj-paging-control slot="bottom" id="paging1" style="margin-left:38%;" class="oj-sm-width-full"
+                                    page-size="10" data="[[ $variables.applicationTableData ]]"></oj-paging-control>
+                              </oj-table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End of Application Transaction Table -->
+               <!-- Start of Certification Transaction Table -->
+               <div id="oj-tab-bar--1691641440-1-tab-5-panel" slot="oj-tab-bar--1691641440-1-tab-5"
+                  aria-labelledby="oj-tab-bar--1691641440-1-tab-5-tab" role="tabpanel">
+                  <div id="sampleDemo" style="" class="demo-padding demo-container">
+                     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                        <div id="mainContent">
+                           <div class="oj-flex oj-sm-justify-content-flex-end">
+                              <div class="oj-flex oj-sm-justify-content-flex-end">
+                                 <!-- <oj-sample-export-data></oj-sample-export-data> -->
+                                 <oj-button chroming="half" label="Create Certification" on-oj-action="[[$listeners.buttonAction30]]"
+                                    :hidden="[[ $variables.accessFlag1 ]]"  >
+                                    <img slot="startIcon" :src="[[ $flow.path + 'resources/images/added_status_1.png' ]]" width="15" height="15" >
+                                 </oj-button>
+                              </div>
+                              <oj-table scroll-policy="loadMoreOnScroll" display="grid" class="oj-flex-item oj-sm-12 oj-md-12"
+                                 data="[[ $variables.certificationTableData ]]" columns="{{ $variables.certificationColoumnList }}">
+                                 <template slot="edit">
+                                    <a target="_blank" on-click="[[$listeners.hyperlinkClick2]]" >
+                                       <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                    </a>
+                                 </template>
+                                 <!-- contractDate -->
+                                 <template slot="contractDate">
+                                    <oj-input-date value="[[$current.data]]" readonly="true"
+                                       converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                                 </template>
+                                 <template slot="approvalstatus">
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Approved" ]]'>
+                                       <span class="oj-badge oj-badge-success oj-badge-sm" style="margin-left: 40px;">Approved</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Draft" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Draft</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Withdraw" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Withdraw</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Pending" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-waring" style="margin-left: 40px;" >Pending</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Rejected" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-danger" style="margin-left: 40px;" >Rejected</span>
+                                    </oj-bind-if>
+                                 </template>
+                                 <!-- Contract Status Template -->
+                                 <template slot="activeFlagTemplate">
+                                    <oj-bind-if test='[[ $current.data==="N" ]]'>
+                                       <img :src="[[ $application.path + 'resources/images/Cancel.png' ]]"  style="margin-left:40%;" >
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.data!=="N" ]]'>
+                                       <img :src="[[ $flow.path + 'resources/images/isActive_Y.png' ]]"  style="margin-left:35%;" >
+                                    </oj-bind-if>
+                                 </template>
+                                 <template slot="ContractAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="TaxAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="NetContractAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="delete">
+                                    <oj-bind-if
+                                       test="[[ $current.row.approval_status_code == 'Draft' ||$current.row.approval_status_code ==  'Rejected' || $current.row.approval_status_code ==  'Withdraw' ]]"  >
+                                       <oj-button style="alt= center;" display="icons" chroming="borderless"  on-oj-action="[[$listeners.buttonAction34]]"
+                                          >
+                                          <img :src="[[ $flow.path + 'resources/images/deleteBtn.png' ]]" width="15" height="15">
+                                          <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                       </oj-button>
+                                    </oj-bind-if>
+                                    <oj-bind-if
+                                       test="[[ $current.row.approval_status_code == 'Pending' || $current.row.approval_status_code ==  'Submitted' ||$current.row.approval_status ==  'Approved' ]]"  >
+                                       <oj-button style="alt= center;" display="icons" chroming="borderless"
+                                          >
+                                          <img width="15" height="15" :src="[[ $flow.path + 'resources/images/disable_delete.png' ]]">
+                                          <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                       </oj-button>
+                                    </oj-bind-if>
+                                 </template>
+                                 <template slot="certDate">
+                                    <oj-input-date value="[[$current.data]]" readonly="true" 
+                                       converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                                 </template>
+                                 <oj-paging-control slot="bottom" id="paging1" style="margin-left:38%;" class="oj-sm-width-full" page-size="10"
+                                    data="[[ $variables.certificationTableData ]]"></oj-paging-control>
+                              </oj-table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End of Certification Transaction Table -->
+               <!-- Start of Retention Transaction Table -->
+               <div id="oj-tab-bar--1691641440-1-tab-6-panel" slot="oj-tab-bar--1691641440-1-tab-6"
+                  aria-labelledby="oj-tab-bar--1691641440-1-tab-6-tab" role="tabpanel">
+                  <div id="sampleDemo" style="" class="demo-padding demo-container">
+                     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                        <div id="mainContent">
+                           <div class="oj-flex oj-sm-justify-content-flex-end">
+                              <div class="oj-flex oj-sm-justify-content-flex-end">
+                                 <!-- <oj-sample-export-data></oj-sample-export-data> -->
+                                 <oj-button chroming="half" label="Create Retention" on-oj-action="[[$listeners.buttonAction37]]"
+                                    :hidden="[[ $variables.accessFlag1 ]]">
+                                    <img slot="startIcon" :src="[[ $flow.path + 'resources/images/added_status_1.png' ]]" width="15" height="15" >
+                                 </oj-button>
+                              </div>
+                              <oj-table scroll-policy="loadMoreOnScroll" display="grid" class="oj-flex-item oj-sm-12 oj-md-12"
+                                 data="[[ $variables.retentionTableData ]]" columns="{{ $variables.retentionColoumnList }}">
+                                 <template slot="edit">
+                                    <a target="_blank" on-click="[[$listeners.hyperlinkClick3]]">
+                                       <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                    </a>
+                                 </template>
+                                 <!-- contractDate -->
+                                 <template slot="contractDate">
+                                    <oj-input-date value="[[$current.data]]" readonly="true"
+                                       converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'></oj-input-date>
+                                 </template>
+                                 <template slot="approvalstatus">
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Approved" ]]'>
+                                       <span class="oj-badge oj-badge-success oj-badge-sm" style="margin-left: 40px;">Approved</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Draft" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Draft</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Withdraw" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-info" style="margin-left: 40px;" >Withdraw</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Pending" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-waring" style="margin-left: 40px;" >Pending</span>
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.row.approval_status_code === "Rejected" ]]'>
+                                       <span class="oj-badge oj-badge-sm oj-badge-danger" style="margin-left: 40px;" >Rejected</span>
+                                    </oj-bind-if>
+                                 </template>
+                                 <template slot="activeFlagTemplate">
+                                    <oj-bind-if test='[[ $current.data==="N" ]]'>
+                                       <img :src="[[ $application.path + 'resources/images/Cancel.png' ]]"  style="margin-left:40%;" >
+                                    </oj-bind-if>
+                                    <oj-bind-if test='[[ $current.data!=="N" ]]'>
+                                       <img :src="[[ $flow.path + 'resources/images/isActive_Y.png' ]]"  style="margin-left:35%;" >
+                                    </oj-bind-if>
+                                 </template>
+                                 <template slot="ContractAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="TaxAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="NetContractAmount">
+                                    <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                                       converter='{"options":{"minimumFractionDigits":3},"type":"number"}'> 
+                                               
+                                    </oj-input-number>
+                                           
+                                 </template>
+                                 <template slot="delete">
+                                    <oj-bind-if
+                                       test="[[ $current.row.approval_status_code == 'Draft' ||$current.row.approval_status_code ==  'Rejected'  || $current.row.approval_status_code ==  'Withdraw' ]]">
+                                       <oj-button style="alt= center;" display="icons" chroming="borderless"
+                                          on-oj-action="[[$listeners.buttonAction39]]">
+                                          <img width="15" height="15" :src="[[ $flow.path + 'resources/images/deleteBtn.png' ]]">
+                                          <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                       </oj-button>
+                                    </oj-bind-if>
+                                    <oj-bind-if
+                                       test="[[ $current.row.approval_status_code == 'Pending' || $current.row.approval_status_code ==  'Approved' ]]">
+                                       <oj-button style="alt= center;" display="icons" chroming="borderless">
+                                          <img width="15" height="15" :src="[[ $flow.path + 'resources/images/disable_delete.png' ]]">
+                                          <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                                       </oj-button>
+                                    </oj-bind-if>
+                                 </template>
+                                 <oj-paging-control slot="bottom" id="paging1" style="margin-left:38%;" class="oj-sm-width-full"
+                                    page-size="10" data="[[ $variables.retentionTableData ]]"></oj-paging-control>
+                              </oj-table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End of Retention Transaction Table -->     
+            </oj-switcher>
+         </div>
+      </div>
+      <!-- End of Tab Bar Div -->
+      <!-- Start of About Information dialog  -->
+      <oj-dialog dialog-title="About Information" id="About" style="width: 450px;" cancel-behavior="icon"
+         position.collision="flip" position.at.horizontal="right" position.at.vertical="top" position.my.horizontal="end"
+         position.my.vertical="top"
+         >
+         <div slot="body">
+            <div class="oj-flex">
+               <oj-form-layout label-edge="start" label-width="39%" direction="row" readonly="true">
+                  <br>
+                  <oj-input-text style="width:14rem;" class="customfield"
+                     label-hint="[[$application.translations.appBundle.created_by]]"
+                     value="{{ $variables.getContractbyHeaderidVar.created_by }}" readonly="true"
+                     ></oj-input-text>
+                  <br>
+                  <oj-input-date style="width:14rem;" class="customfield"
+                     converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}'
+                     label-hint="[[$application.translations.appBundle.CreatedDate]]"
+                     value="{{ $variables.getContractbyHeaderidVar.created_date }}" readonly="true"></oj-input-date>
+                  <br>
+                  <oj-input-text style="width:14rem;" class="customfield"
+                     label-hint="[[$application.translations.appBundle.UpdatedBy]]"
+                     value="{{ $variables.getContractbyHeaderidVar.last_updated_by }}" readonly="true" ></oj-input-text>
+                  <br>
+                  <oj-input-date style="width:14rem;" class="customfield"
+                     converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Updated Date :"
+                     value="{{ $variables.getContractbyHeaderidVar.last_updated_date }}" readonly="true"></oj-input-date>
+               </oj-form-layout>
+            </div>
+         </div>
+      </oj-dialog>
+      <!-- End of About Information dialog  -->
+      <!-- Start of  Application  Create dialog  -->
+      <oj-dialog style="width: 550px; min-height: 250px;" dialog-title="Application" id="ApplicationCreate"
+         modality="modeless" >
+           
+         <div slot="body">
+              
+            <!--   <div class="oj-flex oj-panel">   
+               <div class="oj-flex-item oj-sm-flex-initial">   -->
+            <oj-validation-group id="ApplicationForm">
+                    
+               <oj-form-layout label-edge="start"class="oj-forme-control" label-width="33%"  columns="1">
+                  
+                     <oj-select-single label-hint="Payment Type" style="width: 22rem;" placeholder="Select Payment"
+                        item-text="lookup_value_name_disp" required="true" data="[[$variables.AppPaymentTypelookupdetailListSDP5]]"
+                        value="{{ $variables.postCreateApplHdr.P_PAYMENT_TYPE_ID }}" user-assistance-density="compact">
+                        <template slot="collectionTemplate" data-oj-as="collection">
+                           <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                              vertical-grid-visible="disabled" selection-mode='{"row": "single"}' 
+                              columns-default='{"resizable": "disabled","sortable": "disabled"}' 
+                              class="oj-select-results" 
+                              columns=' [{"headerText":"Payment Type","field":"lookup_value_name_disp"}]' 
+                              on-oj-row-action="[[collection.handleRowAction]]"
+                              data="[[collection.data]]" selected.row="[[collection.selected]]"
+                              current-row="{{collection.currentRow}}" display="grid">
+                           </oj-table>
+                        </template>
+                     </oj-select-single>
+          
+               </oj-form-layout>
+                  
+                   
+            </oj-validation-group>
+              
+                
+         </div>
+           
+         <!--   </div>
+              </div>  -->
+         <div slot="footer">
+              
+               
+            <oj-button chroming="solid" label="Save And Create" on-oj-action="[[$listeners.buttonAction23]]"  ></oj-button>
+             
+              
+            <oj-button chroming="solid" label="Close" on-oj-action="[[$listeners.buttonAction22]]" ></oj-button>
+             
+         </div>
+      </oj-dialog>
+      <!-- End of Application Create dialog  -->
+      <!-- Start of  Application Information dialog  -->
+      <oj-dialog style="display:none; width: 400px;height: 200px;" dialog-title="Note" id="ApplicationInformation">
+         <div slot="body">
+            <h6 style="font-size:smaller; font-weight: bold;">Are you sure want to save and continue?</h6>
+            <!-- <oj-button label="Are you sure want to save and continue?" chroming="borderless" disabled="true"></oj-button> -->
+         </div>
+         <div slot="footer">
+            <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction24]]" >OK</oj-button>
+            <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction25]]" >Cancel</oj-button>
+         </div>
+      </oj-dialog>
+      <!-- End of Application Information dialog  -->
+      <!-- Start of Application Delete dialog  -->
+      <oj-dialog dialog-title="Delete" id="ApplicationDelete">
+         <div slot="body">
+            <h6 style="font-size:medium; font-weight: bold;">Are you sure want to delete?</h6>
+         </div>
+         <div slot="footer">
+            <oj-button on-oj-action="[[$listeners.buttonAction27]]"  >Yes</oj-button>
+            <oj-button on-oj-action="[[$listeners.buttonAction28]]" >No</oj-button>
+         </div>
+      </oj-dialog>
+      <!-- End of Certification delete dialog  delete-->
+      <!--  Start of certification Create  Dialog -->
+      <oj-dialog style="width: 550px; min-height: 250px;" dialog-title="Certification" id="CertificationCreate"
+         modality="modeless">
+           
+         <div slot="body">
+              
+            <!--   <div class="oj-flex oj-panel">   
+               <div class="oj-flex-item oj-sm-flex-initial">   -->
+            <oj-validation-group id="CertificationForm">
+                    
+               <oj-form-layout label-edge="start"class="oj-forme-control" label-width="33%"  columns="1">
+            
+                     <oj-select-single label-hint="* Application Number" style="width: 22rem;" item-text="application_num"
+                        required="true" value="{{ $variables.postCreateCertHdr.p_application_id }}" user-assistance-density="compact"
+                        data="[[$variables.getContractFindbyApplicationlovHeaderidListSDP]]" >
+                        <template slot="collectionTemplate" data-oj-as="collection">
+                           <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled" vertical-grid-visible="disabled"
+                              selection-mode='{"row": "single"}' columns-default='{"resizable": "disabled","sortable": "disabled"}'
+                              columns=' [ {"headerText":"Application Number","field":"application_num"},
+                              {"headerText":"Payment Type","field":"payment_type"} ]'
+                              on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                              selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid">
+                           </oj-table>
+                        </template>
+                     </oj-select-single>
+                
+               </oj-form-layout>
+                  
+                   
+            </oj-validation-group>
+              
+                
+         </div>
+           
+         <!--   </div>
+              </div>  -->
+         <div slot="footer">
+              
+               
+            <oj-button chroming="solid" label="Save And Create" on-oj-action="[[$listeners.buttonAction29]]"   ></oj-button>
+             
+              
+            <oj-button chroming="solid" label="Close" on-oj-action="[[$listeners.buttonAction32]]"  ></oj-button>
+             
+         </div>
+      </oj-dialog>
+      <!--  End of certification Create Dialog -->
+      <!--  Start of Certification Information Create  Dialog -->
+      <oj-dialog style="display:none; width: 400px;height: 200px;" dialog-title="Note" id="CertificationInformation">
+         <div slot="body">
+            <h6 style="font-size:smaller; font-weight: bold;">Are you sure want to save and continue?</h6>
+            <!-- <oj-button label="Are you sure want to save and continue?" chroming="borderless" disabled="true"></oj-button> -->
+         </div>
+         <div slot="footer">
+            <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction31]]"   >OK</oj-button>
+            <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction33]]"   >Cancel</oj-button>
+         </div>
+      </oj-dialog>
+      <!--  End of Certification Information Create  Dialog -->
+      <!--  Start of Certification Delete  Create  Dialog -->
+      <oj-dialog dialog-title="Delete" id="CertificationDelete">
+         <div slot="body">
+            <h6 style="font-size:medium; font-weight: bold;">Are you sure want to delete?</h6>
+         </div>
+         <div slot="footer">
+            <oj-button on-oj-action="[[$listeners.buttonAction36]]"   >Yes</oj-button>
+            <oj-button on-oj-action="[[$listeners.buttonAction35]]"  >No</oj-button>
+         </div>
+      </oj-dialog>
+      <!--  End of Certification Delete Create  Dialog -->
+      <!--  Start of Retetion Information Dialog -->
+      <oj-dialog style="display:none; width: 400px;height: 200px;" dialog-title="Note" id="RetetionInformation">
+         <div slot="body">
+            <h6 style="font-size:smaller; font-weight: bold;">Are you sure want to create Retention Release ?</h6>
+         </div>
+         <div slot="footer">
+            <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction42]]"  >OK</oj-button>
+            <oj-button chroming="solid" on-oj-action="[[$listeners.buttonAction43]]" >Cancel</oj-button>
+         </div>
+      </oj-dialog>
+      <!--  End of Retetion Information Dialog -->
+      <!--  Start of Retention Delete Dialog -->
+      <oj-dialog dialog-title="Delete" id="RetentionDelete">
+         <div slot="body">
+            <h6 style="font-size:medium; font-weight: bold;">Are you sure want to delete?</h6>
+         </div>
+         <div slot="footer">
+            <oj-button on-oj-action="[[$listeners.buttonAction38]]"    >Yes</oj-button>
+            <oj-button on-oj-action="[[$listeners.buttonAction40]]"   >No</oj-button>
+         </div>
+      </oj-dialog>
+      <!--  End of Retention Delete Dialog -->
+   </oj-sp-simple-create-edit>
+   <!-- <oj-sp-message-unsaved-changes id="dirtyDataWarningDialog"
+      on-oj-sp-discard-changes="[[ $listeners.confirmYesOjAction ]]" on-oj-sp-cancel="[[ $listeners.confirmNoOjAction ]]"></oj-sp-message-unsaved-changes> -->
+</div>

@@ -1,0 +1,859 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "columnsList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Action",
+          "field": "",
+          "width": 100,
+          "template": "delete",
+          "sortable": "disabled",
+          "resizable": "enabled",
+          "frozenEdge": "start"
+
+        },
+        {
+          "headerText": "Retention Number",
+          "field": "ret_rel_num",
+          "template": "edit",
+          "width": 190,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Retention Date",
+          "field": "ret_rel_date",
+          "template": "contractDate",
+          "width": 164,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+
+        },
+        {
+          "headerText": "Contract Number",
+          "field": "contract_num",
+          "width": 187,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Approval Status",
+          "field": "approval_status",
+          "template": "approvalstatus",
+          "width": 188,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Retention Release Amount",
+          "field": "ret_rel_amount",
+          "template": "ContractAmount",
+          "width": 240,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Comments",
+          "field": "comments",
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Supplier Name",
+          "field": "vendor_name",
+          "width": 218,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Supplier Site",
+          "field": "vendor_site_code",
+          "width": 218,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Business Unit",
+          "field": "bu_name",
+          "width": 220,
+          "resizable": "enabled"
+
+        }
+      ]
+    },
+    "contractObj": {
+      "type": {
+        "bu_id": "number",
+        "businessUnit": "string",
+        "contractHdrId": "number",
+        "payment_term": "string",
+        "revision_num": "number",
+        "supplierName": "string",
+        "supplierSite": "string"
+
+      }
+    },
+    "DeleteKey": {
+      "type": "string"
+    },
+    "drawerPopup": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "ExportRetentetionADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "exportRententionheader",
+        "keyAttributes": "header_id"
+      }
+    },
+    "getApplicationByContractListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "responseType": "getApplicationByContract",
+        "itemsPath": "items",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "contract_num"
+          ]
+        },
+        "fetchChain": "getApplicationByContractFetch",
+        "keyAttributes": "header_id"
+      }
+    },
+    "getBusinessunitLov": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "responseType": "getBusinessunit",
+        "itemsPath": "items",
+        "keyAttributes": "bu_id",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "bu_name"
+          ]
+        },
+        "fetchChain": "getBusinessunitFetch"
+      }
+    },
+    "getCertificationModuleLovContractnumberListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "keyAttributes": "contract_num",
+        "itemsPath": "items",
+        "responseType": "getCertificationModuleLovContractnumberResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "contract_num"
+          ]
+        },
+        "fetchChain": "getCertificationModuleLovContractnumberFetch"
+      }
+    },
+    "getookupdetailListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "itemsPath": "items",
+        "responseType": "getookupdetailResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "lookup_value_name_disp"
+          ]
+        },
+        "fetchChain": "getookupdetailFetch",
+        "keyAttributes": "lookup_value_id"
+      }
+    },
+    "getSearchRetentionnumberListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "keyAttributes": "ret_rel_number",
+        "itemsPath": "items",
+        "responseType": "getSearchRetentionnumberResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "ret_rel_number"
+          ]
+        },
+        "fetchChain": "getSearchRetentionnumberFetch2"
+      }
+    },
+    "getSearchRetentionnumberListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "itemsPath": "items",
+        "responseType": "getSearchRetentionnumberResponse2",
+        "fetchChain": "getSearchRetentionnumberFetch3",
+        "keyAttributes": "ret_rel_num",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "ret_rel_num"
+          ]
+        }
+      }
+    },
+    "getVendorsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "keyAttributes": "vendor_id",
+        "itemsPath": "items",
+        "responseType": "getVendorsResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "vendor_name"
+          ]
+        },
+        "fetchChain": "getVendorsFetch"
+      }
+    },
+    "newSearchObj": {
+      "type": {
+        "p_approval_status_disp": "string",
+        "p_bu_id": "string",
+        "p_contract_num": "string",
+        "p_contract_status": "string",
+        "p_from_ret_rel_date": "string",
+        "p_ret_rel_num": "string",
+        "p_ret_rel_type": "string",
+        "p_to_ret_rel_date": "string",
+        "p_vendor_id": "string"
+      },
+      "defaultValue": {
+        "p_contract_status": "Y"
+      }
+    },
+    "Pagingsearch": {
+      "type": "any"
+    },
+    "postRetentionReleaseCreateVar": {
+      "type": "postRetentionReleaseCreate"
+    },
+    "searchObject": {
+      "type": {
+        "businessUnit": "string",
+        "contractNumber": "string",
+        "fromDate": "string",
+        "rententionReleaseNumber": "string",
+        "toDate": "string",
+        "vendorname": "string",
+        "vendorNumber": "string"
+      }
+    },
+    "searchRetentionNumber": {
+      "type": "string"
+    },
+    "transSearchObj": {
+      "type": {
+        "retentionNo": "string",
+        "supplierName": "string",
+        "supplierSite": "string",
+        "vendor_id": "string"
+      }
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.exportRententionheader": {
+      "endpoint": "getRententionheader",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getApplicationByContract": {
+      "endpoint": "getApplicationByContract",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getBusinessunit": {
+      "endpoint": "getBusinessunit",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getCertificationModuleLovContractnumberResponse": {
+      "endpoint": "getCertificationModuleLovContractnumber",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getookupdetailResponse": {
+      "endpoint": "getookupdetail",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getSearchRetentionnumber": {
+      "endpoint": "getSearchRetentionnumber",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getSearchRetentionnumberResponse": {
+      "endpoint": "getSearchRetentionnumber",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getSearchRetentionnumberResponse2": {
+      "endpoint": "getSearchRetentionnumber",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getVendorsResponse": {
+      "endpoint": "getVendors",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.postRetentionReleaseCreate": {
+      "endpoint": "postRetentionReleaseModulePkgCreateretentionrelease",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "exportRententionheader": {
+      
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "approval_status_id": "number",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "comments": "any",
+          "cont_header_id": "number",
+          "cont_version_num": "number",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+          "ret_rel_amt": "number",
+          "ret_rel_date": "string",
+          "ret_rel_number": "string",
+          "ret_rel_type": "string",
+          "ret_release_status_id": "any",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+      
+    },
+    "getApplicationByContract": {
+      "items": [
+        {
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "attribute_json": "any",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+          "revision_num": "number",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+        }
+      ]
+    },
+    "getBusinessunit": {
+      "items": [
+        {
+          "bu_id": "number",
+          "bu_name": "string",
+          "bu_name_ar": "any",
+          "business_group_id": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "effective_end_date": "string",
+          "effective_start_date": "string",
+          "last_update_date": "string",
+          "last_update_login": "any",
+          "last_updated_by": "string",
+          "legal_entity_id": "number",
+          "location_id": "number",
+          "primary_ledger_id": "number",
+          "source_rowid": "string",
+          "status": "string",
+          "trx_source": "string"
+        }
+      ]
+    },
+    "getCertificationModuleLovContractnumberResponse": {
+      "items": [
+        {
+          "contract_num": "string"
+        }
+      ]
+    },
+    "getookupdetailResponse": {
+      "items": [
+        {
+          "lookup_type_id": "number",
+          "lookup_type_name": "string",
+          "lookup_value_id": "number",
+          "lookup_value_name_disp": "string"
+
+        }
+      ]
+    },
+    "getSearchRetentionnumber": {
+      "items": [
+        {
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "approval_status_id": "number",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "comments": "any",
+          "cont_header_id": "number",
+          "cont_version_num": "number",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+          "ret_rel_amt": "number",
+          "ret_rel_date": "string",
+          "ret_rel_number": "string",
+          "ret_rel_type": "string",
+          "ret_release_status_id": "any",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "any",
+          "version_type": "string"
+        }
+      ]
+    },
+    "getSearchRetentionnumberResponse": {
+      "items": [
+        {
+          "address3": "any",
+          "address4": "any",
+          "approval_status": "string",
+          "approval_status_disp": "string",
+          "approval_status_id": "number",
+          "bill_to_location_code": "string",
+          "bill_to_location_id": "number",
+          "bu_id": "number",
+          "bu_name": "string",
+          "buyer_id": "number",
+          "cancel_flag": "any",
+          "comments": "any",
+          "cont_header_id": "number",
+          "cont_version_num": "number",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_status_disp": "string",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "creation_date": "string",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "string",
+          "end_date": "any",
+          "full_name": "string",
+          "header_id": "number",
+          "last_update_date": "string",
+          "last_update_login": "string",
+          "last_updated_by": "string",
+          "mobile_number": "string",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "string",
+          "payment_term": "any",
+          "payment_term_id": "number",
+          "phone_number": "string",
+          "po_header_id": "number",
+          "po_number": "string",
+          "remarks": "any",
+          "ret_rel_amt": "number",
+          "ret_rel_date": "string",
+          "ret_rel_number": "string",
+          "ret_rel_type": "string",
+          "ret_release_status_id": "any",
+          "ship_to_location_code": "string",
+          "ship_to_location_id": "number",
+          "source_rowid": "string",
+          "start_date": "any",
+          "subcontract_type": "string",
+          "tax_amount": "number",
+          "trx_source": "string",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "any",
+          "version_type": "string"
+        }
+      ]
+    },
+    "getSearchRetentionnumberResponse2": {
+      "items": [
+        {
+          "ret_rel_num": "string",
+          "ret_rel_number": "string"
+
+        }
+      ]
+    },
+    "getVendorsResponse": {
+      "items": [
+        {
+          "vendor_id": "number",
+          "vendor_name": "string"
+        }
+      ]
+    },
+    "postRetentionReleaseCreate": {
+      "P_CONTRACT_HEADER_ID": "number",
+      "P_CONTRACT_REVISION_NUMBER": "number",
+      "P_LOGIN_USER": "string"
+    }
+
+  },
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chain": "OnClickRetention"
+        }
+      ]
+    },
+    "buttonAction10": {
+      "chains": [
+        {
+          "chain": "onClickNo"
+        }
+      ]
+    },
+    "buttonAction11": {
+      "chains": [
+        {
+          "chain": "onClickYes"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "OnClickPopupClose"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chain": "OnclickPopupSaveandCreate"
+        }
+      ]
+    },
+    "buttonAction4": {
+      "chains": [
+        {
+          "chain": "OnclickPopupok"
+        }
+      ]
+    },
+    "buttonAction5": {
+      "chains": [
+        {
+          "chain": "OnclickPopupCancel"
+        }
+      ]
+    },
+    "buttonAction6": {
+      "chains": [
+        {
+          "chain": "onClickSearchPopupBack"
+        }
+      ]
+    },
+    "buttonAction7": {
+      "chains": [
+        {
+          "chain": "onClickPopupSearch"
+        }
+      ]
+    },
+    "buttonAction8": {
+      "chains": [
+        {
+          "chain": "onClickPopupReset"
+        }
+      ]
+    },
+    "buttonAction9": {
+      "chains": [
+        {
+          "chain": "onClickDelete",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick": {
+      "chains": [
+        {
+          "chain": "onClickEdit",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chain": "SelectValueItemChangeChain",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "selectValueItem2": {
+      "chains": [
+        {
+          "chain": "SelectValueItemChangeChain1",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "smartSearchPageTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chain": "SmartSearchPageTemplateSpPrimaryActionChain"
+        }
+      ]
+    },
+    "smartSearchPageTemplateSpSecondaryAction": {
+      "chains": [
+        {
+          "chain": "OnClickSearch",
+          "parameters": {
+            "actionId": "{{$event.detail.secondaryItem}}"
+          }
+        }
+      ]
+    },
+    "switchValue": {
+      "chains": [
+        {
+          "chain": "SwitchValueChangeChain",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onload"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-drawer-popup": {
+        "path": "ojs/ojdrawerpopup"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-paging-control": {
+        "path": "ojs/ojpagingcontrol"
+      },
+      "oj-sample-export-data": {
+        "path": "oj-sample/export-data/loader"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-smart-search-page": {
+        "path": "oj-sp/smart-search-page/loader"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  }
+}

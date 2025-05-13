@@ -1,0 +1,50 @@
+{
+    "items": [
+        {
+            "term_id": 100196,
+            "object_version_num": 0,
+            "header_id": 300000003299868,
+            "revision_num": 0,
+            "adv_calc_mode": null,
+            "adv_percent": 5,
+            "adv_amount": 5,
+            "adv_rec_calc_mode": null,
+            "adv_rec_percent": 5,
+            "adv_rec_amount": 5,
+            "ret_calc_mode": null,
+            "reten_percent": 5,
+            "reten_amount": 5,
+            "ret_rel_calc_mode": null,
+            "reten_rel_percent": 5,
+            "reten_rel_amount": 5,
+            "mat_calc_mode": null,
+            "material_percent": 5,
+            "material_amount": 5,
+            "mat_adv_rec_calc_mode": null,
+            "mat_adv_rec_percent": null,
+            "mat_adv_rec_amount": null,
+            "remarks": null,
+            "attribute_json": null,
+            "bu_id": null,
+            "created_by": "api",
+            "creation_date": "2023-02-15T20:44:44.959Z",
+            "last_updated_by": "api",
+            "last_update_date": "2023-02-15T20:44:44.959Z",
+            "last_update_login": "api"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/contract/findby/contractpayment?p_header_id=300000003299868&p_term_id=0"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://4idemo.4iapps.com/ords/subcontract/metadata-catalog/contract/findby/item"
+        }
+    ]
+}

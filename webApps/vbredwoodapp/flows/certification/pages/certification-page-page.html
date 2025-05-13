@@ -1,0 +1,686 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" page-title="Certification" page-subtitle=" "
+    avatar="{{$page.variables.avatar}}"
+    display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    on-sp-cancel="[[$listeners.ojSpCancel]]" on-sp-save="[[$listeners.ojSpSave]]"
+    on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]" primary-action.label="Save"
+    secondary-actions='[[ [{"label":"Attachment","id":"attachment"},{"label":"Notification For Supplier","id":"notification"},{"label":"Submit For Approval","id":"submit","display":$variables.displayOptionsVar.submit},{"label":"Approval History","id":"approvalhistory"},{"label":"Approve","id":"approve","display":$variables.displayOptionsVar.approve},{"label":"Reject","id":"reject","display":$variables.displayOptionsVar.reject},{"label":$variables.displayOptionsVar.reassign1?$variables.LabelReassign:$variables.LabelWithdraw,"display":$variables.displayOptionsVar.reassign,"id":$variables.displayOptionsVar.reassign1?$variables.LabelReassign:$variables.LabelWithdraw},{"label":"View Contract","id":"viewcontract","display":$variables.displayNavi.contract},{"label":"View Application","id":"viewapplication","display":$variables.displayNavi.application},{"label":"Transfer to AP","id":"transfer","display":$variables.displayTransferAP.transferAP},{"label":"About","id":"about"}] ]]'
+    badge.text='[[ "CERT-"+$variables.pcertHeaderId ]]' badge.status="info"
+    on-sp-secondary-action="[[$listeners.ojSsce1SpSecondaryAction]]" display-mode="light"
+    on-sp-primary-action="[[$listeners.ojSsce1SpPrimaryAction]]"
+    primary-action.disabled="[[ $variables.displayOptionsVar.primaryaction ]]">
+    <!-- <oj-dynamic-form slot="main" valid="{{$page.variables.formState}}"
+      on-transient-value-changed="[[$listeners.ojdynamicFormTransientValueChangeChain]]"></oj-dynamic-form> -->
+    <oj-bind-if test="false">
+      <div slot="main">
+        <oj-vb-fragment bridge="[[vbBridge]]" name="contractheadersupplier">
+          <oj-vb-fragment-param name="contHeaderId" value="[[ $variables.pcontHeaderId ]]"></oj-vb-fragment-param>
+          <oj-vb-fragment-param name="revisionNum" value="[[ $variables.previsionNum ]]"></oj-vb-fragment-param>
+        </oj-vb-fragment>
+        <br>
+      </div>
+    </oj-bind-if>
+
+
+    <div slot="main">
+
+
+      <oj-bind-if
+        test='[[ $variables.CertificationDetailsVar.payment_type_code == "INTERIM" || $variables.CertificationDetailsVar.payment_type_code == "FINAL" ]]'>
+        <div class="oj-panel oj-panel-shadow-md oj-selected">
+          <oj-collapsible id="c4" expanded="true">
+            <h1 id="h4" slot="header" style=" color: #013766; font-size: larger; font-weight: bold;">Certification
+              Information</h1>
+            <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Certification Information</h4> -->
+            <oj-validation-group id="CertificationHdrForm">
+
+              <oj-form-layout label-edge="start" columns="3" class="oj-forme-control" direction="column" max-columns="3"
+                label-width="38%" colspan-wrap="wrap">
+                <oj-input-text style="width: 24rem;" disabled="true" label-hint="Contract Numnber"
+                  value="{{ $variables.CertificationDetailsVar.contract_num }}"></oj-input-text>
+                <oj-input-text style="width: 24rem;" disabled="true" label-hint="Business Unit"
+                  value="{{ $variables.CertificationDetailsVar.bu_name }}"></oj-input-text>
+                <oj-input-text style="width: 24rem;" disabled="true" label-hint="Supplier Name"
+                  value="{{ $variables.CertificationDetailsVar.vendor_name }}"></oj-input-text>
+                <oj-input-text label-hint="Application Number" style="width: 25rem;" placeholder="" disabled="true"
+                  value="{{ $variables.CertificationDetailsVar.application_num }}"></oj-input-text>
+                  <oj-input-date style="width: 25rem;"
+                  converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' label-hint="Application Date"
+                  disabled="true" value="{{ $variables.postCertificationHdr.certification_date }}"></oj-input-date>
+                <oj-input-text style="width: 24rem;" disabled="true" label-hint="Certification Number"
+                  value="{{ $variables.postCertificationHdr.certification_num }}"></oj-input-text>
+<oj-input-date style="width: 25rem;"
+                  converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' label-hint="Certification Date"
+                  disabled="true" value="{{ $variables.postCertificationHdr.certification_date }}"></oj-input-date>
+            
+                  <oj-input-date label-hint="* Payment Due Date"
+                  value="{{ $variables.postCertificationHdr.payment_due_date }}"
+                  style="width: 25rem; margin-bottom: 6px;" placeholder=""
+                  converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' required="true"
+                  user-assistance-density="compact" disabled="[[ $variables.accessFlag ]]"></oj-input-date>
+                     <oj-input-text style="width: 25rem;" placeholder="" disabled="true"
+                  label-hint="Certification Status"
+                  value="{{ $variables.CertificationDetailsVar.certification_status }}"></oj-input-text>
+    <oj-input-text label-hint="Payment Type" style="width: 25rem;"
+                  value="{{ $variables.postCertificationHdr.payment_type }}" disabled="true"></oj-input-text>
+                
+
+                <oj-input-text placeholder="" style="width: 25rem;" label-hint="Invoice Number"
+                  value="{{ $variables.CertificationDetailsVar.invoice_num }}" disabled="true">
+                </oj-input-text>
+
+                <oj-input-date label-hint="Invoice Date" placeholder="" style="width: 25rem;"
+                  converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+                  value="{{ $variables.CertificationDetailsVar.invoice_date }}" disabled="true">
+                </oj-input-date>
+
+
+                <oj-input-number label-hint=" Certification Amount"
+                  value="{{ $variables.postCertificationHdr.cur_amount }}" required="true" min="0"
+                  max="[[ $variables.postCertificationHdr.cur_amount ]]" style="width: 25rem;margin-bottom:6px"
+                  class="oj-form-control-text-align-right" user-assistance-density="compact"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}' disabled="true"
+                  >
+                  <!--  -->
+                </oj-input-number>
+                <oj-input-number style="width: 25rem;" class="oj-form-control-text-align-right customfield"
+                  label-hint="Retention Amount" converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                  value="{{ $variables.postCertificationHdr.cur_ret_amount }}"
+                  on-value-changed="[[$listeners.inputNumberValue4]]"
+                  disabled='[[ $variables.accessFlag || $variables.CertificationDetailsVar.payment_type_code == "FINAL" ]]'></oj-input-number>
+                <oj-input-number style="width: 25rem; " class="oj-form-control-text-align-right customfield"
+                  label-hint="Advance Recovery Amount"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                  value="{{ $variables.postCertificationHdr.cur_adv_rec_amount }}"
+                  on-value-changed="[[$listeners.inputNumberValue3]]"
+                  disabled='[[ $variables.CertificationDetailsVar.payment_type_code == "FINAL" || $variables.accessFlag ]]'></oj-input-number>
+                  <oj-input-number style="width: 24rem; margin-bottom:4px;"
+                    class="oj-form-control-text-align-right customfield"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    disabled="[[ $variables.accessFlag ]]" value="{{ $variables.postCertificationHdr.penalty }}"
+                    label-hint="Penalty Amount" on-value-changed="[[$listeners.inputNumberValue2]]"></oj-input-number>
+                <!--             Not required for omran client
+                  <oj-input-number disabled="true" style="width: 25rem;"
+                  class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                  value="{{ $variables.postCertificationHdr.cur_mat_adv_rec_amount }}"></oj-input-number> -->
+           
+                <oj-input-text style="width: 25rem;" placeholder="" disabled="true"
+                  label-hint="Approval Status" value="{{ $variables.CertificationDetailsVar.approval_status }}"></oj-input-text>
+                  <oj-input-text style="width: 25rem;" placeholder="" disabled="true" label-hint="Interface Status"
+                  value="{{ $variables.CertificationDetailsVar.interface_status }}"></oj-input-text>
+                <oj-input-text label-hint="AP Invoice Number" style="width: 24rem;"
+                  
+                  value="{{ $variables.CertificationDetailsVar.invoice_num }}" disabled="true"></oj-input-text>
+                <oj-input-number style="width: 24rem;"   class="oj-form-control-text-align-right customfield"
+                  disabled="true" value="{{ $variables.postCertificationHdr.tax_amount }}"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}' label-hint="Tax Amount">
+                </oj-input-number>
+                <oj-input-number disabled="true" style="width: 25rem;"
+                  class="oj-form-control-text-align-right customfield" label-hint="Net Amount"
+                  converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                  value="{{ $variables.postCertificationHdr.net_amount }}"></oj-input-number>
+
+              
+                <oj-text-area disabled="[[ $variables.accessFlag ]]" style="width: 25rem; margin-bottom:6px;"
+                  label-hint="Comments" value="{{ $variables.postCertificationHdr.comments }}"></oj-text-area>
+
+                  
+
+                  <oj-button label="Certification Lines" style="margin-left:50%; margin-top:10px;"
+                    on-oj-action="[[$listeners.buttonAction5]]"></oj-button>
+                 
+              </oj-form-layout>
+
+          </oj-collapsible>
+
+        </div>
+      </oj-bind-if>
+      <br>
+    </div>
+
+    <div slot="main">
+      <oj-bind-if
+        test='[[ $variables.CertificationDetailsVar.payment_type_code == "ADVANCE" || $variables.CertificationDetailsVar.payment_type_code == "RET_REL" ]]'>
+        <div class="oj-panel oj-panel-shadow-md oj-selected">
+
+          <oj-collapsible id="c4" expanded="true">
+            <h1 id="h4" slot="header" style=" color: #013766; font-size: larger; font-weight: bold;">Certification
+              Information</h1>
+            <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Certification Information</h4> -->
+            <oj-validation-group id="CertificationHdrForm">
+
+              <oj-form-layout label-edge="start" columns="3" class="oj-forme-control" direction="column" max-columns="3"
+                label-width="38%" colspan-wrap="wrap">
+                <oj-form-layout>
+                  <oj-input-text style="width: 24rem;" disabled="true" label-hint="Contract Numnber"
+                    value="{{ $variables.CertificationDetailsVar.contract_num }}"></oj-input-text>
+                  <oj-input-text style="width: 24rem;" disabled="true" label-hint="Business Unit"
+                    value="{{ $variables.CertificationDetailsVar.bu_name }}"></oj-input-text>
+                  <oj-input-text style="width: 24rem;" disabled="true" label-hint="Supplier Name"
+                    value="{{ $variables.CertificationDetailsVar.vendor_name }}"></oj-input-text>
+<oj-input-text label-hint="Application Number" style="width: 25rem;" placeholder="" disabled="true"
+                    value="{{ $variables.CertificationDetailsVar.application_num }}"></oj-input-text>
+
+<oj-input-date style="width: 25rem;"
+                    converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+                    label-hint="Application Date" disabled="true"
+                    value="{{ $variables.CertificationDetailsVar.application_date }}"></oj-input-date>
+                  <oj-input-text style="width: 24rem;" disabled="true" label-hint="Certification Number"
+                    value="{{ $variables.postCertificationHdr.certification_num }}"></oj-input-text>
+
+                  <oj-input-date style="width: 25rem;"
+                    converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+                    label-hint="Certification Date" disabled="true"
+                    value="{{ $variables.postCertificationHdr.certification_date }}"></oj-input-date>
+
+                </oj-form-layout>
+                <oj-form-layout>
+                  <oj-input-text style="width: 25rem;" placeholder="" disabled="true"
+                    value="{{ $variables.CertificationDetailsVar.certification_status }}"
+                    label-hint="Certification Status"></oj-input-text>
+                  <oj-input-text label-hint="Payment Type" style="width: 25rem;"
+                    value="{{ $variables.postCertificationHdr.payment_type }}" disabled="true"></oj-input-text>
+
+                  <oj-input-text value="{{ $variables.CertificationDetailsVar.invoice_num }}" placeholder=""
+                    style="width: 25rem;" label-hint="Invoice Number" disabled="true">
+                  </oj-input-text>
+
+                  <oj-input-date label-hint="Invoice Date" placeholder="" style="width: 25rem;"
+                    converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}'
+                    value="{{ $variables.CertificationDetailsVar.invoice_date }}" disabled="true"></oj-input-date>
+
+                  <oj-input-date label-hint="* Payment Due Date"
+                    value="{{ $variables.postCertificationHdr.payment_due_date }}"
+                    style="width: 25rem; margin-bottom: 6px;" placeholder=""
+                    converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy"}}' required="true"
+                    user-assistance-density="compact" disabled="[[ $variables.accessHeader ]]"></oj-input-date>
+<oj-input-text style="width: 25rem;"
+                      value="{{ $variables.CertificationDetailsVar.interface_status }}" placeholder=""
+                      disabled="true" label-hint="Interface Status " ></oj-input-text>
+   <oj-input-text label-hint="AP Invoice Number" style="width: 24rem;"
+                 
+                  value="{{ $variables.CertificationDetailsVar.invoice_num }}" disabled="true"></oj-input-text>
+             
+   
+
+
+                </oj-form-layout>
+                <oj-form-layout>
+                  
+                  <oj-input-text style="width: 25rem;" value="{{ $variables.CertificationDetailsVar.approval_status }}"
+                    placeholder="" disabled="true" label-hint="Approval Status"></oj-input-text>
+                    
+                  <oj-input-number label-hint="* Certification Amount"
+                    value="{{ $variables.postCertificationHdr.cur_amount }}" required="true" min="0"
+                    style="width: 25rem;margin-bottom:6px" class="oj-form-control-text-align-right"
+                    user-assistance-density="compact"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    disabled='[[ $variables.CertificationDetailsVar.payment_type_code == "INTERIM" || $variables.CertificationDetailsVar.payment_type_code == "FINAL" || $variables.accessFlag ]]'
+                    on-value-changed="[[$listeners.inputNumberValue]]">
+                  </oj-input-number>
+
+
+                  <!-- <oj-input-number label-hint="Tax Percentage(%)" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield"
+                    value="{{ $variables.postCertificationHdr.tax_rate }}" disabled="true"></oj-input-number> -->
+                  <oj-input-number style="width: 24rem;" class="oj-form-control-text-align-right customfield"
+                    disabled="true" value="{{ $variables.postCertificationHdr.tax_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}' label-hint="Tax Amount">
+                  </oj-input-number>
+                  <oj-input-number disabled="true" style="width: 25rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Net Amount"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    value="{{ $variables.postCertificationHdr.net_amount }}"></oj-input-number>
+
+<oj-text-area disabled="[[ $variables.accessFlag ]]" style="width: 25rem; margin-bottom:6px;" label-hint="Comments"
+  value="{{ $variables.postCertificationHdr.comments }}" resize-behavior="vertical"></oj-text-area>
+                </oj-form-layout>
+
+          </oj-collapsible>
+
+
+        </div>
+      </oj-bind-if>
+      <br>
+    </div>
+
+
+
+    <div slot="main">
+      <oj-bind-if
+        test='[[ $variables.CertificationDetailsVar.payment_type_code== "INTERIM" || $variables.CertificationDetailsVar.payment_type_code == "FINAL" ]]'>
+        <div class="oj-panel oj-panel-shadow-md oj-selected">
+
+          <oj-collapsible id="c4" expanded="true">
+            <h1 id="h4" slot="header" style=" color: #013766; font-size: larger; font-weight: bold;">Payment Infolet
+            </h1>
+            <!-- <h4 style="color: #013766; font-size: larger; font-weight: bold;">Application Information</h4> -->
+            <oj-validation-group id="applicationHdrForm">
+
+              <oj-form-layout label-edge="start" direction="column" colspan-wrap="wrap" columns="3" label-width="38%">
+
+                <oj-form-layout label-edge="start" direction="row" colspan-wrap="wrap">
+
+                  <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold; margin-left:130px;"
+                    class="oj-helper-justify-content-center oj-helper-text-align-center">                Contract Value</h1>
+
+                  <!-- --------newly added field -->
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Total Amount"
+                     value="{{ $variables.CertificationDetailsVar.contract_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  <oj-bind-if test="[[ $variables.DisplayRetObj.ret_amount_bol ]]">
+                                    <oj-input-number disabled="true" style="width: 24rem;"
+                                      class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                                      value="{{ $variables.CertificationDetailsVar.retention_amount }}"
+                                      converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  </oj-bind-if>
+                  <oj-bind-if test="[[ $variables.DisplayRetObj.retention_max_amount_bol ]]">
+                                    <oj-input-number disabled="true" style="width: 24rem;"
+                                      class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                                      value="{{ $variables.CertificationDetailsVar.retention_max_amount }}"
+                                      converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  </oj-bind-if>
+
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Advance Amount"
+                     value="{{ $variables.CertificationDetailsVar.advance_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+
+
+
+                  <!--     Not required for omran client
+                    <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                    value="{{ $variables.GetFindbyTotalSummaryVar.total_material_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number> -->
+
+
+
+
+                </oj-form-layout>
+
+                <oj-form-layout label-edge="start" direction="row" colspan-wrap="wrap">
+                  <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold; margin-left:120px;"
+                    class="oj-helper-justify-content-center oj-helper-text-align-center">Cumulative Value</h1>
+                  <!-- --------newly added field -->
+                    <!-- --------newly added field -->
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield"
+                    value="{{ $variables.CertificationDetailsVar.cum_amount }}" label-hint="Total Amount"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                    value="{{ $variables.CertificationDetailsVar.cum_ret_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Advance Recovery Amount"
+                    value="{{ $variables.CertificationDetailsVar.cum_adv_rec_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                  
+                  
+                  <!--    Not required for omran client
+                    
+                     <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                    value="{{ $variables.CertificationDetailsVar.cum_mat_adv_rec_amount }}"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number> -->
+                  
+                 
+                </oj-form-layout>
+                <oj-form-layout label-edge="start" direction="row" colspan-wrap="wrap">
+                  <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold; margin-left:120px;"
+                    class="oj-helper-justify-content-center oj-helper-text-align-center">Previous Value</h1>
+                 <!-- --------newly added BY USING DB COLUMNS-->
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Total Amount"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    value="{{ $variables.CertificationDetailsVar.pre_amount }}"></oj-input-number>
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Retention Amount"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    value="{{ $variables.CertificationDetailsVar.pre_ret_amount }}"></oj-input-number>
+                  <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Advance Recovery Amount"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    value="{{ $variables.CertificationDetailsVar.pre_adv_rec_amount }}"></oj-input-number>
+                  
+                  
+                  <!--             Not required for omran client
+                    <oj-input-number disabled="true" style="width: 24rem;"
+                    class="oj-form-control-text-align-right customfield" label-hint="Material Recovery"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'
+                    value="{{ $variables.CertificationDetailsVar.pre_mat_adv_rec_amount }}"></oj-input-number> -->
+                  <!-- --------newly added BY USING DB COLUMNS-->
+                </oj-form-layout>
+
+              </oj-form-layout>
+
+            </oj-validation-group>
+        </div>
+        <br>
+      </oj-bind-if>
+    </div>
+
+    <!-- <div slot="main">
+      <oj-bind-if
+        test='[[ $variables.postCertificationHdr.payment_type == "Interim" || $variables.postCertificationHdr.payment_type == "Final" ]]'>
+        <div class="oj-panel oj-panel-shadow-md oj-selected">
+          <div class="demo-tab-content">
+            <div id="mainContent">
+              <h1 id="h4" style=" color: #013766; font-size: larger; font-weight: bold;">Certification Details</h1>
+
+
+              <oj-table scroll-policy="loadMoreOnScroll" class="oj-sm-width-full oj-bg-body oj-search-table"
+                selection-mode.row="none" id="searchTable1" display="grid" horizontal-grid-visible="enabled"
+                vertical-grid-visible="enabled" columns="{{ $variables.lineColumnsList }}" selection-mode.column="none"
+                data="[[ $variables.certLineADP ]]">
+
+
+
+
+                </template>
+                <template slot="taxRate">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}' readonly="true">
+                  </oj-input-number>
+                </template>
+                <template slot="TaxAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="quantity">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="prevPerc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prevQty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prevAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="currPerc">
+                  <oj-input-number :id="[['cur_percentage'+$current.index]]" style="text-align: right;"
+                    value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="currQty">
+                  <oj-input-number :id="[['cur_quantity'+$current.index]]" style="text-align: right;"
+                    value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="currAmount">
+                  <oj-input-number :id="[['cur_amount'+$current.index]]" style="text-align: right;"
+                    value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="certpaymentType">
+
+            
+                  <oj-combobox-one :id="[['payment_type'+$current.index]]" placeholder="Select Payment Type"
+                    required="true" value="{{ $current.row.payment_type }}"
+                    on-value-changed="[[$listeners.certPaymentTypeValue]]">
+
+                    <oj-option value="P">Percentage</oj-option>
+                    <oj-option value="Q">Quantity</oj-option>
+                  </oj-combobox-one>
+
+                </template>
+                <!-- cumulative amount fields -->
+
+<!-- 
+                <template slot="cumPerc">
+                  <oj-input-number :id="[['cum_percentage'+$current.index]]" virtual-keyboard="number"
+                    style="text-align: right;" value="[[$current.row.cum_percentage]]"
+                    converter='{"options":{"minimumFractionDigits":2,"maximumFractionDigits":2},"type":"number"}'
+                    readonly="[[ $current.row.payment_type == null ]]"
+                    on-value-changed="[[$listeners.certCumPercValue]]" ></oj-input-number>
+       </template> 
+ 
+
+<template slot=" cumQty">
+                    <oj-input-number :id="[['cum_quantity'+$current.index]]" style="text-align: right;"
+                      virtual-keyboard="number" value="[[ $current.row.cum_quantity]]"
+                      converter='{"options":{"minimumFractionDigits":2,"maximumFractionDigits":2},"type":"number"}'
+                      readonly="[[ $current.row.payment_type == null ]]"
+                      on-value-changed="[[$listeners.certCumTotQtyValue]]"></oj-input-number>
+                </template> 
+ <template slot="cumPerc">
+                  <oj-input-number :id="[['cum_percentage'+$current.index]]" on-value-changed="[[$listeners.certCumPercValue]]" virtual-keyboard="number" style="text-align: right;" value="[[$current.row.cum_percentage]]" converter='{"options":{"minimumFractionDigits":2,"maximumFractionDigits":2},"type":"number"}' readonly="[[ $current.row.payment_type == null ]]" ></oj-input-number>
+                </template>
+                <template slot="cumQty">
+                  <oj-input-number :id="[['cum_quantity'+$current.index]]"  on-value-changed="[[$listeners.certCumTotQtyValue]]"  virtual-keyboard="number" style="text-align: right;" value="[[$current.row.cum_quantity]]" converter='{"options":{"minimumFractionDigits":2,"maximumFractionDigits":2},"type":"number"}' readonly="[[ $current.row.payment_type == null ]]" ></oj-input-number>
+                </template> 
+                <template slot="cumAmount">
+                  <oj-input-number :id="[['cum_amount'+$current.index]]" style="text-align: right;"
+                    value="[[$current.row.cum_amount]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <!-- new fields 
+                <template slot="lineamount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="recretAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="recadvAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="recmatAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="netAmount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="unitprice">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="cum_amount">
+
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="cum_tot_qty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <template slot="cum_perc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <template slot="curr_amount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+
+                <template slot="curr_tot_qty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="curr_perc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+                <template slot="prev_amount">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prev_tot_qty">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+                <template slot="prev_perc">
+                  <oj-input-number style="text-align: right;" value="[[$current.data]]" readonly="true"
+                    converter='{"options":{"minimumFractionDigits":3},"type":"number"}'></oj-input-number>
+                </template>
+
+              </oj-table>
+            </div>
+          </div>
+        </div>
+      </oj-bind-if>
+    </div>
+
+</div> -->
+<oj-dialog dialog-title="About Information" id="About" style="width: 450px;" cancel-behavior="icon"
+  position.collision="flip" position.at.horizontal="right" position.at.vertical="top" position.my.horizontal="end"
+  position.my.vertical="top">
+  <div slot="body">
+    <div class="oj-flex">
+
+      <oj-form-layout label-edge="start" label-width="39%" direction="row" readonly="true">
+        <br>
+        <oj-input-text style="width:14rem;" class="customfield" label-hint="Created By :" readonly="true"
+          value="{{ $variables.postCertificationHdr.created_by }}"></oj-input-text>
+        <br>
+        <oj-input-date style="width:14rem;" class="customfield"
+          converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Create Date :"
+          readonly="true" value="{{ $variables.postCertificationHdr.created_date }}"></oj-input-date>
+        <br>
+        <oj-input-text style="width:14rem;" class="customfield" label-hint="Updated by : " readonly="true"
+          value="{{ $variables.postCertificationHdr.last_updated_by }}"></oj-input-text>
+        <br>
+        <oj-input-date style="width:14rem;" class="customfield"
+          converter='{"type": "datetime", "options": {"pattern":"dd-MMM-yyyy "}}' label-hint="Updated Date :"
+          readonly="true" value="{{ $variables.postCertificationHdr.last_updated_date }}"></oj-input-date>
+      </oj-form-layout>
+    </div>
+  </div>
+
+</oj-dialog>
+
+	
+<oj-dialog dialog-title="Approve" id="approvePopUp" cancel-behavior="icon">
+ <div slot="body">
+  <oj-label for="app-1"></oj-label>
+  <oj-text-area id="app-1"  placeholder="Comments" value="{{ $variables.ApprovalBodyVar.comment.commentStr }}"  ></oj-text-area>
+ </div>
+<div slot="footer">
+<oj-validation-group>
+<oj-button on-oj-action="[[$listeners.buttonAction6]]"   >Submit</oj-button>
+<oj-button on-oj-action="[[$listeners.buttonAction7]]"    >Cancel</oj-button>
+</oj-validation-group>
+</div>
+</oj-dialog>
+
+
+
+<oj-dialog dialog-title="Reject" id="RejectPopup" cancel-behavior="icon">
+ <div slot="body">
+  <oj-label for="app-1"></oj-label>
+  <oj-text-area id="app-1"  placeholder="Comments" value="{{ $variables.ApprovalBodyVar.comment.commentStr }}"  ></oj-text-area>
+ </div>
+<div slot="footer">
+<oj-validation-group>
+<oj-button on-oj-action="[[$listeners.buttonAction9]]"   >Submit</oj-button>
+<oj-button on-oj-action="[[$listeners.buttonAction8]]"   >Cancel</oj-button>
+</oj-validation-group>
+</div>
+</oj-dialog>
+
+
+
+
+<oj-dialog dialog-title="Please wait..." id="progressMsg" class="wd200">
+
+  <div slot="body">
+
+    <div class="oj-flex full_stretch lg_button_width">
+
+      <oj-progress-bar class="full_stretch oj-flex-item oj-sm-12 oj-md-12" value="-1"></oj-progress-bar>
+
+    </div>
+
+  </div>
+
+</oj-dialog>
+    
+
+    
+<oj-dialog dialog-title="Reassign" id="Reassign" cancel-behavior="icon" style="width: 900px; height: 300px;"
+        resize-behavior="resizable" drag-affordance="title-bar">
+        <div slot="body">
+     <oj-validation-group id="reassignvalidation">
+          <oj-form-layout label-edge="start" user-assistance-density="compact" columns="2" max-columns="2">
+        <oj-select-single label-hint="* Current Approver" style="width: 21rem; margin-bottom:3px;" class="customfield"
+          required="true" item-text="response_user" value="{{ $variables.PostApproverReassignPkgVar.p_from_person_id }}"
+          data="[[$variables.currentReassignUsersListSDP]]">
+                <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                    vertical-grid-visible="disabled" selection-mode='{"row": "single"}'
+                    columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results "
+                    columns='[{"headerText":"Current Approver","field":"response_user","width":190},{"headerText":" Email ID","field":"response_email_address"}]'
+                    on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                    selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"></oj-table>
+                </template>
+              </oj-select-single>
+
+              <oj-select-single label-hint="* Reassign To" style="width: 21rem; margin-bottom:3px;" class="customfield"
+                required="true" item-text="user_name" value="{{ $variables.PostApproverReassignPkgVar.p_to_person_id }}"
+                data="[[$variables.approvalUserslovListSDP]]" on-value-item-changed="[[$listeners.selectValueItem]]"
+                 >
+                <template slot="collectionTemplate" data-oj-as="collection">
+                  <oj-table scroll-policy="loadMoreOnScroll" horizontal-grid-visible="disabled"
+                    selection-mode='{"row": "single"}'
+                    columns-default='{"resizable": "disabled","sortable": "disabled"}' class="oj-select-results "
+                    columns='[{"headerText":"Reassign Approver","field":"user_name","width":180},{"headerText":"Email Id","field":"email_address"}]'
+                    on-oj-row-action="[[collection.handleRowAction]]" data="[[collection.data]]"
+                    selected.row="[[collection.selected]]" current-row="{{collection.currentRow}}" display="grid"
+                    vertical-grid-visible="disabled"></oj-table>
+                </template>
+              </oj-select-single>
+              <oj-text-area label-hint="* Comments" required="true" "
+                resize-behavior="both" value="{{ $variables.PostApproverReassignPkgVar.p_comments }}">
+              </oj-text-area>
+  </oj-form-layout>
+              </oj-validation-group>
+        </div>
+        <div slot="footer">
+          <oj-button on-oj-action="[[$listeners.buttonAction11]]"  >Submit</oj-button>
+          <oj-button on-oj-action="[[$listeners.buttonAction10]]"  >Cancel</oj-button>
+        </div>
+      </oj-dialog>	
+
+
+          <oj-dialog dialog-title="Withdraw" id="withdrawpopup" cancel-behavior="icon">
+      <div slot="body">
+        <h6 style="font-size:medium; font-weight: bold;">Are you sure you want to withdraw the Payment Certification?</h6>
+      </div>
+      <div slot="footer">
+        <oj-button on-oj-action="[[$listeners.buttonAction13]]"  >Yes</oj-button>
+        <oj-button on-oj-action="[[$listeners.buttonAction12]]"  >No</oj-button>
+      </div>
+    </oj-dialog>
+
+</oj-sp-simple-create-edit>
+<!-- <oj-sp-message-unsaved-changes id="dirtyDataWarningDialog"
+    on-oj-sp-discard-changes="[[ $listeners.confirmYesOjAction ]]" on-oj-sp-cancel="[[ $listeners.confirmNoOjAction ]]"></oj-sp-message-unsaved-changes> -->
+</div>

@@ -1,0 +1,8 @@
+{
+  "id": "admin-setup",
+  "description": "Flow main",
+  "defaultPage": "lookup",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

@@ -1,0 +1,92 @@
+{
+  "description": "Notify primary action is triggered",
+  "variables": {
+    "detail": {
+      "type": "any",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "root": "ifGetCertificationByHeaderIdVar",
+  "actions": {
+    "callFunctionGenerateLineDetail": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "generateLineDetail",
+        "params": [
+          "{{ $page.variables.certLineADP.data }}",
+          "{{ $application.functions.getSysdate() }}",
+          "{{ $application.variables.saasGetLogin.email_address }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionPrintArrayValue"
+      }
+    },
+    "callFunctionPrintArrayValue": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "printArrayValue",
+        "params": [
+          "{{ $chain.results.callFunctionGenerateLineDetail.payload.item }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPostCertificationLine"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostCertificationLine.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostCertificationLine": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "SubContract/postCertificationLine",
+        "uriParams": {
+
+          "P_METHOD": "PUT",
+          "P_PRIMARYKEY": "99"
+        },
+        "body": "{{ $chain.results.callFunctionGenerateLineDetail.payload }}"
+      },
+      "outcomes": {
+        "success": "fireNotification3",
+        "failure": "fireNotification"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostCertificationLine.body.p_err_msg ]]",
+        "displayMode": "transient",
+        "type": "info"
+      }
+    },
+    "ifGetCertificationByHeaderIdVar": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.getCertificationByHeaderIdVar.approval_status_code === 'Draft' ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionGenerateLineDetail",
+        "false": "fireNotification4"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Record Not in Draft."
+      }
+    }
+  }
+}

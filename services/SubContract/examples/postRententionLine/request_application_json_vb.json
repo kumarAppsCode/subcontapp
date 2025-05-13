@@ -1,0 +1,16 @@
+{
+  "line_id": 001,
+  "object_version_num": 2,
+  "header_id": 002,
+  "cert_header_id": 2155,
+  "ret_ap_invoice_id": test-04,
+  "ret_rel_amount": 4050,
+  "remarks": "Sample remark text",
+  "attribute_json": "{\"key1\":\"value1\",\"key2\":\"value2\"}",
+  "bu_id": 34567,
+  "created_by": "creator_username",
+  "created_date": "2024-05-20T12:34:56.789000",
+  "last_updated_by": "updater_username",
+  "last_updated_date": "2024-05-20T13:45:67.890000",
+  "last_updated_login": "login_username"
+}

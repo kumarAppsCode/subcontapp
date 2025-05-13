@@ -1,0 +1,8 @@
+{
+  "id": "retention",
+  "description": "Flow main",
+  "defaultPage": "retention-start",
+  "services": {},
+  "types": {},
+  "variables": {}
+}

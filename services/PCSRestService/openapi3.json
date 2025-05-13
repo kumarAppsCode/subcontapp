@@ -1,0 +1,431 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ProcessRestServices",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/ProcessRestServices"
+        }
+    ],
+    "paths": {
+        "/processes": {
+            "post": {
+                "operationId": "postProcesses",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostProcessesRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/postProcesses/request_application_json_vb.json",
+                                    "summary": "Example stored by VB User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostProcessesResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/postProcesses/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        },
+        "/tasks/{taskId}": {
+            "parameters": [
+                {
+                    "name": "taskId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "operationId": "ReassignProcessAPI",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PutTasksTaskIdRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/putTasksTaskId/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/tasks?limit=10&showAction=true&noPagingFlag=false&showActionFlag=true&offset=0&orderBy=assignedDate%3Adesc": {
+        },
+        "/processes/{instanceId}": {
+            "parameters": [
+                {
+                    "name": "instanceId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "operationId": "ProcessAbortApiWithdraw",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PutProcessesInstanceIdRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/ProcessAbortApiWithdraw/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "getMany",
+                    "headers": {}
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostProcessesRequest": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "operation": {
+                        "type": "string"
+                    },
+                    "payload": {
+                        "type": "string"
+                    },
+                    "processDefId": {
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostProcessesResponse": {
+                "type": "object",
+                "properties": {
+                    "levels": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "length": {
+                                    "type": "integer"
+                                },
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "processId": {
+                        "type": "string"
+                    },
+                    "processDefId": {
+                        "type": "string"
+                    },
+                    "processName": {
+                        "type": "string"
+                    },
+                    "priority": {
+                        "type": "integer"
+                    },
+                    "owner": {
+                        "type": "string"
+                    },
+                    "creator": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PutTasksTaskIdRequest": {
+                "type": "object",
+                "properties": {
+                    "identities": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "action": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "comment": {
+                        "type": "object",
+                        "properties": {
+                            "commentStr": {
+                                "type": "string"
+                            },
+                            "commentScope": {
+                                "type": "string"
+                            }
+                        }
+                    }
+
+                }
+            },
+            "GetTasks": {
+                "type": "object",
+                "properties": {
+                    "totalResults": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "createdBy": {
+                                    "type": "string"
+                                },
+                                "fromUserDisplayName": {
+                                    "type": "string"
+                                },
+                                "fromUserName": {
+                                    "type": "string"
+                                },
+                                "priority": {
+                                    "type": "integer"
+                                },
+                                "groupByName": {
+                                    "type": "string"
+                                },
+                                "ownerRole": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "assignedDate": {
+                                    "type": "string"
+                                },
+                                "createdDate": {
+                                    "type": "string"
+                                },
+                                "updatedById": {
+                                    "type": "string"
+                                },
+                                "updatedDate": {
+                                    "type": "string"
+                                },
+                                "hasSubTasksFlag": {
+                                    "type": "boolean"
+                                },
+                                "processName": {
+                                    "type": "string"
+                                },
+                                "processId": {
+                                    "type": "string"
+                                },
+                                "processDefId": {
+                                    "type": "string"
+                                },
+                                "processInstanceDetail": {
+                                    "type": "object",
+                                    "properties": {
+                                        "length": {
+                                            "type": "integer"
+                                        },
+                                        "rel": {
+                                            "type": "string"
+                                        },
+                                        "href": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "assignees": {
+                                    "type": "object",
+                                    "properties": {
+                                        "hasMore": {
+                                            "type": "boolean"
+                                        },
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "levels": {
+                                                        "type": "integer"
+                                                    },
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    },
+                                                    "adminFlag": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "actionList": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "length": {
+                                                "type": "integer"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "actionId": {
+                                                "type": "string"
+                                            },
+                                            "actionType": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "length": {
+                                    "type": "integer"
+                                },
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "length": {
+                                    "type": "integer"
+                                },
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "user": {
+                        "type": "object",
+                        "properties": {
+                            "length": {
+                                "type": "integer"
+                            },
+                            "rel": {
+                                "type": "string"
+                            },
+                            "href": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "PutProcessesInstanceIdRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "comments": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

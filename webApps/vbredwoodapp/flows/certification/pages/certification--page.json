@@ -1,0 +1,706 @@
+{
+  "title": "Certification",
+  "description": "",
+  "variables": {
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "certLineADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getCertificationLinebyHdrId",
+        "keyAttributes": "line_id"
+      }
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "displayOption": {
+      "type": {
+        "save": "boolean",
+        "saveClose": "string"
+      }
+    },
+    "errormsg": {
+      "type": "string"
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "getCertificationByHeaderIdVar": {
+      "type": "getCertificationByHeaderId"
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "lineColumnsList": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Item Number",
+          "field": "item_num",
+          "template": "",
+          "width": 172,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Item Desccription",
+          "field": "item_description",
+          "width": 242,
+          "template": "",
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Project Number ",
+          "field": "project_num",
+          "template": "",
+          "width": 189,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": "Task Number",
+          "field": "task_num",
+          "template": "",
+          "width": 160,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+        },
+        {
+          "headerText": " Expenditure Type",
+          "field": "expenditure_type",
+          "template": "",
+          "width": 190,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Quantity",
+          "field": "quantity",
+          "template": "quantity",
+          "width": 166,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Unit Price",
+          "field": "unit_price",
+          "template": "unitprice",
+          "width": 166,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "UOM",
+          "field": "uom_code",
+          "template": "",
+          "width": 120,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Tax Code",
+          "field": "tax_code",
+          "template": "",
+          "width": 161,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Line Amount",
+          "field": "cont_line_amount",
+          "template": "lineamount",
+          "width": 169,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Tax Rate",
+          "field": "tax_rate",
+          "template": "taxRate",
+          "width": 161,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Tax Amount",
+          "field": "tax_amount",
+          "template": "TaxAmount",
+          "width": 161,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Total Line Amount",
+          "field": "cont_net_line_amount",
+          "template": "TaxAmount",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Payment Type",
+          "field": "",
+          "template": "certpaymentType",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Cumulative %",
+          "field": "cum_percentage",
+          "template": "cumPerc",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Cumulative Qty",
+          "field": "cum_quantity",
+          "template": "cumQty",
+          "width": 277,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Cumulative Amount",
+          "field": "cum_amount",
+          "template": "cumAmount",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Previous %",
+          "field": "pre_percentage",
+          "template": "prevPerc",
+          "width": 210,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Previous Qty",
+          "field": "pre_quantity",
+          "template": "prevQty",
+          "width": 235,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Previous Amount",
+          "field": "pre_amount",
+          "template": "prevAmount",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Current %",
+          "field": "cur_percentage",
+          "template": "currPerc",
+          "width": 223,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Current Qty",
+          "field": "cur_quantity",
+          "template": "currQty",
+          "width": 225,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "Current Amount",
+          "field": "cur_amount",
+          "template": "currAmount",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Cumulative %",
+          "field": "appl_cum_percentage",
+          "template": "cum_perc",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Cumulative Qty",
+          "field": "appl_cum_quantity",
+          "template": "cum_tot_qty",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Cumulative Amt",
+          "field": "appl_cum_amount",
+          "template": "cum_amount",
+          "width": 220,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Previous %",
+          "field": "appl_pre_percentage",
+          "template": "prev_perc",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Previous Qty",
+          "field": "appl_pre_quantity",
+          "template": "prev_tot_qty",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Previous Amt",
+          "field": "appl_pre_amount",
+          "template": "prev_amount",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Current %",
+          "field": "appl_cur_percentage",
+          "template": "curr_perc",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Current Qty",
+          "field": "appl_cur_quantity",
+          "template": "curr_tot_qty",
+          "width": 200,
+          "resizable": "enabled"
+        },
+        {
+          "headerText": "App Current Amt ",
+          "field": "appl_cur_amount",
+          "template": "curr_amount",
+          "width": 200,
+          "resizable": "enabled"
+        }
+      ]
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "pageVar": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pcerNum": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pcertHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pcontHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "PercentageTrigger": {
+      "type": "string",
+      "defaultValue": "0"
+    },
+    "previsionNum": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "quantityTrigger": {
+      "type": "string",
+      "defaultValue": "0"
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "taskId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getCertificationByHeaderId": {
+      "endpoint": "getCertificationByHeaderId",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getCertificationLinebyHdrId": {
+      "endpoint": "getCertificationLinebyHdrId",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "getCertificationByHeaderId": {
+     
+          "address1": "string",
+          "address2": "any",
+          "address3": "any",
+          "address4": "any",
+          "ap_invoice_id": "any",
+          "appl_header_id": "number",
+          "application_date": "string",
+          "application_num": "string",
+          "approval_status": "string",
+          "approval_status_code": "string",
+          "approval_status_id": "number",
+          "attribute_json": "any",
+          "bill_to_location_code": "any",
+          "bill_to_location_id": "any",
+          "bu_id": "number",
+          "bu_name": "string",
+          "certification_date": "string",
+          "certification_num": "string",
+          "certification_status": "string",
+          "certification_status_code": "string",
+          "certification_status_id": "number",
+          "comments": "any",
+          "cont_header_id": "number",
+          "cont_revision_num": "number",
+          "contract_amount": "number",
+          "contract_date": "string",
+          "contract_name": "string",
+          "contract_num": "string",
+          "contract_status": "string",
+          "contract_tax_amount": "number",
+          "conversion_rate": "number",
+          "created_by": "string",
+          "created_date": "string",
+          "cum_adv_rec_amount": "any",
+          "cum_amount": "any",
+          "cum_mat_adv_rec_amount": "any",
+          "cum_ret_amount": "any",
+          "cur_adv_rec_amount": "any",
+          "cur_amount": "any",
+          "cur_mat_adv_rec_amount": "any",
+          "cur_ret_amount": "any",
+          "currency_code": "string",
+          "document_status": "string",
+          "email_address": "any",
+          "full_name": "any",
+          "header_id": "number",
+          "interface_error_msg": "any",
+          "interface_event_id": "any",
+          "interface_flow_id": "any",
+          "interface_response_id": "any",
+          "interface_status": "any",
+          "interface_status_flag": "any",
+          "invoice_date": "string",
+          "invoice_num": "string",
+          "last_updated_by": "string",
+          "last_updated_date": "string",
+          "last_updated_login": "string",
+          "mobile_number": "any",
+          "net_amount": "any",
+          "net_contract_amount": "number",
+          "object_version_num": "number",
+          "party_name": "any",
+          "payment_due_date": "any",
+          "payment_term": "any",
+          "payment_term_id": "any",
+          "payment_type": "string",
+      "payment_type_code": "string",
+      "payment_type_id": "number",
+      "phone_number": "any",
+          "po_header_id": "number",
+          "po_number": "string",
+          "pre_adv_rec_amount": "any",
+          "pre_amount": "any",
+          "pre_mat_adv_rec_amount": "any",
+          "pre_ret_amount": "any",
+          "ship_to_location_code": "any",
+          "ship_to_location_id": "any",
+          "subcontract_type": "string",
+          "tax_amount": "any",
+          "tax_code": "any",
+          "tax_rate": "any",
+          "vendor_id": "number",
+          "vendor_name": "string",
+          "vendor_num": "string",
+          "vendor_site_code": "string",
+          "vendor_site_id": "number",
+          "vendor_type_code": "string",
+          "version_type": "string"
+  
+    },
+    "getCertificationLinebyHdrId": {
+     
+          "appl_cum_adv_rec_amount": "any",
+          "appl_cum_amount": "number",
+          "appl_cum_mat_adv_rec_amount": "any",
+          "appl_cum_percentage": "number",
+          "appl_cum_quantity": "number",
+          "appl_cum_ret_amount": "any",
+          "appl_cur_adv_rec_amount": "any",
+          "appl_cur_amount": "number",
+          "appl_cur_mat_adv_rec_amount": "any",
+          "appl_cur_percentage": "number",
+          "appl_cur_quantity": "number",
+          "appl_cur_ret_amount": "any",
+          "appl_header_id": "number",
+          "appl_line_id": "number",
+          "appl_net_amount": "any",
+          "appl_pre_adv_rec_amount": "any",
+          "appl_pre_amount": "number",
+          "appl_pre_mat_adv_rec_amount": "any",
+          "appl_pre_percentage": "number",
+          "appl_pre_quantity": "number",
+          "appl_pre_ret_amount": "any",
+          "appl_tax_amount": "any",
+          "appl_tax_code": "any",
+          "appl_tax_rate": "any",
+          "attribute_json": "any",
+          "bu_id": "number",
+      "calc_mode": "string",
+      "category_id": "number",
+          "code_combination_id": "number",
+          "cont_header_id": "number",
+          "cont_line_amount": "number",
+          "cont_line_id": "number",
+          "cont_net_line_amount": "number",
+          "cont_revision_num": "number",
+          "cont_tax_amount": "number",
+          "cont_tax_code": "any",
+          "cont_tax_rate": "any",
+          "created_by": "string",
+          "created_date": "string",
+          "cum_adv_rec_amount": "any",
+          "cum_amount": "number",
+          "cum_mat_adv_rec_amount": "any",
+          "cum_percentage": "number",
+          "cum_quantity": "number",
+          "cum_ret_amount": "any",
+          "cur_adv_rec_amount": "any",
+          "cur_amount": "number",
+          "cur_mat_adv_rec_amount": "any",
+          "cur_percentage": "number",
+          "cur_quantity": "number",
+          "cur_ret_amount": "any",
+      "cur_ret_percentage": "number",
+      "expenditure_type": "string",
+          "expenditure_type_id": "number",
+          "header_id": "number",
+          "item_description": "string",
+          "item_id": "any",
+          "item_num": "any",
+          "item_spec": "string",
+          "last_updated_by": "string",
+          "last_updated_date": "string",
+          "last_updated_login": "string",
+          "line_id": "number",
+          "line_type_id": "number",
+          "net_amount": "any",
+          "object_version_num": "number",
+      "payment_type": "string",
+      "po_distribution_id": "number",
+          "po_distribution_num": "number",
+          "po_header_id": "number",
+          "po_line_id": "number",
+          "po_line_num": "number",
+          "pre_adv_rec_amount": "any",
+          "pre_amount": "number",
+          "pre_mat_adv_rec_amount": "any",
+          "pre_percentage": "number",
+          "pre_quantity": "number",
+          "pre_ret_amount": "any",
+          "project_id": "number",
+          "project_num": "string",
+          "quantity": "number",
+          "remarks": "any",
+          "task_id": "number",
+          "task_num": "string",
+          "tax_amount": "any",
+          "tax_code": "any",
+          "tax_rate": "any",
+          "unit_price": "number",
+          "uom_code": "string"
+      
+    }
+
+  },
+  "eventListeners": {
+    "certPaymentTypeValue": {
+      "chains": [
+        {
+          "chain": "onClickPaymentType",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "cumPercentageValue": {
+      "chains": [
+        {
+          "chain": "onClickCumulativePercentage",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "cumQuantityValue": {
+      "chains": [
+        {
+          "chain": "onClickCumulativeQuantity",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chainId": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSpSubmit": {
+      "chains": [
+        {
+          "chainId": "spSubmitChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "LinesLoad"
+        }
+      ]
+    },
+    "ojSsce1SpSecondaryAction2": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpSecondaryActionChain",
+          "parameters": {
+            "actionId": "{{ $event.detail.secondaryItem }}"
+          }
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+    },
+    "modules": {
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-74-icoSimpleCreateAndEdit48Svg"
+  }
+}

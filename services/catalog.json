@@ -1,0 +1,72 @@
+{
+    "backends": {
+        "SubContractService": {
+            "description": "SubContractService",
+            "servers": [
+                {
+                    "url": "https://omranapextest.omran.om/ords/omran_subcon_test",
+                    "description": "Ords Subcontract",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "oauth2_client_credentials",
+                                "clientIdCredentials": "vb_369f16a4-85c4-4eda-8ac0-64da741d0e19",
+                                "authUrl": "https://omranapextest.omran.om/ords/omran_subcon_test/oauth/token"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "vbprocess": {
+            "serviceType": "vbprocess",
+            "servers": [
+                {
+                    "url": "vb-catalog://backends.tenant/vbprocess",
+                    "description": "Player Target Server",
+                    "x-vb": {
+                        "headers": {
+                            "pcs_mode": "dev"
+                        }
+                    }
+                },
+                {
+                    "url": "vb-catalog://backends.tenant/vbprocess",
+                    "description": "Default Target Server",
+                    "x-vb": {}
+                }
+            ]
+        },
+        "FusionApi": {
+            "servers": [
+                {
+                    "url": "https://iaadnd-test.fa.ocs.oraclecloud9.com",
+                    "description": "Iaafbv Test Fa Ocs Oraclecloud Com",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "basic",
+                                "credentials": "vb_daa13b82-4abb-4bfb-bc6f-5114abed27e5"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "ProcessRestServices": {
+            "servers": [
+                {
+                    "url": "https://omranoictst-axcyual2ptj2-mc.integration.ocp.oraclecloud9.com/bpm/api/4.0",
+                    "description": "Bpm Api.4.0",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "cloud"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+      }
+}

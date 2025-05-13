@@ -1,0 +1,19 @@
+{
+    "paths": {
+        "exclude": [
+            "build/**",
+            "docs/**",
+            "scripts/**",
+            "tests/**",
+            "**/private",
+            "+(web|mobile)Apps/**/resources/components/**/lib/*"
+        ]
+    },
+    "rules": {
+        "htmlhint.tag-pair": {
+            "description": "Tag must be paired.",
+            "enabled": false
+        }
+    },
+    "auditors": {}
+}

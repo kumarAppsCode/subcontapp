@@ -1,0 +1,222 @@
+{
+    "description": "",
+    "routerFlow": "dash-board",
+    "variables": {
+    "MenuSelection": {
+      "type": "string"
+    },
+    "messageADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "messageObj",
+        "keyAttributes": "id"
+      }
+    },
+    "notification": {
+      "type": {
+        "detail": "string",
+        "displaymode": "string",
+        "id": "string",
+        "severity": "string",
+        "summary": "string"
+
+      }
+    },
+    "popupOpen": {
+      "type": "string"
+    }
+
+    },
+    "metadata": {},
+    "types": {
+    "messageObj": {
+       "autoTimeout": "number",
+      "category": "string",
+      "detail": "string",
+      "DisplayOptions": "string",
+      "id": "string",
+      "severity": "string",
+      "summary": "string",
+      "timestamp": "string"
+
+
+    }
+    },
+    "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chain": "onclicksaasmenu"
+        }
+      ]
+    },
+    "buttonAction10": {
+      "chains": [
+        {
+          "chain": "NavigatetoMenu"
+        }
+      ]
+    },
+    "buttonAction11": {
+      "chains": [
+        {
+          "chain": "NavigateToMenuAccess"
+        }
+      ]
+    },
+    "buttonAction12": {
+      "chains": [
+        {
+          "chain": "NavigatetoApprovalRole"
+        }
+      ]
+    },
+    "buttonAction13": {
+      "chains": [
+        {
+          "chain": "NavigatetoApprovalHierarchy"
+        }
+      ]
+    },
+    "buttonAction14": {
+      "chains": [
+        {
+          "chain": "NavigatetoContract"
+        }
+      ]
+    },
+    "buttonAction15": {
+      "chains": [
+        {
+          "chain": "NavigateToApplication"
+        }
+      ]
+    },
+    "buttonAction16": {
+      "chains": [
+        {
+          "chain": "NavigateToCertification"
+        }
+      ]
+    },
+    "buttonAction17": {
+      "chains": [
+        {
+          "chain": "NavigateToRetention"
+        }
+      ]
+    },
+    "buttonAction18": {
+      "chains": [
+        {
+          "chain": "NavigateToDashBoard"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "onclickSyncSetup"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chain": "onClickSyncProcess"
+        }
+      ]
+    },
+    "buttonAction4": {
+      "chains": [
+        {
+          "chain": "onClickScheduleSync"
+        }
+      ]
+    },
+    "buttonAction5": {
+      "chains": [
+        {
+          "chain": "onClickSyncProcessLogs"
+        }
+      ]
+    },
+    "buttonAction6": {
+      "chains": [
+        {
+          "chain": "onClickErrorlog"
+        }
+      ]
+    },
+    "buttonAction7": {
+      "chains": [
+        {
+          "chain": "NavigatetoLookup"
+        }
+      ]
+    },
+    "buttonAction8": {
+      "chains": [
+        {
+          "chain": "NavigatetoRole"
+        }
+      ]
+    },
+    "buttonAction9": {
+      "chains": [
+        {
+          "chain": "NavigateToUser"
+        }
+      ]
+    },
+    "navigationListSelection": {
+      "chains": [
+        {
+          "chain": "Onclicknavigate",
+          "parameters": {
+            "selection": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "vbNotification": {
+      "chains": [
+        {
+          "parameters": {
+            "event": "{{ $event }}",
+            "currentVar": {
+              "displayMode": "{{ $event.displayMode }}",
+              "id": "{{ $event.key }}",
+              "detail": "{{ $event.message }}",
+              "summary": "{{ $event.summary }}",
+              "severity": "{{ $event.type }}",
+              "autoTimeout": "{{ $event.displayMode === 'transient' ? 0 : -1 }}"
+            }
+          },
+          "chain": "MessageEvent"
+        }
+      ]
+    }
+
+    },
+    "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-collapsible": {
+        "path": "ojs/ojcollapsible"
+      },
+      "oj-drawer-popup": {
+        "path": "ojs/ojdrawerpopup"
+      },
+      "oj-messages": {
+        "path": "ojs/ojmessages"
+      },
+      "oj-navigation-list": {
+        "path": "ojs/ojnavigationlist"
+      }
+    }
+    },
+    "translations": {}
+  }

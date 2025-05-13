@@ -1,0 +1,806 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "ApprovalBodyVar": {
+      "type": "ApprovalBody"
+    },
+    "approvalUserslovListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+
+        "keyAttributes": "person_id",
+        "itemsPath": "items",
+        "responseType": "approvalUserslov",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "user_name"
+          ]
+        },
+        "fetchChain": "ApprovalUserslovFetch"
+      }
+    },
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "currentReassignUsersListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "SubContract/CurrentReassignUsers",
+        "keyAttributes": "response_user_id",
+        "itemsPath": "items",
+        "responseType": "currentReassignUsersResponse",
+        "uriParameters": {
+          "p_actionid": "{{ $variables.PostApproverReassignPkgVar.p_action_id }}",
+          "p_approval_level": "{{ $variables.PostApproverReassignPkgVar.p_appr_level }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "response_user"
+          ]
+        }
+      }
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "displayOptionsVar": {
+      "type": {
+        "approve": "string",
+        "reassign": "string",
+        "reject": "string",
+        "save": "boolean",
+        "submit": "string",
+        "withdraw": "string"
+
+      }
+    },
+    "displayoptionTransferAP": {
+      "type": {
+        "transferAP": "string"
+      }
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "lineCloumns": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "headerText": "Certification Number",
+          "field": "certification_num",
+          "template": "",
+          "width": 190,
+          "resizable": "enabled",
+          "frozenEdge": "start"
+
+        },
+        {
+          "headerText": "AP Invoice Number",
+          "field": "ret_ap_invoice_num",
+          "width": 190,
+          "template": "",
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Retention Amount",
+          "field": "ret_amount",
+          "width": 120,
+          "template": "ret_amount",
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Retention Amount Paid ",
+          "field": "ret_amount_paid",
+          "template": "ret_amount_paid",
+          "width": 189,
+          "resizable": "enabled"
+
+        },
+        {
+          "headerText": "Retention Amount Available",
+          "field": "ret_amount_available",
+          "template": "ret_amount_available",
+          "width": 170,
+          "resizable": "enabled"
+
+        },
+{
+          "headerText": "Retention Release Amount",
+          "field": "ret_rel_amount",
+          "template": "ret_rel_amount",
+          "resizable": "enabled",
+          "width": 180,
+          "frozenEdge": "end"
+        },
+        {
+          "headerText": "Tax Amount",
+          "field": "tax_amount",
+          "template": "ret_amount",
+          "resizable": "enabled",
+          "width": 110,
+          "frozenEdge": "end"
+        },
+        {
+          "headerText": "Remarks",
+          "field": "remarks",
+          "template": "remarks",
+          "resizable": "enabled",
+          "width": 180,
+          "frozenEdge": "end"
+        }
+      ]
+    },
+    "LineTable": {
+      "type": "any"
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "p_ContHeaderId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pageVar": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "pcsInstanceNumber": {
+      "type": "number"
+    },
+    "pcsPostProcessesVar": {
+      "type": "pcsPostProcesses",
+      "defaultValue": {
+        "action": "submit",
+        "operation": "start",
+        "processDefId": "oracleinternalpcs~RetentionReleaseProcess!1.0~ApprovalProcess",
+        "serviceName": "ApprovalProcess.service"
+      }
+    },
+    "PostApprovalSubmitApproval1Var": {
+      "type": "PostApprovalSubmitApproval1"
+    },
+    "PostApproverReassignPkgVar": {
+      "type": "PostApproverReassignPkg"
+    },
+    "postApproveWithdrawVar": {
+      "type": "postApproveWithdraw"
+    },
+    "PostHeaderVar": {
+      "type": "postRententionHeader"
+    },
+    "postRententionHeaderSaveVar": {
+      "type": "postRententionHeaderSave"
+    },
+    "PostStandardAPInvoiceVar": {
+      "type": "PostStandardAPInvoice"
+    },
+    "postSubmitForApprovalPkgVar": {
+      "type": "postSubmitForApprovalPkg"
+    },
+    "pRetHeader_id": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "ProcessAbortApiWithdrawVar": {
+      "type": "ProcessAbortApiWithdraw"
+    },
+    "PutReassignProcessBodyVar": {
+      "type": "PutReassignProcessBody"
+    },
+    "reassignIdentityEmail": {
+      "type": "string"
+    },
+    "reassignIndentifierVar": {
+      "type": "reassignIndentifier"
+    },
+    "retLineADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getRetentionReleaseLines",
+        "keyAttributes": "line_id"
+      }
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "Sysdate": {
+      "type": "string",
+      "defaultValue": "[[ $application.functions.appSysDatesWithTimeStamp() ]]"
+    },
+    "taskId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "triggervar": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.ApprovalBody": {
+      "endpoint": "putBpmApi4_0TasksTaskId",
+      "service": "ApprovalService",
+      "path": "request"
+    },
+    "@decorators.approvalUserslov": {
+      "endpoint": "ApprovalUserslov",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.currentReassignUsersResponse": {
+      "endpoint": "CurrentReassignUsers",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.getRetentionReleaseLines": {
+      "endpoint": "FindByRetentionRelease",
+      "service": "SubContract",
+      "path": "response"
+    },
+    "@decorators.pcsPostProcesses": {
+      "endpoint": "postProcesses",
+      "service": "PCSRestService",
+      "path": "request"
+    },
+    "@decorators.PostApprovalSubmitApproval1": {
+      "endpoint": "postApprovalSubmitapproval",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.PostApproverReassignPkg": {
+      "endpoint": "PostApproverReassignPkg",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postApproveWithdraw": {
+      "endpoint": "postApperovalWithdraw",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postRententionHeader": {
+      "endpoint": "postRententionHeader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.postRententionHeaderSave": {
+      "endpoint": "postRententionHeader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.PostStandardAPInvoice": {
+      "endpoint": "PostStandardAPInvoice",
+      "service": "IntegrationAPI",
+      "path": "request"
+    },
+    "@decorators.postSubmitForApprovalPkg": {
+      "endpoint": "postSubmitForApprovalPkg",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "@decorators.ProcessAbortApiWithdraw": {
+      "endpoint": "ProcessAbortApiWithdraw",
+      "service": "PCSRestService",
+      "path": "request"
+    },
+    "@decorators.PutReassignProcessBody": {
+      "endpoint": "ReassignProcessAPI",
+      "service": "PCSRestService",
+      "path": "request"
+    },
+    "@decorators.UpdateRententionheader": {
+      "endpoint": "UpdateRententionheader",
+      "service": "SubContract",
+      "path": "request"
+    },
+    "ApprovalBody": {
+      "action": {
+        "id": "string",
+        "type": "string"
+      },
+      "comment": {
+        "commentScope": "string",
+        "commentStr": "string"
+      }
+    },
+    "approvalUserslov": {
+      "items": [
+        {
+          "active_flag": "string",
+          "business_group_id": "number",
+          "email_address": "string",
+          "person_id": "number",
+          "user_guid": "string",
+          "user_id": "number",
+          "user_name": "string"
+        }
+      ]
+    },
+    "currentReassignUsersResponse": {
+      "items": [
+        {
+          "action_id": "number",
+          "appr_level": "number",
+          "requester_email_address": "string",
+          "requester_user": "string",
+          "requester_user_id": "number",
+          "response_email_address": "string",
+          "response_user": "string",
+          "response_user_id": "number",
+          "transaction_id": "number",
+          "transaction_num": "string"
+        }
+      ]
+    },
+    "getRetentionReleaseLines": {
+                                          
+  "line_id": "number",                
+  "object_version_num": "number",     
+  "header_id": "number",              
+  "cert_header_id": "number",         
+  "certification_num": "string",      
+  "ret_amount": "number",             
+  "ret_amount_paid": "number",        
+  "ret_amount_available": "number",   
+  "ret_ap_invoice_id": "number",      
+  "ret_ap_invoice_num": "string",     
+  "ret_rel_amount": "number",         
+  "remarks": "string",                
+  "attribute_json": "any",            
+  "bu_id": "number",                  
+  "created_by": "string",             
+  "created_date": "string",           
+  "last_updated_by": "string",        
+  "last_updated_date": "string",      
+  "last_updated_login": "string",      
+      "tax_amount": "number"
+                                     
+
+    },
+    "pcsPostProcesses": {
+      "action": "string",
+      "operation": "string",
+      "payload": "string",
+      "processDefId": "string",
+      "serviceName": "string"
+    },
+    "PostApprovalSubmitApproval1": {
+      "p_appr_process": "string",
+      "p_trx_id": "number",
+      "p_user_id": "number"
+    },
+    "PostApproverReassignPkg": {
+      "p_action_id": "number",
+      "p_appr_level": "number",
+      "p_comments": "string",
+      "p_from_person_id": "number",
+      "p_to_person_id": "number",
+      "p_trx_id": "number"
+    },
+    "postApproveWithdraw": {
+      "p_action_id": "number",
+      "p_approval_process": "string",
+      "p_trx_id": "number"
+    },
+    "postRententionHeader": {
+      "attribute_json": "string",
+      "bu_id": "number",
+      "cert_header_id": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "header_id": "number",
+      "interface_status": "string",
+      "interface_status_flag": "string",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "line_id": "number",
+      "object_version_num": "number",
+      "remarks": "string",
+      "ret_ap_invoice_id": "number",
+      "ret_rel_amount": "number",
+      "address1": "string",
+      "address2": "any",
+      "address3": "any",
+      "address4": "any",
+      "approval_status": "string",
+      "approval_status_code": "string",
+      "bill_to_location_code": "string",
+      "bill_to_location_id": "number",
+      "bu_name": "string",
+      "buyer_id": "number",
+      "cancel_flag": "any",
+      "comments": "any",
+      "cont_header_id": "number",
+      "cont_revision_num": "number",
+      "contract_amount": "number",
+      "contract_date": "string",
+      "contract_name": "string",
+      "contract_num": "string",
+      "contract_status": "string",
+      "contract_status_disp": "string",
+      "conversion_rate": "number",
+      "currency_code": "string",
+      "document_status": "string",
+      "email_address": "string",
+      "end_date": "any",
+      "full_name": "string",
+      "invoice_num": "string",
+      "mobile_number": "string",
+      "net_contract_amount": "number",
+      "party_name": "string",
+      "payment_term": "any",
+      "payment_term_id": "number",
+      "phone_number": "string",
+      "po_header_id": "number",
+      "po_number": "string",
+      "ret_rel_date": "string",
+      "ret_rel_num": "string",
+      "ret_rel_type": "string",
+      "ret_release_status_id": "any",
+      "ship_to_location_code": "string",
+      "ship_to_location_id": "number",
+      "source_rowid": "string",
+      "start_date": "any",
+      "subcontract_type": "string",
+      "tax_amount": "number",
+      "trx_source": "string",
+      "vendor_id": "number",
+      "vendor_name": "string",
+      "vendor_num": "string",
+      "vendor_site_code": "string",
+      "vendor_site_id": "number",
+      "vendor_type_code": "any",
+      "version_type": "string"
+
+    },
+    "postRententionHeaderSave": {
+      "ap_invoice_id": "any",
+      "approval_status_id": "number",
+      "attribute_json": "any",
+      "bu_id": "number",
+      "comments": "any",
+      "cont_header_id": "number",
+      "cont_revision_num": "number",
+      "created_by": "string",
+      "created_date": "string",
+      "header_id": "number",
+      "interface_error_msg": "any",
+      "interface_event_id": "any",
+      "interface_flow_id": "any",
+      "interface_response_id": "any",
+      "interface_status": "any",
+      "interface_status_flag": "any",
+      "last_updated_by": "string",
+      "last_updated_date": "string",
+      "last_updated_login": "string",
+      "object_version_num": "number",
+      "ret_amount": "number",
+      "ret_rel_amount": "number",
+      "ret_rel_amount_paid": "any",
+      "ret_rel_date": "string",
+      "ret_rel_num": "string"
+    },
+    "PostStandardAPInvoice": {
+      "CertificateHeaderId": "string"
+    },
+    "postSubmitForApprovalPkg": {
+      "P_APPR_PROCESS": "string",
+      "P_TRX_ID": "string",
+      "P_USER_ID": "string"
+    },
+    "ProcessAbortApiWithdraw": {
+      "comments": "string",
+      "id": "string"
+    },
+    "PutReassignProcessBody": {
+      "action": {
+        "id": "string",
+        "type": "string"
+      },
+      "comment": {
+        "commentScope": "string",
+        "commentStr": "string"
+      },
+      "identities": [
+        {
+          "id": "string",
+          "type": "string"
+        }
+      ]
+    },
+    "reassignIndentifier": {
+      "id": "string",
+      "type": "string"
+    },
+    "UpdateRententionheader": {
+      "p_cont_header_id": "number",
+      "p_header_id": "number",
+      "p_login_name": "string"
+    }
+
+  },
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chain": "onClickSubmitApprove"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chain": "onClickApproveSubmitCancel"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chain": "onClickSubmitReject"
+        }
+      ]
+    },
+
+    "buttonAction4": {
+      "chains": [
+        {
+          "chain": "onClickCancel"
+        }
+      ]
+    },
+    "buttonAction5": {
+      "chains": [
+        {
+          "chain": "onClickRejectSubmitCancel"
+        }
+      ]
+    },
+    "buttonAction6": {
+      "chains": [
+        {
+          "chain": "OnClickReassignPopupCancel"
+        }
+      ]
+    },
+    "buttonAction7": {
+      "chains": [
+        {
+          "chain": "OnCLickSubmitReassign"
+        }
+      ]
+    },
+    "buttonAction8": {
+      "chains": [
+        {
+          "chain": "onClickWithdrawPopupNo"
+        }
+      ]
+    },
+    "buttonAction9": {
+      "chains": [
+        {
+          "chain": "onclickSubmitWithdraw"
+        }
+      ]
+    },
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chainId": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "retRelAmountValue": {
+      "chains": [
+        {
+          "chain": "onValueRetetionReleaseAmount",
+          "parameters": {
+            "value": "{{ $event.detail.value }}",
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chain": "onValueChangeReassign",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "parameters": {},
+          "chain": "onLoad"
+        }
+      ]
+    },
+    "ojSsce1SpSecondaryAction2": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpSecondaryActionChain",
+          "parameters": {
+            "actionId": "{{ $event.detail.secondaryItem }}"
+          }
+        }
+      ]
+    },
+    "ojSsce1SpPrimaryAction2": {
+      "chains": [
+        {
+          "chain": "SimpleCreateAndEditPageTemplateSpPrimaryActionChain"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-paging-control": {
+        "path": "ojs/ojpagingcontrol"
+      },
+      "oj-progress-bar": {
+        "path": "ojs/ojprogress-bar"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-text-area": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  }
+}

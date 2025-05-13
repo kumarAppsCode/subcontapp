@@ -1,0 +1,8 @@
+{
+  "id": "generic-page",
+  "description": "Flow main",
+  "defaultPage": "generic-attachment",
+  "services": {},
+  "types": {},
+  "variables": {}
+}
